@@ -23,7 +23,6 @@ def authorization(request):
 def blog(request):
     return render(request, 'main/blog.html')
 
-
 def contacts(request):
     return render(request, 'main/contacts.html')
 
