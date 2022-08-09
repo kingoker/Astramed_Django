@@ -281,7 +281,7 @@
 .service__img{
     display: block;
     min-width: 358px;
-    min-height: 358px;
+    height: 358px;
     overflow: hidden;transition: .3s ease-in-out;
 }
 .service__img img{
@@ -1047,4 +1047,8 @@ textarea{
 }
 .bolder-700{
     font-weight: 700;
+}
+.grey-filter{
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
 }

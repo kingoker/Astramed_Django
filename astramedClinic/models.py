@@ -11,6 +11,10 @@ class Photos(models.Model):
     photo = models.ImageField(upload_to='img/', verbose_name='Фото')
     title = models.CharField(max_length=50, choices=Photo_Type)
 
+    class Meta:
+        verbose_name = 'Фотография'
+        verbose_name_plural = 'Фотографии'
+
 
 class Links(models.Model):
     Link_Type = [
@@ -21,6 +25,10 @@ class Links(models.Model):
     links = models.CharField(max_length=50, verbose_name='Ссылки')
     title = models.CharField(max_length=50, choices=Link_Type)
 
+    class Meta:
+        verbose_name = 'Ссылка'
+        verbose_name_plural = 'Ссылки'
+
 
 class Services(models.Model):
     photo = models.ImageField(upload_to='service/', verbose_name='Фото')
@@ -28,11 +36,20 @@ class Services(models.Model):
     doctor = models.CharField(max_length=255,default='врач-терапевт', verbose_name='Прием ведет')
     title = models.TextField(verbose_name='Описание')
 
+    class Meta:
+        verbose_name = 'Услуга'
+        verbose_name_plural = 'Услуги'
+
+
 class Employee(models.Model):
     photo = models.ImageField(upload_to='employee/', verbose_name='Фото')
     name = models.CharField(max_length=255, verbose_name='ФИО')
     title = models.CharField(max_length=255, verbose_name='Должность')
     quote = models.CharField(max_length=255, verbose_name='Цитата')
     description = models.TextField(verbose_name='Описание')
+
+    class Meta:
+        verbose_name = 'Сотрудник'
+        verbose_name_plural = 'Сотрудники'
 
 

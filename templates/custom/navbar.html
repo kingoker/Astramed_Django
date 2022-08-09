@@ -1,49 +1,49 @@
 {% load static %}
 
-            <nav class="header__nav">
-                <a href="/" class="header__logo logo">
-                    <img src="img/logo.svg" alt="Astramed" class="logo__img img">
-                    <p class="logo__text">Astramed <br> <span>центр заботы о себе</span></p>
+<nav class="header__nav">
+    <a href="/" class="header__logo logo">
+        <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="logo__img img">
+        <p class="logo__text">Astramed <br> <span>центр заботы о себе</span></p>
+    </a>
+    <div class="header__body">
+        <ul class="menu__list" id="menu__list">
+            <li class="menu__item">
+                <a href="{% url 'about' %}" class="header__link header__link">О клинике</a>
+            </li>
+            <li class="menu__item">
+                <a href="{% url 'services' %}" class="header__link">Услуги</a>
+            </li>
+            <li class="menu__item">
+                <a href="{% url 'blog' %}" class="header__link">Блог</a>
+            </li>
+            <li class="menu__item">
+                <a href="{% url 'contacts' %}" class="header__link">Контакты</a>
+            </li>
+        </ul>
+        <ul class="menu__icons">
+            <li class="menu__icon menu__icon-search">
+                <div class="search">
+                    <svg class="search__icon svg">
+                        <use xlink:href="#search"></use>
+                    </svg>
+                    <div class="search__input">
+                        <input type="text" placeholder="Поиск..." id="mysearch">
+                    </div>
+                </div>
+            </li>
+            <li class="menu__icon menu__profile">
+                <a href="{% url 'profile' %}" class="profile">
+                    <svg class="profile__icon svg">
+                        <use xlink:href="#profile"></use>
+                    </svg>
                 </a>
-                <div class="header__body">
-                    <ul class="menu__list" id="menu__list">
-                        <li class="menu__item">
-                            <a href="{% url 'about' %}" class="header__link header__link">О клинике</a>
-                        </li>
-                        <li class="menu__item">
-                            <a href="{% url 'services' %}" class="header__link">Услуги</a>
-                        </li>
-                        <li class="menu__item">
-                            <a href="{% url 'blog' %}" class="header__link">Блог</a>
-                        </li>
-                        <li class="menu__item">
-                            <a href="{% url 'contacts' %}" class="header__link">Контакты</a>
-                        </li>
-                    </ul>
-                    <ul class="menu__icons">
-                        <li class="menu__icon menu__icon-search">
-                            <div class="search">
-                                <svg class="search__icon svg">
-                                    <use xlink:href="#search"></use>
-                                </svg>
-                                <div class="search__input">
-                                    <input type="text" placeholder="Поиск..." id="mysearch">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="menu__icon menu__profile">
-                            <a href="{% url 'profile' %}" class="profile">
-                                <svg class="profile__icon svg">
-                                    <use xlink:href="#profile"></use>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="menu__icon">
-                            <a href="" class="language">RU</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="menu__burger">
-                    <span></span>
-                </div>
-            </nav>
+            </li>
+            <li class="menu__icon">
+                <a href="" class="language">RU</a>
+            </li>
+        </ul>
+    </div>
+    <div class="menu__burger">
+        <span></span>
+    </div>
+</nav>

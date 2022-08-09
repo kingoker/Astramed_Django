@@ -5,7 +5,7 @@ from astramedClinic.models import Services
 
 
 def main(request):
-    services = Services.objects.all()
+    services = Services.objects.all()[:6]
     data = {
         'services': services
     }
