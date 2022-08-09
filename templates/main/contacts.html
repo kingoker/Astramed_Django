@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<!-- Тут подключаю Стили из папки Cutsom-->
+{% include 'custom/style.html' %}
+
+<body class="body">
+    <header class="header header-half">
+        <div class="header__container container">
+
+            <!-- Тут подключаю navbar из папки Cutsom-->
+            {% include 'custom/navbar.html' %}
+
+            <div class="header__title aboutHeader__title">
+                <img src="img/logo.svg" alt="Astramed" class="halfheader__img img">
+                <h1 class="title__text animate__animated animate__fadeInRight animate__slow wow">Контакты</h1>
+            </div>
+        </div>
+        </header>
+
+        <section class="contacts marbot-150">
+            <div class="blog__container container">
+                <div class="blog__text marbot-50">
+                    <h3 class="title contacts__title animate__animated animate__fadeIn animate__slow wow">Мы в Ташкенте</h3>
+                </div>
+                <div class="contacts__list">
+                    <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
+                        <h5 class="blog__item-subtitle">Наш адрес</h5>
+                        <p class="contacts__text">улица Зохидова, 8Г, Яшнабадский район, Ташкент</p>
+                    </div>
+                    <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
+                        <h5 class="blog__item-subtitle">Контакты</h5>
+                        <p class="contacts__text">Номер телефона : <a class="tel" href="tel: 555 013 663">555 013 663</a> / 
+                            <a class="tel" href="tel: 555 023 663">555 023 663</a> <br>
+                            Telegram/sms: <a href="https://t.me/+998946651387">946 651 387</a> <br>
+                            Email: <a href="mailto: info@astramed-clinic.com">info@astramed-clinic.com</a></p>
+                    </div>
+                    <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
+                        <h5 class="blog__item-subtitle">Время работы</h5>
+                        <p class="contacts__text">С понедельника по субботу: 9:00-21:00</p>
+                    </div>
+                    <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
+                        <h5 class="blog__item-subtitle">Мы в социальных сетях</h5>
+                        <div class="social__list alignLeft">
+                            <div class="social__item">
+                                <a href="https://www.instagram.com/astramed_clinic_uzbekistan/">
+                                    <svg class="instagram__icon svg darkGreyFill">
+                                        <use xlink:href="#instagram"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="social__item">
+                                <a href="https://t.me/+998946651387">
+                                    <svg class="phone__icon svg">
+                                        <use xlink:href="#telegram"></use>
+                                    </svg> 
+                                </a>
+                            </div>
+                            <div class="social__item">
+                                <a href="https://www.facebook.com/astramedclinic2021/">
+                                    <svg class="instagram__icon svg darkGreyFill">
+                                        <use xlink:href="#facebook"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog__item fullRow animate__animated animate__fadeInUp animate__slow wow">
+                        <h5 class="blog__item-subtitle">Общественный транспорт</h5>
+                        <p class="contacts__text">До клиники можно доехать на рейсовых автобусах № 15, 26, 106, на маршрутном такси № 47. Выйти на остановке «Акдарьинский проезд». Ориентир: улица Джаркурганская, ресторан Obi-Hayot, КВД-8. От главной дороги пройти в сторону Кожно-венерологического Диспансера № 8, 250 метров. Клиника находиться за КВД.</p>
+                    </div>
+                    <div class="blog__item fullRow animate__animated animate__fadeInUp animate__slow wow">
+                        <h5 class="blog__item-subtitle">Парковка</h5>
+                        <p class="contacts__text">Имеется открытая бесплатная парковка слева от входа в клинику.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="line"></div>
+        </div>
+    
+        <section class="contacts">
+            <div class="contacts__container container">
+                <div class="contacts__form form animate__animated animate__fadeInLeft animate__slow wow">
+                    <h3 class="form__title">Оставьте свои контакты <br> и мы свяжемся с вами</h3>
+                    <input type="text" class="form__input" placeholder="Ваше имя">
+                    <input type="number" class="form__input" placeholder="Ваш номер телефона">
+                    <a href="#" action="#" class="form__button link">Отправить</a>
+                </div>
+                <div class="contacts__map animate__animated animate__fadeInRight animate__slow wow">
+                    <div class="map">
+                        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A6106813e0c623a09fa05d0f2461b66adbe20ec7c14f4051e32ecbde722440910&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true" alt="Map"></script>
+                    </div>
+                    <div class="map__text">
+                        <div class="map__info">
+                            <svg class="location__icon svg">
+                                <use xlink:href="#location"></use>
+                            </svg>
+                            улица Зохидова, 8Г, Яшнабадский район, Ташкент
+                        </div>
+                        <div class="map__info">
+                            <svg class="phone__icon svg">
+                                <use xlink:href="#phone"></use>
+                            </svg>
+                            <div class="map__info">
+                                <a class="tel" href="tel: 555 013 663">555 013 663</a> / 
+                                <a class="tel" href="tel: 555 023 663">555 023 663</a>
+                            </div>
+                        </div>
+                        <div class="map__info">
+                            <svg class="phone__icon svg">
+                                <use xlink:href="#telegram"></use>
+                            </svg> 
+                                Telegram/sms: <a href="https://t.me/+998946651387">946 651 387</a>
+                        </div>
+                        <div class="map__info">
+                            <svg class="phone__icon svg">
+                                <use xlink:href="#time"></use>
+                            </svg>
+                            Пн-Сб: 9:00-21:00
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Тут подключаю footer из папки Cutsom-->
+        {% include 'custom/footer.html' %}
+
+
+    <!-- Иконки -->
+    <svg display="none">
+        <symbol width="22" height="22" id="search" viewBox="0 0 26 25">
+            <path d="M18.3502 16.1613C19.8633 14.0965 20.541 11.5366 20.2477 8.99358C19.9544 6.4506 18.7118 4.11212 16.7684 2.446C14.825 0.779875 12.3242 -0.0910236 9.76622 0.00753841C7.20828 0.1061 4.78187 1.16685 2.97244 2.97758C1.16301 4.78831 0.103993 7.21547 0.00726096 9.77348C-0.0894706 12.3315 0.783217 14.8317 2.45073 16.7739C4.11824 18.7161 6.45761 19.9571 9.0008 20.2485C11.544 20.54 14.1035 19.8605 16.1671 18.3459H16.1656C16.2125 18.4084 16.2625 18.4678 16.3187 18.5256L22.335 24.5418C22.628 24.835 23.0255 24.9999 23.44 25C23.8545 25.0001 24.2521 24.8356 24.5453 24.5426C24.8386 24.2496 25.0034 23.8521 25.0035 23.4376C25.0037 23.023 24.8391 22.6254 24.5461 22.3322L18.5299 16.316C18.474 16.2594 18.4139 16.2072 18.3502 16.1597V16.1613ZM18.7533 10.1544C18.7533 11.2831 18.531 12.4007 18.0991 13.4434C17.6672 14.4862 17.0341 15.4336 16.236 16.2317C15.4379 17.0298 14.4905 17.6629 13.4477 18.0948C12.405 18.5267 11.2874 18.749 10.1587 18.749C9.03004 18.749 7.91243 18.5267 6.86968 18.0948C5.82693 17.6629 4.87946 17.0298 4.08138 16.2317C3.28329 15.4336 2.65021 14.4862 2.21829 13.4434C1.78637 12.4007 1.56406 11.2831 1.56406 10.1544C1.56406 7.87496 2.46957 5.68888 4.08138 4.07708C5.69318 2.46527 7.87926 1.55977 10.1587 1.55977C12.4381 1.55977 14.6242 2.46527 16.236 4.07708C17.8478 5.68888 18.7533 7.87496 18.7533 10.1544Z"/>
+        </symbol>
+        <symbol width="22" height="23" viewBox="0 0 24 25" id="profile">
+            <path d="M22.6951 20.402C22.1026 18.9987 21.2429 17.7239 20.1637 16.6489C19.0878 15.5707 17.8133 14.7111 16.4105 14.1175C16.398 14.1112 16.3854 14.108 16.3728 14.1018C18.3295 12.6884 19.6015 10.3863 19.6015 7.78894C19.6015 3.48618 16.1153 0 11.8125 0C7.50978 0 4.0236 3.48618 4.0236 7.78894C4.0236 10.3863 5.29558 12.6884 7.25224 14.1049C7.23968 14.1112 7.22712 14.1143 7.21455 14.1206C5.80752 14.7142 4.54495 15.5653 3.46141 16.652C2.38324 17.7279 1.52361 19.0024 0.930004 20.4052C0.346845 21.7784 0.0323342 23.2508 0.00349651 24.7425C0.00265824 24.776 0.00853772 24.8093 0.0207887 24.8405C0.0330396 24.8718 0.0514141 24.9002 0.0748294 24.9242C0.0982447 24.9482 0.126227 24.9673 0.157128 24.9803C0.188028 24.9933 0.221222 25 0.254753 25H2.13917C2.27737 25 2.38729 24.8901 2.39043 24.755C2.45325 22.3304 3.42686 20.0597 5.14797 18.3386C6.92875 16.5578 9.2937 15.5779 11.8125 15.5779C14.3314 15.5779 16.6963 16.5578 18.4771 18.3386C20.1982 20.0597 21.1718 22.3304 21.2347 24.755C21.2378 24.8932 21.3477 25 21.4859 25H23.3703C23.4039 25 23.4371 24.9933 23.468 24.9803C23.4989 24.9673 23.5268 24.9482 23.5503 24.9242C23.5737 24.9002 23.592 24.8718 23.6043 24.8405C23.6165 24.8093 23.6224 24.776 23.6216 24.7425C23.5902 23.2412 23.2793 21.7808 22.6951 20.402ZM11.8125 13.191C10.371 13.191 9.01418 12.6288 7.99345 11.608C6.97272 10.5873 6.41053 9.23053 6.41053 7.78894C6.41053 6.34736 6.97272 4.99058 7.99345 3.96985C9.01418 2.94912 10.371 2.38693 11.8125 2.38693C13.2541 2.38693 14.6109 2.94912 15.6316 3.96985C16.6524 4.99058 17.2146 6.34736 17.2146 7.78894C17.2146 9.23053 16.6524 10.5873 15.6316 11.608C14.6109 12.6288 13.2541 13.191 11.8125 13.191Z" fill="white"/>
+        </symbol>
+        <symbol width="30" height="30" viewBox="0 0 30 30" id="instagram">
+            <path d="M21.8792 0H8.12071C3.64288 0 0 3.64288 0 8.12071V21.8795C0 26.3571 3.64288 29.9999 8.12071 29.9999H21.8795C26.3571 29.9999 29.9999 26.3571 29.9999 21.8795V8.12071C29.9999 3.64288 26.3571 0 21.8792 0V0ZM28.2412 21.8795C28.2412 25.3873 25.3873 28.2412 21.8792 28.2412H8.12071C4.61265 28.2412 1.75872 25.3873 1.75872 21.8795V8.12071C1.75872 4.61265 4.61265 1.75872 8.12071 1.75872H21.8795C25.3873 1.75872 28.2412 4.61265 28.2412 8.12071V21.8795Z"/>
+            <path d="M15 6.79688C10.4768 6.79688 6.79712 10.4766 6.79712 14.9998C6.79712 19.5229 10.4768 23.2026 15 23.2026C19.5232 23.2026 23.2029 19.5229 23.2029 14.9998C23.2029 10.4766 19.5232 6.79688 15 6.79688ZM15 21.4439C11.4468 21.4439 8.55584 18.5531 8.55584 14.9998C8.55584 11.4466 11.4468 8.5556 15 8.5556C18.5534 8.5556 21.4442 11.4466 21.4442 14.9998C21.4442 18.5531 18.5534 21.4439 15 21.4439Z"/>
+            <path d="M23.399 3.88379C22.0623 3.88379 20.9751 4.9712 20.9751 6.30764C20.9751 7.64431 22.0623 8.73173 23.399 8.73173C24.7356 8.73173 25.823 7.64431 25.823 6.30764C25.823 4.97098 24.7356 3.88379 23.399 3.88379ZM23.399 6.97277C23.0323 6.97277 22.7338 6.67431 22.7338 6.30764C22.7338 5.94075 23.0323 5.64251 23.399 5.64251C23.7658 5.64251 24.0643 5.94075 24.0643 6.30764C24.0643 6.67431 23.7658 6.97277 23.399 6.97277Z"/>
+        </symbol>
+        <symbol width="30" height="30" viewBox="0 0 30 30" id="facebook">
+            <path d="M30 15C30 12.0333 29.1203 9.13319 27.472 6.66645C25.8238 4.19971 23.4811 2.27713 20.7403 1.14181C17.9994 0.00649927 14.9834 -0.290551 12.0736 0.288227C9.16393 0.867006 6.49119 2.29562 4.3934 4.3934C2.29562 6.49119 0.867006 9.16393 0.288227 12.0736C-0.290551 14.9834 0.00649927 17.9994 1.14181 20.7403C2.27713 23.4811 4.19971 25.8238 6.66645 27.472C9.13319 29.1203 12.0333 30 15 30C18.9771 29.9962 22.7902 28.4146 25.6024 25.6024C28.4146 22.7902 29.9962 18.9771 30 15ZM16.1538 27.6346V18.4615H19.6154C19.9214 18.4615 20.2149 18.34 20.4313 18.1236C20.6477 17.9072 20.7692 17.6137 20.7692 17.3077C20.7692 17.0017 20.6477 16.7082 20.4313 16.4918C20.2149 16.2754 19.9214 16.1538 19.6154 16.1538H16.1538V12.6923C16.1538 12.0803 16.397 11.4933 16.8298 11.0605C17.2625 10.6278 17.8495 10.3846 18.4615 10.3846H20.7692C21.0753 10.3846 21.3687 10.2631 21.5851 10.0467C21.8015 9.83028 21.9231 9.53679 21.9231 9.23077C21.9231 8.92476 21.8015 8.63127 21.5851 8.41488C21.3687 8.19849 21.0753 8.07693 20.7692 8.07693H18.4615C17.2386 8.08073 16.0669 8.56822 15.2022 9.43294C14.3374 10.2977 13.85 11.4694 13.8462 12.6923V16.1538H10.3846C10.0786 16.1538 9.78512 16.2754 9.56873 16.4918C9.35234 16.7082 9.23077 17.0017 9.23077 17.3077C9.23077 17.6137 9.35234 17.9072 9.56873 18.1236C9.78512 18.34 10.0786 18.4615 10.3846 18.4615H13.8462V27.6346C10.5935 27.3377 7.58043 25.7982 5.43381 23.3365C3.28719 20.8747 2.17223 17.6802 2.32084 14.4173C2.46946 11.1545 3.87022 8.07455 6.23175 5.81814C8.59328 3.56173 11.7338 2.30256 15 2.30256C18.2662 2.30256 21.4067 3.56173 23.7683 5.81814C26.1298 8.07455 27.5305 11.1545 27.6792 14.4173C27.8278 17.6802 26.7128 20.8747 24.5662 23.3365C22.4196 25.7982 19.4065 27.3377 16.1538 27.6346Z"/>
+        </symbol>
+        <symbol width="26" height="32" viewBox="0 0 26 32" id="location" fill="none">
+            <path d="M13 17.5C15.4853 17.5 17.5 15.4853 17.5 13C17.5 10.5147 15.4853 8.5 13 8.5C10.5147 8.5 8.5 10.5147 8.5 13C8.5 15.4853 10.5147 17.5 13 17.5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13 1C9.8174 1 6.76516 2.26428 4.51472 4.51472C2.26428 6.76516 1 9.8174 1 13C1 15.838 1.603 17.695 3.25 19.75L13 31L22.75 19.75C24.397 17.695 25 15.838 25 13C25 9.8174 23.7357 6.76516 21.4853 4.51472C19.2348 2.26428 16.1826 1 13 1V1Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+        <symbol width="32" height="32" viewBox="0 0 32 32" id="phone" fill="none">
+            <path d="M13.8306 7.36113L8.75638 1.50398C8.17142 0.82902 7.09898 0.83202 6.41952 1.51298L2.24677 5.69323C1.00485 6.93665 0.649369 8.78304 1.36783 10.2635C5.66 19.1504 12.8272 26.3276 21.7081 30.6322C23.187 31.3507 25.0319 30.9952 26.2738 29.7518L30.4856 25.5325C31.168 24.8501 31.1695 23.7716 30.4886 23.1867L24.6089 18.1395C23.994 17.6115 23.0385 17.6805 22.4221 18.2985L20.3762 20.3473C20.2715 20.4571 20.1336 20.5295 19.9837 20.5533C19.8339 20.5772 19.6804 20.5512 19.5467 20.4793C16.2026 18.5536 13.4286 15.776 11.5072 12.4293C11.4353 12.2955 11.4092 12.1417 11.4331 11.9916C11.4569 11.8415 11.5293 11.7034 11.6392 11.5984L13.6791 9.557C14.2971 8.93603 14.3645 7.97609 13.8306 7.35963V7.36113Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+        <symbol id="time" width="32px" height="32px" viewBox="0 0 24 24" aria-labelledby="timeIconTitle" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#000000"><circle cx="12" cy="12" r="10"/> <polyline points="12 5 12 12 16 16"/>
+        </symbol>
+        <symbol id="telegram" width="32px" height="32px" viewBox="0 0 248 248" fill="none">
+            <path d="M88,134.9,177.9,214a8,8,0,0,0,13.1-4.2L228.6,45.6a8,8,0,0,0-10.7-9.2L33.3,108.9c-7.4,2.9-6.4,13.7,1.4,15.3Z" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+            <line x1="88" y1="134.9" x2="224.1" y2="36.6" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+            <path d="M132.9,174.4l-31.2,31.2A8,8,0,0,1,88,200V134.9" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/>
+        </symbol>
+    </svg>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script> new WOW().init(); </script>
+    <script src="{% static '/js/script.js' %}"></script>
+</body>
+</html>
