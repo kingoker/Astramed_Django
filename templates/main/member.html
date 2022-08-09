@@ -16,22 +16,24 @@
     </div>
     </header>
 
+
 <section class="blog-white marbot-150">
         <div class="member__container container">
+            {% for employee in employes %}
             <div class="member__info animate__animated animate__fadeInLeft animate__slow wow">
-                <img src="img/team/2.jpg" alt="" class="member__img img">
+                <img src="{{ employee.photo.url }}" alt="" class="member__img img">
                 <div class="member__quote">
-                    <p class="quote__text">Don’t ever let anyone tell you, You ain’t beautiful. <br>
-                        <i>Eminem – Beautiful.</i></p>
+                    <p class="quote__text">{{employee.quote}}</p>
                 </div>
             </div>
             <div class="member__content animate__animated animate__fadeInRight animate__slow wow">
-                <h3 class="member__subtitle">Мамонтова Наталья Владиславовна
+                <h3 class="member__subtitle">{{employee.name}}
                 </h3>
-                <span>косметолог-эстетист</span>
-                <p class="member__text">Dr. Jani van Loghem is oprichter van UMA Institute, medisch directeur van UMA Clinic en voormalig vice– voorzitter van de Nederlandse Vereniging voor Cosmetische Geneeskunde (NVCG). Jani is de opsteller van het curriculum waarmee het vakgebied cosmetisch geneeskunde in 2019 als nieuw officieel medische profielspecialisme is erkend. Jani is een zeer ervaren cosmetisch arts en heeft zich gespecialiseerd in minimaal–invasieve cosmetische behandelingen zoals injectables, liposuctie, lasers en chemische peelings. Hij voert vele honderden behandelingen per jaar uit en traint collega–artsen in injectietechnieken. Patiënten roemen Jani’s deskundigheid en zijn vaak zeer onder de indruk van het resultaten van zijn behandelingen. Jani ontvangt artsen van over de hele wereld in Amsterdam voor gespecialiseerde trainingen en demonstraties. Daarnaast geeft hij lezingen op internationale congressen, en reist hij de wereld rond om zijn kennis als Global Key Opinion Leader te delen.</p>
+                <span>{{employee.title}}</span>
+                <p class="member__text">{{employee.description}}</p>
                 <a href="authorization.html" class="member__link link">Записаться на консультацию</a>
             </div>
+            {%endfor%}
         </div>
     </section>
 {% endblock %}

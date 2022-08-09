@@ -22,48 +22,16 @@
         <p class="team__text"><span>Вы</span> в самых лучших руках</p>
     </div>
     <div class="blog__list team__list">
+
+        {% for employee in employes %}
         <div class="blog__item team__item animate__animated animate__fadeInUp animate__slow wow">
-            <a href="member.html" class="service__img team__list-img">
-                <img src="img/team/1.jpg" alt="service" class="img">
+            <a href="{% url 'member' employee.name %}" class="service__img team__list-img">
+                <img src="{{ employee.photo.url }}" alt="service" class="img">
             </a> <br>
-            <span>косметолог</span>
-            <a href="member.html" class="team__link link">Алиева Нодира Курбановна</a>
+            <span>{{employee.title}}</span>
+            <a href="{% url 'member' employee.name %}" class="team__link link">{{employee.name}}</a>
         </div>
-        <div class="blog__item team__item animate__animated animate__fadeInUp animate__slow wow">
-            <a href="member.html" class="service__img team__list-img">
-                <img src="img/team/2.jpg" alt="service" class="img">
-            </a> <br>
-            <span>косметолог-эстетист</span>
-            <a href="member.html" class="team__link link">Мамонтова Наталья Владиславовна</a>
-        </div>
-        <div class="blog__item team__item animate__animated animate__fadeInUp animate__slow wow">
-            <a href="member.html" class="service__img team__list-img">
-                <img src="img/team/3.jpg" alt="service" class="img">
-            </a> <br>
-            <span>администратор</span>
-            <a href="member.html" class="team__link link">Суинова Ленара Бахтияровна</a>
-        </div>
-        <div class="blog__item team__item animate__animated animate__fadeInUp animate__slow wow">
-            <a href="member.html" class="service__img team__list-img">
-                <img src="img/team/4.jpg" alt="service" class="img">
-            </a> <br>
-            <span>массажист</span>
-            <a href="member.html" class="team__link link">Назарова Рано Назир-Алиевна</a>
-        </div>
-        <div class="blog__item team__item animate__animated animate__fadeInUp animate__slow wow">
-            <a href="member.html" class="service__img team__list-img">
-                <img src="img/team/5.jpg" alt="service" class="img">
-            </a> <br>
-            <span>медсестра</span>
-            <a href="member.html" class="team__link link">Арушанян Маргарита Валерьевна</a>
-        </div>
-        <div class="blog__item team__item animate__animated animate__fadeInUp animate__slow wow">
-            <a href="member.html" class="service__img team__list-img">
-                <img src="img/service/massage.png" alt="service" class="img">
-            </a> <br>
-            <span>физиотерапевт</span>
-            <a href="member.html" class="team__link link">Лука Ачителли</a>
-        </div>
+        {%endfor%}
 
     </div>
 </div>

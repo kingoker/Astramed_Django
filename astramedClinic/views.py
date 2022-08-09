@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from astramedClinic.models import Services
+from astramedClinic.models import Services, Employee
 
 
 def main(request):
@@ -23,12 +23,17 @@ def authorization(request):
 def blog(request):
     return render(request, 'main/blog.html')
 
+
 def contacts(request):
     return render(request, 'main/contacts.html')
 
 
-def member(request):
-    return render(request, 'main/member.html')
+def member(request, str):
+    employes = Employee.objects.filter(name=str)
+    data = {
+        'employes': employes
+    }
+    return render(request, 'main/member.html', data)
 
 
 def post(request):
@@ -56,7 +61,11 @@ def services(request):
 
 
 def team(request):
-    return render(request, 'main/team.html')
+    employes = Employee.objects.all()
+    data = {
+        'employes': employes
+    }
+    return render(request, 'main/team.html', data)
 
 
 def therapy(request):
