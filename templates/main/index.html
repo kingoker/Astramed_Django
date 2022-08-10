@@ -20,7 +20,7 @@
                     <h2 class="philosiphy__title title">Ответственно улучшая жизнь</h2>
                     <p class="philosiphy__subtitle">В нашей клинике мы стремимся к совершенству, где Ваше лечение - это процесс высокой заботы и ответственности, который мы никогда не принимаем как должное.</p>
                 </div>
-                <a href="about.html" class="philosiphy__link link">Наша философия</a>
+                <a href="{% url 'about'  %}" class="philosiphy__link link">Наша философия</a>
             </div>
             <img class="philosiphy__img img animate__animated animate__fadeInRight animate__slow wow" src="{% static 'img/philosiphy.png' %}" alt="Astramed sun">
         </div>
@@ -45,7 +45,7 @@
             </div>
             <div class="service__bottom">
                 <p class="service__text animate__animated animate__fadeIn animate__slow wow">Регулярные медицинские осмотры должны стать обычным делом, поскольку, получая правильные медицинские услуги, обследования и лечение, вы делаете важные шаги к тому, чтобы жить более долгой и здоровой жизнью.</p>
-                <a href="services.html" class="service__bottom_link link animate__animated animate__fadeIn animate__slow wow">Посмотреть все услуги</a>
+                <a href="{% url 'services' %}" class="service__bottom_link link animate__animated animate__fadeIn animate__slow wow">Посмотреть все услуги</a>
             </div>
         </div>
         <div class="service__black"></div>
@@ -69,7 +69,7 @@
             <div class="faceToFace__text">
                 <h2 class="faceToFace__title title animate__animated animate__fadeInLeft animate__slow wow">Лицом к лицу всегда лучше</h2>
                 <p class="faceToFace__subtitle animate__animated animate__fadeInLeft animate__slow wow">Мы знаем, что мир медицины может пугать. Наши врачи всегда рады провести с вами время. Запишитесь на консультацию, и мы вместе обсудим ваши мысли, беспокойства и вопросы.</p>
-                <a href="registration.html" class="faceToFace__link link animate__animated animate__fadeInLeft animate__slow wow">Записаться на консультацию</a>
+                <a href="{% url 'registration' %}" class="faceToFace__link link animate__animated animate__fadeInLeft animate__slow wow">Записаться на консультацию</a>
             </div>
         </div>
     </section>
@@ -80,7 +80,7 @@
                 <div class="feedback__text">
                     <h2 class="feedback__title animate__animated animate__fadeInLeft animate__slow wow">Что люди говорят о нас?</h2>
                     <p class="feedback__subtitle animate__animated animate__fadeInLeft animate__slow wow">Ваши отзывы помогут другим людям принять решение</p>
-                    <a href="review.html" class="feedback__link link animate__animated animate__fadeInLeft animate__slow wow">Оставить отзыв</a>
+                    <a href="{% url 'review' %}" class="feedback__link link animate__animated animate__fadeInLeft animate__slow wow">Оставить отзыв</a>
                 </div>
                 <div class="feedback__img">
                     <img src="{% static 'img/feedback.png' %}" alt="Astramed feedback" class="img animate__animated animate__fadeInRight animate__slow wow">

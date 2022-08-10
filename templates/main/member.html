@@ -31,7 +31,7 @@
                 </h3>
                 <span>{{employee.title}}</span>
                 <p class="member__text">{{employee.description}}</p>
-                <a href="authorization.html" class="member__link link">Записаться на консультацию</a>
+                <a href="{% url 'authorization' %}" class="member__link link">Записаться на консультацию</a>
             </div>
             {%endfor%}
         </div>

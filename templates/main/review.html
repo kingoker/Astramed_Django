@@ -55,27 +55,27 @@
 <section class="blog blog-white marbot-100">
 <div class="blog__container container">
     <div class="blog__text AboutBlog__text review animate__animated animate__fadeInLeft animate__slow wow">
-        <a href="services.html" class="blog__title link">Наши услуги</a>
+        <a href="{% url 'services' %}" class="blog__title link">Наши услуги</a>
         <p class="blog__subtitle">В нашем блоге мы публикуем последние новости, полезные статьи и просто рассказываем о жизни клиники =)</p>
     </div>
     <div class="blog__list marbot-100 review animate__animated animate__fadeInUp animate__slow wow">
         <div class="blog__item">
-            <a href="therapy.html" class="service__img">
+            <a href="{% url 'therapy' %}"class="service__img">
                 <img src="img/service/massage.png" alt="service" class="img">
             </a>
-            <a href="therapy.html" class="service__link link">Массаж</a>
+            <a href="{% url 'therapy' %}" class="service__link link">Массаж</a>
         </div>
         <div class="blog__item">
-            <a href="therapy.html" class="service__img">
+            <a href="{% url 'therapy' %}" class="service__img">
                 <img src="img/service/massage.png" alt="service" class="img">
             </a>
-            <a href="therapy.html" class="service__link link">Контурная пластика лица</a>
+            <a href="{% url 'therapy' %}" class="service__link link">Контурная пластика лица</a>
         </div>
         <div class="blog__item">
-            <a href="therapy.html" class="service__img">
+            <a href="{% url 'therapy' %}" class="service__img">
                 <img src="img/service/massage.png" alt="service" class="img">
             </a>
-            <a href="therapy.html" class="service__link link">Физиотерапия</a>
+            <a href="{% url 'therapy' %}" class="service__link link">Физиотерапия</a>
         </div>
     </div>
     <div class="blog__social social blog__social-noPadding">
