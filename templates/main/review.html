@@ -4,16 +4,13 @@
 
 {% block content %}
 <header class="header header-half">
-<div class="header__container container">
-
-<!-- Тут подключаю navbar из папки Cutsom-->
-{% include 'custom/navbar.html' %}
-
-<div class="header__title aboutHeader__title">
-    <img src="img/logo.svg" alt="Astramed" class="halfheader__img img">
-    <h1 class="title__text animate__animated animate__fadeInRight animate__slow wow">Оставить отзыв</h1>
-</div>
-</div>
+    <div class="header__container container">
+        {% include 'custom/navbar.html' %}
+        <div class="header__title aboutHeader__title">
+            <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
+            <h1 class="title__text animate__animated animate__fadeInRight animate__slow wow">Оставить отзыв</h1>
+        </div>
+    </div>
 </header>
 
 <section class="blog blog-white marbot-100">
@@ -61,19 +58,19 @@
     <div class="blog__list marbot-100 review animate__animated animate__fadeInUp animate__slow wow">
         <div class="blog__item">
             <a href="therapy.html" class="service__img">
-                <img src="img/service/massage.png" alt="service" class="img">
+                <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
             </a>
             <a href="therapy.html" class="service__link link">Массаж</a>
         </div>
         <div class="blog__item">
             <a href="therapy.html" class="service__img">
-                <img src="img/service/massage.png" alt="service" class="img">
+                <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
             </a>
             <a href="therapy.html" class="service__link link">Контурная пластика лица</a>
         </div>
         <div class="blog__item">
             <a href="therapy.html" class="service__img">
-                <img src="img/service/massage.png" alt="service" class="img">
+                <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
             </a>
             <a href="therapy.html" class="service__link link">Физиотерапия</a>
         </div>
