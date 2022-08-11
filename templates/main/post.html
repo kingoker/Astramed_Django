@@ -10,7 +10,7 @@
     {% include 'custom/navbar.html' %}
 
     <div class="header__title aboutHeader__title">
-        <img src="img/logo.svg" alt="Astramed" class="halfheader__img img">
+        <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
         <h2 class="title__text animate__animated animate__fadeInRight animate__slow wow">Здесь будет заголовок <br> поста</h2>
     </div>
 </div>
@@ -19,7 +19,7 @@
 <section class="post">
     <div class="post__container container">
         <div class="post__img animate__animated animate__fadeInLeft animate__slow wow">
-            <img src="img/post/1.jpg" alt="" class="img">
+            <img src="{% static 'img/post/1.jpg' %}" alt="" class="img">
         </div>
         <div class="post__content animate__animated animate__fadeInRight animate__slow wow">
             <h3 class="post__title">Заголовок поста Здесь будет заголовок поста</h3>
@@ -29,7 +29,6 @@
             </p>
             <p class="post__text">Job werkte na zijn opleiding tot arts eerst op de afdeling algemene chirurgie van het Amstelland Ziekenhuis. Job is daarna door Jani opgeleid tot cosmetisch arts en werd de eerste arts die in het nieuwe medische profielspecialisme cosmetische geneeskunde is afgestudeerd. Job heeft als Chef de Clinique de dagelijkse leiding over UMA Clinic en heeft daarnaast bijgedragen aan verschillende onderzoeksprojecten en publicaties. Als Global Key Opinion Leader in de cosmetische geneeskunde geeft hij lezingen in landen over de hele wereld en staat hij bekend om zijn charisma. Job is een zeer bekwame en ervaren cosmetisch arts. Zijn patiënten vinden hem attent, zorgvuldig en professioneel. Job heeft aan een half woord genoeg, pikt de wensen van patiënten razendsnel op en behandelt met nauwkeurige hand.</p>
         </div>
-
     </div>
 </section>
 
@@ -41,19 +40,19 @@
         <div class="blog__list animate__animated animate__fadeInUp animate__slow wow">
             <div class="blog__item">
                 <a href="{% url 'post' %}" class="service__img">
-                    <img src="img/service/massage.png" alt="service" class="img">
+                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
                 </a>
                 <a href="{% url 'post' %}" class="service__link link">Массаж</a>
             </div>
             <div class="blog__item">
                 <a href="{% url 'post' %}" class="service__img">
-                    <img src="img/service/massage.png" alt="service" class="img">
+                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
                 </a>
                 <a href="{% url 'post' %}" class="service__link link">Контурная пластика лица</a>
             </div>
             <div class="blog__item">
                 <a href="{% url 'post' %}" class="service__img">
-                    <img src="img/service/massage.png" alt="service" class="img">
+                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
                 </a>
                 <a href="{% url 'post' %}" class="service__link link">Физиотерапия</a>
             </div>

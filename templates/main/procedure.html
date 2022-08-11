@@ -10,7 +10,7 @@
     {% include 'custom/navbar.html' %}
 
     <div class="header__title aboutHeader__title">
-        <img src="img/logo.svg" alt="Astramed" class="halfheader__img img">
+        <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
         <h1 class="title__text animate__animated animate__fadeInRight animate__slow wow">Общая терапия</h1>
     </div>
 </div>
@@ -53,8 +53,8 @@
         <div class="procedure__result">
             <h2 class="feedback__title colorWhite marbot-50">До и после</h2>
             <div class="procedure__result-img">
-                <img src="img/therapy/1.jpg" alt="before" class="img animate__animated animate__fadeInLeft animate__slow wow">
-                <img src="img/therapy/2.jpg" alt="after" class="img animate__animated animate__fadeInRight animate__slow wow">
+                <img src="{% static 'img/therapy/1.jpg' %}" alt="before" class="img animate__animated animate__fadeInLeft animate__slow wow">
+                <img src="{% static 'img/therapy/2.jpg' %}" alt="after" class="img animate__animated animate__fadeInRight animate__slow wow">
             </div>
         </div>
         <div class="procedure__button__bottom">
@@ -71,19 +71,19 @@
         <div class="blog__list">
             <div class="blog__item">
                 <a href="{% url 'therapy' %}" class="service__img">
-                    <img src="img/service/massage.png" alt="service" class="img">
+                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
                 </a>
                 <a href="{% url 'therapy' %}" class="service__link link">Массаж</a>
             </div>
             <div class="blog__item">
                 <a href="{% url 'therapy' %}" class="service__img">
-                    <img src="img/service/massage.png" alt="service" class="img">
+                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
                 </a>
                 <a href="{% url 'therapy' %}" class="service__link link">Контурная пластика лица</a>
             </div>
             <div class="blog__item">
                 <a href="{% url 'therapy' %}" class="service__img">
-                    <img src="img/service/massage.png" alt="service" class="img">
+                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
                 </a>
                 <a href="{% url 'therapy' %}" class="service__link link">Физиотерапия</a>
             </div>
