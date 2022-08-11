@@ -23,7 +23,7 @@
         {% for employee in employes %}
         <div class="blog__item team__item animate__animated animate__fadeInUp animate__slow wow">
             <a href="{% url 'member' employee.name %}" class="service__img team__list-img">
-                <img src="{{ employee.photo.url }}" alt="service" class="img">
+                <img src="{{ employee.photo.url }}" alt="service" class="img grey-filter">
             </a> <br>
             <span>{{employee.title}}</span>
             <a href="{% url 'member' employee.name %}" class="team__link link">{{employee.name}}</a>

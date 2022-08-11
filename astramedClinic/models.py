@@ -15,6 +15,9 @@ class Photos(models.Model):
         verbose_name = 'Фотография'
         verbose_name_plural = 'Фотографии'
 
+    def __str__(self):
+        return self.title
+
 
 class Links(models.Model):
     Link_Type = [
@@ -29,6 +32,9 @@ class Links(models.Model):
         verbose_name = 'Ссылка'
         verbose_name_plural = 'Ссылки'
 
+    def __str__(self):
+        return self.title
+
 
 class Services(models.Model):
     photo = models.ImageField(upload_to='service/', verbose_name='Фото')
@@ -39,6 +45,9 @@ class Services(models.Model):
     class Meta:
         verbose_name = 'Услуга'
         verbose_name_plural = 'Услуги'
+
+    def __str__(self):
+        return self.type
 
 
 class Employee(models.Model):
@@ -51,5 +60,8 @@ class Employee(models.Model):
     class Meta:
         verbose_name = 'Сотрудник'
         verbose_name_plural = 'Сотрудники'
+
+    def __str__(self):
+        return self.name
 
 

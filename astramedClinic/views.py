@@ -40,8 +40,13 @@ def post(request):
     return render(request, 'main/post.html')
 
 
-def procedure(request, str):
-    return render(request, 'main/procedure.html')
+def procedure(request, pk):
+    services = Services.objects.filter(id=pk)
+    print(services)
+    data = {
+        'services': services
+    }
+    return render(request, 'main/procedure.html', data)
 
 
 def profile(request):
