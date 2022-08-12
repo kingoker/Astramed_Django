@@ -65,3 +65,13 @@ class Employee(models.Model):
         return self.name
 
 
+class Reviews(models.Model):
+    name = models.CharField(max_length=255, verbose_name='Имя')
+    description = models.TextField(verbose_name='Комментарий')
+
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
+
+    def __str__(self):
+        return self.name

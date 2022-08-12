@@ -5,95 +5,77 @@
 {% block content %}
 <header class="header header-half">
     <div class="header__container container">
+
+        <!-- Тут подключаю navbar из папки Cutsom-->
         {% include 'custom/navbar.html' %}
+
         <div class="header__title aboutHeader__title">
-            <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
+            <img src="img/logo.svg" alt="Astramed" class="halfheader__img img">
             <h1 class="title__text animate__animated animate__fadeInRight animate__slow wow">Оставить отзыв</h1>
         </div>
     </div>
 </header>
 
 <section class="blog blog-white marbot-100">
-<div class="review__container container">
-    <form class="review__form form animate__animated animate__fadeInUp animate__slow wow">
-        <input type="text" class="form__input" placeholder="Ваше имя">
-        <textarea class="form__input" name="" id="" cols="30" rows="5" placeholder="Текст"></textarea>
-        <a href="#" action="#" class="form__button link">Отправить</a>
-    </form>
-</div>
+    <div class="review__container container">
+        <form class="review__form form animate__animated animate__fadeInUp animate__slow wow">
+            <input type="text" class="form__input" placeholder="Ваше имя">
+            <textarea class="form__input" name="" id="" cols="30" rows="5" placeholder="Текст"></textarea>
+            <a href="#" action="#" class="form__button link">Отправить</a>
+        </form>
+    </div>
 </section>
 
 <section class="blog">
-<div class="allreviews__container container">
-    <h4 class="review__subtitle">Все отзывы</h4>
-    <div class="review animate__animated animate__fadeInLeft animate__slow wow">
-        <h5 class="review__text bolder-700 colorWhite">Александра Митрошина</h5>
-        <p class="review__text">Мы верим, что забота о каждом из вас поможет сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
+    <div class="allreviews__container container">
+        <h4 class="review__subtitle">Все отзывы</h4>
+        {% for review in reviews %}
+        <div class="review animate__animated animate__fadeInLeft animate__slow wow">
+            <h5 class="review__text bolder-700 colorWhite">review.name</h5>
+            <p class="review__text">review.description</p>
+        </div>
+        {%endfor%}
+
     </div>
-    <div class="review animate__animated animate__fadeInRight animate__slow wow">
-        <h5 class="review__text bolder-700 colorWhite">Владимир Яловенка</h5>
-        <p class="review__text">Мы верим, что забота о каждом из вас поможет сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-    </div>
-    <div class="review animate__animated animate__fadeInLeft animate__slow wow">
-        <h5 class="review__text bolder-700 colorWhite">Александра Митрошина</h5>
-        <p class="review__text">Мы верим, что забота о каждом из вас поможет сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-    </div>
-    <div class="review animate__animated animate__fadeInRight animate__slow wow">
-        <h5 class="review__text bolder-700 colorWhite">Нуриддинова Нодира</h5>
-        <p class="review__text">Мы верим, что забота о каждом из вас поможет сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-    </div>
-    <div class="review animate__animated animate__fadeInLeft animate__slow wow">
-        <h5 class="review__text bolder-700 colorWhite">Нуриддинова Нодира</h5>
-        <p class="review__text">Мы верим, что забота о каждом из вас поможет сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-    </div>
-</div>
 </section>
 
 <section class="blog blog-white marbot-100">
-<div class="blog__container container">
-    <div class="blog__text AboutBlog__text review animate__animated animate__fadeInLeft animate__slow wow">
-        <a href="{% url 'services' %}" class="blog__title link">Наши услуги</a>
-        <p class="blog__subtitle">В нашем блоге мы публикуем последние новости, полезные статьи и просто рассказываем о жизни клиники =)</p>
-    </div>
-    <div class="blog__list marbot-100 review animate__animated animate__fadeInUp animate__slow wow">
-        <div class="blog__item">
-            <a href="{% url 'therapy' %}" class="service__img">
-                <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-            </a>
-            <a href="{% url 'therapy' %}" class="service__link link">Массаж</a>
+    <div class="blog__container container">
+        <div class="blog__text AboutBlog__text review animate__animated animate__fadeInLeft animate__slow wow">
+            <a href="{% url 'services' %}" class="blog__title link">Наши услуги</a>
+            <p class="blog__subtitle">В нашем блоге мы публикуем последние новости, полезные статьи и просто
+                рассказываем о жизни клиники =)</p>
         </div>
-        <div class="blog__item">
-            <a href="{% url 'therapy' %}" class="service__img">
-                <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-            </a>
-            <a href="{% url 'therapy' %}" class="service__link link">Контурная пластика лица</a>
-        </div>
-        <div class="blog__item">
-            <a href="{% url 'therapy' %}" class="service__img">
-                <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-            </a>
-            <a href="{% url 'therapy' %}" class="service__link link">Физиотерапия</a>
-        </div>
-    </div>
-    <div class="blog__social social blog__social-noPadding">
-        <h3 class="social__title darkGrey">Мы в социальных сетях</h3>
-        <div class="social__list">
-            <div class="social__item">
-                <a href="https://www.instagram.com/astramed_clinic_uzbekistan/">
-                    <svg class="instagram__icon svg darkGreyFill">
-                        <use xlink:href="#instagram"></use>
-                    </svg>
+        <div class="blog__list marbot-100 review animate__animated animate__fadeInUp animate__slow wow">
+            {% for service in services %}
+            <div class="blog__item">
+                <a href="{% url 'therapy' %}" class="service__img">
+                    <img src="{{ service.photo.url }}" alt="service" class="img">
                 </a>
+                <a href="{% url 'therapy' %}" class="service__link link">service.type</a>
             </div>
-            <div class="social__item">
-                <a href="https://www.facebook.com/astramedclinic2021/">
-                    <svg class="instagram__icon svg darkGreyFill">
-                        <use xlink:href="#facebook"></use>
-                    </svg>
-                </a>
+            {%endfor%}
+
+        </div>
+        <div class="blog__social social blog__social-noPadding">
+            <h3 class="social__title darkGrey">Мы в социальных сетях</h3>
+            <div class="social__list">
+                <div class="social__item">
+                    <a href="https://www.instagram.com/astramed_clinic_uzbekistan/">
+                        <svg class="instagram__icon svg darkGreyFill">
+                            <use xlink:href="#instagram"></use>
+                        </svg>
+                    </a>
+                </div>
+                <div class="social__item">
+                    <a href="https://www.facebook.com/astramedclinic2021/">
+                        <svg class="instagram__icon svg darkGreyFill">
+                            <use xlink:href="#facebook"></use>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </section>
 {% endblock %}

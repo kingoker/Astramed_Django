@@ -58,8 +58,13 @@ def registration(request):
 
 
 def review(request):
-    return render(request, 'main/review.html')
-
+    reviews = Reviews.objects.all()
+    services = Services.objects.all()[:3]
+    data = {
+        'services': services,
+        'reviews':reviews
+    }
+    return render(request, 'main/review.html', data)
 
 def services(request):
     return render(request, 'main/services.html')
