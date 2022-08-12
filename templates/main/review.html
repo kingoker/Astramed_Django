@@ -10,7 +10,7 @@
         {% include 'custom/navbar.html' %}
 
         <div class="header__title aboutHeader__title">
-            <img src="img/logo.svg" alt="Astramed" class="halfheader__img img">
+            <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
             <h1 class="title__text animate__animated animate__fadeInRight animate__slow wow">Оставить отзыв</h1>
         </div>
     </div>
@@ -31,8 +31,8 @@
         <h4 class="review__subtitle">Все отзывы</h4>
         {% for review in reviews %}
         <div class="review animate__animated animate__fadeInLeft animate__slow wow">
-            <h5 class="review__text bolder-700 colorWhite">review.name</h5>
-            <p class="review__text">review.description</p>
+            <h5 class="review__text bolder-700 colorWhite">{{review.name}}</h5>
+            <p class="review__text">{{review.description}}</p>
         </div>
         {%endfor%}
 
@@ -52,7 +52,7 @@
                 <a href="{% url 'therapy' %}" class="service__img">
                     <img src="{{ service.photo.url }}" alt="service" class="img">
                 </a>
-                <a href="{% url 'therapy' %}" class="service__link link">service.type</a>
+                <a href="{% url 'therapy' %}" class="service__link link">{{service.type}}</a>
             </div>
             {%endfor%}
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from astramedClinic.models import Services, Employee
+from astramedClinic.models import Services, Employee, Reviews
 
 
 def main(request):
@@ -58,13 +58,14 @@ def registration(request):
 
 
 def review(request):
-    reviews = Reviews.objects.all()
+    reviews = Reviews.objects.filter(published=True)
     services = Services.objects.all()[:3]
     data = {
         'services': services,
-        'reviews':reviews
+        'reviews': reviews
     }
     return render(request, 'main/review.html', data)
+
 
 def services(request):
     return render(request, 'main/services.html')

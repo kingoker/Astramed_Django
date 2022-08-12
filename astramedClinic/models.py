@@ -39,7 +39,7 @@ class Links(models.Model):
 class Services(models.Model):
     photo = models.ImageField(upload_to='service/', verbose_name='Фото')
     type = models.CharField(max_length=255, verbose_name='Тип услуги')
-    doctor = models.CharField(max_length=255,default='врач-терапевт', verbose_name='Прием ведет')
+    doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
     title = models.TextField(verbose_name='Описание')
 
     class Meta:
@@ -66,7 +66,9 @@ class Employee(models.Model):
 
 
 class Reviews(models.Model):
+
     name = models.CharField(max_length=255, verbose_name='Имя')
+    published = models.BooleanField(default=True, verbose_name='Опубликован')
     description = models.TextField(verbose_name='Комментарий')
 
     class Meta:
