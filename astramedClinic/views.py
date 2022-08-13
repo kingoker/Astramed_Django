@@ -77,6 +77,7 @@ def registration(request):
 def review(request):
     reviews = Reviews.objects.filter(published=True)
     services = Services.objects.all()[:3]
+    print(request.user)
     data = {
         'services': services,
         'reviews': reviews

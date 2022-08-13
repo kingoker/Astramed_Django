@@ -18,10 +18,11 @@
 
 <section class="blog blog-white marbot-100">
     <div class="review__container container">
-        <form class="review__form form animate__animated animate__fadeInUp animate__slow wow">
+        <form method="POST" class="review__form form animate__animated animate__fadeInUp animate__slow wow">
+            {% csrf_token %}
             <input type="text" class="form__input" placeholder="Ваше имя">
             <textarea class="form__input" name="" id="" cols="30" rows="5" placeholder="Текст"></textarea>
-            <a href="#" action="#" class="form__button link">Отправить</a>
+            <button type="submit" class="form__button link">Отправить</button>
         </form>
     </div>
 </section>

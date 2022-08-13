@@ -93,9 +93,11 @@ class Users(models.Model):
 class Blog(models.Model):
     author = models.CharField(max_length=255, verbose_name='Автор')
     title = models.CharField(max_length=255, verbose_name='Заголовок')
+    published = models.BooleanField(default=True, verbose_name='Опубликован')
     photo = models.ImageField(upload_to='blogs/',  verbose_name='Фото')
     description = models.TextField(verbose_name='Описание')
-    date = models.DateField(auto_now_add=True,verbose_name='Время')
+    date = models.DateField(auto_now_add=True, verbose_name='Время')
+    links = models.TextField(verbose_name='Скрытые ссылки')
 
     class Meta:
         verbose_name = 'Блог'
