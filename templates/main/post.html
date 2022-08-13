@@ -4,58 +4,53 @@
 
 {% block content %}
 <header class="header header-half">
-<div class="header__container container">
+    <div class="header__container container">
 
-    <!-- Тут подключаю navbar из папки Cutsom-->
-    {% include 'custom/navbar.html' %}
+        <!-- Тут подключаю navbar из папки Cutsom-->
+        {% include 'custom/navbar.html' %}
 
-    <div class="header__title aboutHeader__title">
-        <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
-        <h2 class="title__text animate__animated animate__fadeInRight animate__slow wow">Здесь будет заголовок <br> поста</h2>
+        <div class="header__title aboutHeader__title">
+            <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
+            <h2 class="title__text animate__animated animate__fadeInRight animate__slow wow">Здесь будет заголовок <br>
+                поста</h2>
+        </div>
     </div>
-</div>
 </header>
 
 <section class="post">
     <div class="post__container container">
+        {% for blog in blogs %}
         <div class="post__img animate__animated animate__fadeInLeft animate__slow wow">
-            <img src="{% static 'img/post/1.jpg' %}" alt="" class="img">
+            <img src="{{ blog.photo.url }}" alt="" class="img">
         </div>
         <div class="post__content animate__animated animate__fadeInRight animate__slow wow">
-            <h3 class="post__title">Заголовок поста Здесь будет заголовок поста</h3>
+            <h3 class="post__title">{{ blog.title }}</h3>
             <p class="post__info">
-                Опубликована: <span class="lighter-300">10.06.2022</span> <br>
-                Автор: <span class="lighter-300">Камила</span>
+                Опубликовано: <span class="lighter-300">{{ blog.date }}</span> <br>
+                Автор: <span class="lighter-300">{{ blog.author }}</span>
             </p>
-            <p class="post__text">Job werkte na zijn opleiding tot arts eerst op de afdeling algemene chirurgie van het Amstelland Ziekenhuis. Job is daarna door Jani opgeleid tot cosmetisch arts en werd de eerste arts die in het nieuwe medische profielspecialisme cosmetische geneeskunde is afgestudeerd. Job heeft als Chef de Clinique de dagelijkse leiding over UMA Clinic en heeft daarnaast bijgedragen aan verschillende onderzoeksprojecten en publicaties. Als Global Key Opinion Leader in de cosmetische geneeskunde geeft hij lezingen in landen over de hele wereld en staat hij bekend om zijn charisma. Job is een zeer bekwame en ervaren cosmetisch arts. Zijn patiënten vinden hem attent, zorgvuldig en professioneel. Job heeft aan een half woord genoeg, pikt de wensen van patiënten razendsnel op en behandelt met nauwkeurige hand.</p>
+            <p class="post__text">{{ blog.description }}</p>
         </div>
+        {%endfor%}
     </div>
 </section>
 
 <section class="blog blog-white marbot-100">
     <div class="blog__container container">
         <div class="AboutBlog__text">
-            <p class="service__link black animate__animated animate__fadeInLeft animate__slow wow">Возможно вам будет интересно</p>
+            <p class="service__link black animate__animated animate__fadeInLeft animate__slow wow">Возможно вам будет
+                интересно</p>
         </div>
         <div class="blog__list animate__animated animate__fadeInUp animate__slow wow">
+
+            {% for blog in recomended_blogs %}
             <div class="blog__item">
-                <a href="{% url 'post' %}" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
+                <a href="{% url 'post' blog.title %}" class="service__img">
+                    <img src="{{ blog.photo.url }}" alt="service" class="img">
                 </a>
-                <a href="{% url 'post' %}" class="service__link link">Массаж</a>
+                <a href="{% url 'post' blog.title %}" class="service__link link">{{ blog.title }}</a>
             </div>
-            <div class="blog__item">
-                <a href="{% url 'post' %}" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="{% url 'post' %}" class="service__link link">Контурная пластика лица</a>
-            </div>
-            <div class="blog__item">
-                <a href="{% url 'post' %}" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="{% url 'post' %}" class="service__link link">Физиотерапия</a>
-            </div>
+            {%endfor%}
         </div>
     </div>
 </section>

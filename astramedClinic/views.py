@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from astramedClinic.models import Services, Employee, Reviews
+from astramedClinic.models import Services, Employee, Reviews, Blog
 
 
 def main(request):
@@ -21,23 +21,34 @@ def authorization(request):
 
 
 def blog(request):
-    return render(request, 'main/blog.html')
+    blogs = Blog.objects.all()
+    data = {
+        'blogs': blogs
+    }
+    return render(request, 'main/blog.html', data)
 
 
 def contacts(request):
     return render(request, 'main/contacts.html')
 
 
-def member(request, str):
-    employes = Employee.objects.filter(name=str)
+def member(request, employee_name):
+    employes = Employee.objects.filter(name=employee_name)
     data = {
         'employes': employes
     }
     return render(request, 'main/member.html', data)
 
 
-def post(request):
-    return render(request, 'main/post.html')
+def post(request, blog_title):
+    blogs = Blog.objects.filter(title=blog_title)
+    recomended_blogs = Blog.objects.all()[:3]
+
+    data = {
+        'blogs': blogs,
+        'recomended_blogs': recomended_blogs
+    }
+    return render(request, 'main/post.html', data)
 
 
 def procedure(request, pk):
@@ -50,6 +61,12 @@ def procedure(request, pk):
 
 
 def profile(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        lastname = request.POST.get('lastname')
+        password = request.POST.get('password')
+        phone = request.POST.get('phone')
+
     return render(request, 'main/profile.html')
 
 

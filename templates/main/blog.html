@@ -17,24 +17,14 @@
             <p class="blog__subtitle blog__subtitle-bigger colorWhite">Самое свежее</p>
         </div>
         <div class="blog__list padbot-100 animate__animated animate__fadeInUp animate__slow wow">
+            {% for blog in blogs %}
             <div class="blog__item">
-                <a href="{% url 'post' %}" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
+                <a href="{% url 'post' blog.title %}" class="service__img">
+                    <img src="{{ blog.photo.url }}" alt="service" class="img">
                 </a>
-                <a href="{% url 'post' %}" class="service__link link colorWhite">Массаж</a>
+                <a href="{% url 'post' blog.title %}" class="service__link link colorWhite">{{blog.title}}</a>
             </div>
-            <div class="blog__item">
-                <a href="post.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="post.html" class="service__link link colorWhite">Контурная пластика лица</a>
-            </div>
-            <div class="blog__item">
-                <a href="post.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="post.html" class="service__link link colorWhite">Физиотерапия</a>
-            </div>
+            {%endfor%}
         </div>
     </div>
 </header>
@@ -42,7 +32,8 @@
 <section class="blog-white marbot-150">
     <div class="blog__container container">
         <div class="blog__text">
-            <p class="blog__subtitle animate__animated animate__fadeInLeft animate__slow wow">В нашем блоге мы публикуем последние новости, полезные статьи и просто рассказываем о жизни клиники =)</p>
+            <p class="blog__subtitle animate__animated animate__fadeInLeft animate__slow wow">В нашем блоге мы публикуем
+                последние новости, полезные статьи и просто рассказываем о жизни клиники =)</p>
         </div>
         <div class="blog__list">
             <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
@@ -161,7 +152,9 @@
         </div>
         <div class="contacts__map animate__animated animate__fadeInRight animate__slow wow">
             <div class="map">
-                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A6106813e0c623a09fa05d0f2461b66adbe20ec7c14f4051e32ecbde722440910&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true" alt="Map"></script>
+                <script type="text/javascript" charset="utf-8" async
+                        src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A6106813e0c623a09fa05d0f2461b66adbe20ec7c14f4051e32ecbde722440910&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"
+                        alt="Map"></script>
             </div>
             <div class="map__text">
                 <div class="map__info">
@@ -183,7 +176,7 @@
                     <svg class="phone__icon svg">
                         <use xlink:href="#telegram"></use>
                     </svg>
-                        Telegram/sms: <a href="https://t.me/+998946651387">946 651 387</a>
+                    Telegram/sms: <a href="https://t.me/+998946651387">946 651 387</a>
                 </div>
                 <div class="map__info">
                     <svg class="phone__icon svg">
