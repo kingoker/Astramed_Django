@@ -21,74 +21,14 @@
                 <p class="blog__subtitle animate__animated animate__fadeInLeft animate__slow wow">Our service В нашем блоге мы публикуем последние новости, полезные статьи и просто рассказываем о жизни клиники =)</p>
             </div>
             <div class="blog__list">
-
-                <!-- Тут код генерации услуг -->
                 {% for service in services %}
                 <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
                     <a href="{% url 'procedure' service.type %}" class="service__img">
-                        <img src="{{ service.photo.url }}" alt="service" class="img">
+                        <img src="{{ service.photo.url }}" alt="service" class="img grey-filter">
                     </a>
                     <a href="{% url 'procedure' service.type %}" class="service__link link">{{service.type}}</a>
                 </div>
                 {%endfor%}
-
-
-
-                <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                    <a href="procedure.html" class="service__img">
-                        <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                    </a>
-                    <a href="procedure.html" class="service__link link">Контурная пластика лица</a>
-                </div>
-                <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                    <a href="procedure.html" class="service__img">
-                        <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                    </a>
-                    <a href="procedure.html" class="service__link link">Физиотерапия</a>
-                </div>
-                <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                    <a href="procedure.html" class="service__img">
-                        <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                    </a>
-                    <a href="procedure.html" class="service__link link">Массаж</a>
-                </div>
-                <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                    <a href="procedure.html" class="service__img">
-                        <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                    </a>
-                    <a href="procedure.html" class="service__link link">Контурная пластика лица</a>
-                </div>
-                <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                    <a href="procedure.html" class="service__img">
-                        <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                    </a>
-                    <a href="procedure.html" class="service__link link">Физиотерапия</a>
-                </div>
-                <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                    <a href="procedure.html" class="service__img">
-                        <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                    </a>
-                    <a href="procedure.html" class="service__link link">Массаж</a>
-                </div>
-                <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                    <a href="procedure.html" class="service__img">
-                        <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                    </a>
-                    <a href="procedure.html" class="service__link link">Контурная пластика лица</a>
-                </div>
-                <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                    <a href="procedure.html" class="service__img">
-                        <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                    </a>
-                    <a href="procedure.html" class="service__link link">Физиотерапия</a>
-                </div>
-                <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                    <a href="procedure.html" class="service__img">
-                        <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                    </a>
-                    <a href="procedure.html" class="service__link link">Массаж</a>
-                </div>
-
             </div>
         </div>
     </section>

@@ -11,8 +11,9 @@
 
         <div class="header__title aboutHeader__title">
             <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
-            <h2 class="title__text animate__animated animate__fadeInRight animate__slow wow">Здесь будет заголовок <br>
-                поста</h2>
+            {% for blog in blogs %}
+            <h2 class="title__text animate__animated animate__fadeInRight animate__slow wow">{{ blog.title }}</h2>
+            {% endfor %}
         </div>
     </div>
 </header>
@@ -20,16 +21,30 @@
 <section class="post">
     <div class="post__container container">
         {% for blog in blogs %}
-        <div class="post__img animate__animated animate__fadeInLeft animate__slow wow">
-            <img src="{{ blog.photo.url }}" alt="" class="img">
+        <div class="post__top animate__animated animate__fadeInLeft animate__slow wow">
+            <img src="{{ blog.photo.url }}" alt="" class="img post__img">
+            <div class="post__textSide">
+                <h3 class="post__title">{{ blog.title }}</h3>
+                <p class="post__info">
+                    Опубликовано: <span class="lighter-300">{{ blog.date }}</span> <br>
+                    Автор: <span class="lighter-300">{{ blog.author }}</span>
+                </p>
+            </div>
         </div>
         <div class="post__content animate__animated animate__fadeInRight animate__slow wow">
-            <h3 class="post__title">{{ blog.title }}</h3>
-            <p class="post__info">
-                Опубликовано: <span class="lighter-300">{{ blog.date }}</span> <br>
-                Автор: <span class="lighter-300">{{ blog.author }}</span>
-            </p>
             <p class="post__text">{{ blog.description }}</p>
+
+            <div class="accordion">
+                <div class="according__link">
+                    Источники
+                </div>
+                <section>
+                    <p class="post__textLinks">
+                        {{ blog.links }}
+                        <span><br> <br>Информация, представленная на этой странице, предназначена только для образовательных целей и не заменяет консультацию врача или другого квалифицированного медицинского специалиста.</span>
+                    </p>
+                </section>
+            </div>
         </div>
         {%endfor%}
     </div>
@@ -46,7 +61,7 @@
             {% for blog in recomended_blogs %}
             <div class="blog__item">
                 <a href="{% url 'post' blog.title %}" class="service__img">
-                    <img src="{{ blog.photo.url }}" alt="service" class="img">
+                    <img src="{{ blog.photo.url }}" alt="service" class="img grey-filter">
                 </a>
                 <a href="{% url 'post' blog.title %}" class="service__link link">{{ blog.title }}</a>
             </div>

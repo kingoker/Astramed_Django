@@ -101,7 +101,7 @@ class Blog(models.Model):
 
     class Meta:
         verbose_name = 'Блог'
-        verbose_name_plural = 'Блоги'
+        verbose_name_plural = 'Блог'
 
     def __str__(self):
         return self.title

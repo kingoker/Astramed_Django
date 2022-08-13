@@ -1,19 +1,26 @@
 from django.shortcuts import render
 
-# Create your views here.
 from astramedClinic.models import Services, Employee, Reviews, Blog
 
 
 def main(request):
     services = Services.objects.all()[:6]
+    blog = Blog.objects.all()[:3]
+
     data = {
-        'services': services
+        'services': services,
+        'blog': blog,
     }
     return render(request, 'main/index.html', data)
 
 
 def about(request):
-    return render(request, 'main/about.html')
+    services = Services.objects.all()[:3]
+
+    data = {
+        'services': services,
+    }
+    return render(request, 'main/about.html', data)
 
 
 def authorization(request):
@@ -22,8 +29,10 @@ def authorization(request):
 
 def blog(request):
     blogs = Blog.objects.all()
+    fresh = Blog.objects.order_by("-pk")[:3]
     data = {
-        'blogs': blogs
+        'blogs': blogs,
+        'fresh': fresh,
     }
     return render(request, 'main/blog.html', data)
 
@@ -86,7 +95,13 @@ def review(request):
 
 
 def services(request):
-    return render(request, 'main/services.html')
+    services = Services.objects.all()
+
+    data = {
+        'services': services,
+    }
+
+    return render(request, 'main/services.html', data)
 
 
 def team(request):
@@ -99,3 +114,7 @@ def team(request):
 
 def therapy(request):
     return render(request, 'main/therapy.html')
+
+
+def thanks(request):
+    return render(request, 'main/thanks.html')

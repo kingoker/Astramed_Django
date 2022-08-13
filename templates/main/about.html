@@ -137,27 +137,17 @@
     <div class="blog__container container">
         <div class="blog__text AboutBlog__text animate__animated animate__fadeInLeft animate__slow wow">
             <a href="services.html" class="blog__title link">Наши услуги</a>
-            <p class="blog__subtitle">В нашем блоге мы публикуем последние новости, полезные статьи и просто рассказываем о жизни клиники =)</p>
+            <p class="blog__subtitle">Услуги в нашем блоге мы публикуем последние новости, полезные статьи и просто рассказываем о жизни клиники =)</p>
         </div>
         <div class="blog__list animate__animated animate__fadeInUp animate__slow wow">
+            {% for service in services %}
             <div class="blog__item">
-                <a href="therapy.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
+                <a href="{% url 'procedure' service.pk %}" class="service__img">
+                    <img src="{{ service.photo.url }}" alt="service" class="img grey-filter">
                 </a>
-                <a href="therapy.html" class="service__link link">Массаж</a>
+                <a href="{% url 'procedure' service.pk %}" class="service__link link">{{service.type}}</a>
             </div>
-            <div class="blog__item">
-                <a href="therapy.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="therapy.html" class="service__link link">Контурная пластика лица</a>
-            </div>
-            <div class="blog__item">
-                <a href="therapy.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="therapy.html" class="service__link link">Физиотерапия</a>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

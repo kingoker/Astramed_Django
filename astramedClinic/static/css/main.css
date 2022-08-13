@@ -291,10 +291,10 @@
     -webkit-transform: scale(1.1);
 	transform: scale(1.1);
 }
-.service__link{
+.service__link {
     font-weight: 400;
-    font-size: 32px;
-    line-height: 42px;
+    font-size: 22px;
+    line-height: 26px;
 }
 .service__bottom{
     max-width: 780px;
@@ -553,6 +553,7 @@
     font-weight: 400;
     font-size: 30px;
     line-height: 41px;
+    background: none;
 }
 .form__input{
     width: 100%;
@@ -745,7 +746,7 @@
 .post__container{
     padding: 150px 0 100px 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 30px;
 }
 .post__title{
@@ -754,14 +755,29 @@
     line-height: 49px;
 }
 .post__text{
-    font-family: 'Alice';
     font-weight: 400;
-    font-size: 28px;
-    line-height: 32px;
+    font-size: 22px;
+    line-height: 28px;
     color: #7E7E7E;
 }
+.post__textLinks{
+    margin-top: 14px;
+    font-size: 18px;
+    line-height: 20px;
+    color: #7E7E7E;
+}
+.post__textLinks span{
+    color: #D2D2D2;
+    font-size: 18px;
+    font-style: italic;
+}
+.post__top{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+}
 .post__img{
-    max-width: 600px;
     max-height: 600px;
 }
 .post__info{
@@ -980,6 +996,51 @@ textarea{
 }
 
 
+/* Раскрывающийся список */
+.accordion {
+  margin-top: 30px;
+}
+.accordion section{
+  display: none;
+  height: 0px;
+  transition: height 0.5s;
+}
+.accordion-active section{
+    display: block;
+    height: auto;
+}
+.according__link {
+  display: grid;
+  align-items: center;
+  position: relative;
+  height: 50px;
+  padding: 0 20px;
+  border: 2px solid orange;
+  color: orange;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.according__link:hover{
+    opacity: 0.5;
+}
+.according__link:after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid orange;
+  border-top: 2px solid orange;
+  transform: rotate(-135deg);
+  transition: 0.4s transform;
+}
+.according-active .according__link:after{
+  transform: rotate(45deg);
+  top: 16px;
+}
+
 /* Состояния и декораторы */
 .feedback__arrow-white{
     stroke: #FFFFFF;
@@ -1051,4 +1112,7 @@ textarea{
 .grey-filter{
     -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
+}
+.text-center{
+    text-align: center;
 }

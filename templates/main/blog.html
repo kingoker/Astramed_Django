@@ -17,12 +17,12 @@
             <p class="blog__subtitle blog__subtitle-bigger colorWhite">Самое свежее</p>
         </div>
         <div class="blog__list padbot-100 animate__animated animate__fadeInUp animate__slow wow">
-            {% for blog in blogs %}
+            {% for f in fresh %}
             <div class="blog__item">
-                <a href="{% url 'post' blog.title %}" class="service__img">
-                    <img src="{{ blog.photo.url }}" alt="service" class="img">
+                <a href="{% url 'post' f.title %}" class="service__img">
+                    <img src="{{ f.photo.url }}" alt="service" class="img grey-filter">
                 </a>
-                <a href="{% url 'post' blog.title %}" class="service__link link colorWhite">{{blog.title}}</a>
+                <a href="{% url 'post' f.title %}" class="service__link link colorWhite">{{f.title}}</a>
             </div>
             {%endfor%}
         </div>
@@ -36,78 +36,14 @@
                 последние новости, полезные статьи и просто рассказываем о жизни клиники =)</p>
         </div>
         <div class="blog__list">
+            {% for b in blogs %}
             <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                <a href="post.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
+                <a href="{% url 'post' b.title %}" class="service__img">
+                    <img src="{{ b.photo.url }}" alt="service" class="img grey-filter">
                 </a>
-                <a href="post.html" class="service__link link">Массаж</a>
+                <a href="{% url 'post' b.title %}" class="service__link link">{{ b.title }}</a>
             </div>
-            <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                <a href="post.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="post.html" class="service__link link">Контурная пластика лица</a>
-            </div>
-            <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                <a href="post.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="post.html" class="service__link link">Физиотерапия</a>
-            </div>
-            <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                <a href="post.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="post.html" class="service__link link">Массаж</a>
-            </div>
-            <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                <a href="post.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="post.html" class="service__link link">Контурная пластика лица</a>
-            </div>
-            <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                <a href="post.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="post.html" class="service__link link">Физиотерапия</a>
-            </div>
-            <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                <a href="post.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="post.html" class="service__link link">Массаж</a>
-            </div>
-            <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                <a href="post.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="post.html" class="service__link link">Контурная пластика лица</a>
-            </div>
-            <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                <a href="post.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="post.html" class="service__link link">Физиотерапия</a>
-            </div>
-            <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                <a href="post.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="post.html" class="service__link link">Массаж</a>
-            </div>
-            <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                <a href="post.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="post.html" class="service__link link">Контурная пластика лица</a>
-            </div>
-            <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                <a href="post.html" class="service__img">
-                    <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-                </a>
-                <a href="post.html" class="service__link link">Физиотерапия</a>
-            </div>
+            {% endfor %}
         </div>
         <div class="blog__social social blog__social-noPadding">
             <h3 class="social__title darkGrey">Мы в социальных сетях</h3>
