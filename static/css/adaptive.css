@@ -1,0 +1,548 @@
+/* Адаптивность сайта */
+@media (min-width: 1500px){
+    .team{
+        margin-top: 120px;
+    }
+}
+@media (min-width: 1200px) {
+    .header__info{
+        padding-bottom: 400px;
+    }
+}
+@media (max-width: 1199px){
+    .header__info{
+        padding-bottom: 450px;
+    }
+    .philosiphy__text {
+        padding: 30px;
+    }
+    .header {
+        min-height: auto;
+    }
+    .container {
+        width: auto;
+        margin: 0 30px;
+    }
+    .service__list {
+        grid-template-columns: 1fr 1fr;
+    }
+    .service__item:nth-child(4) a{
+        color: #3F3F3F;
+    }
+    .service__item:nth-child(5) a, .service__item:nth-child(6) a{
+        color: #FFFFFF;
+    }
+    .philosiphy__container {
+        min-height: auto;
+    }
+    .team {
+        margin-top: -400px;
+    }
+    .feedback{
+        display: grid;
+        align-items: center;
+        margin: 150px auto;
+    }
+    .feedback__container{
+        overflow: hidden;
+    }
+    .blog__list {
+        grid-template-columns: 1fr 1fr;
+        gap: 70px;
+    }
+    .contacts__container{
+        margin-top: 150px;
+        gap: 100px;
+    }
+    .aboutTeam {
+        margin-top: 0px;
+        padding-bottom: 0px;
+    }
+    .AboutBlog__text{
+        padding-top: 0px;
+    }
+    .copyrighy__container{
+        margin-top: 20px;
+    }
+    .procedure__link{
+        width: 1000px;
+    }
+}
+@media (max-width: 991px){
+    .location__icon{
+        width: 40px;
+    }
+    .location__icon-footer{
+        width: 30px;
+    }
+    .map__info{
+        gap: 8px;
+    }
+    
+    .social__title-footer {
+        font-size: 20px;
+        line-height: auto;
+    }
+    .menu__list, .menu__icons {
+        gap: 30px;
+    }
+    .search{
+        right: 130px;
+    }
+    .philosiphy__title {
+        font-size: 40px;
+        line-height: 46px;
+    }
+    .philosiphy__subtitle {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .team__container {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 50px;
+    }
+    .team__title {
+        font-size: 38px;
+        line-height: 55px;
+    }
+    .team__subtitle {
+        font-size: 22px;
+        line-height: 30px;
+    }
+    .contacts__container {
+        grid-template-columns: 1fr;
+        margin-top: 150px;
+        gap: 100px;
+    }
+    .header__info {
+        position: relative;
+        grid-template-columns: 1fr;
+    }
+    .header__title {
+        position: absolute;
+        top: 200px;
+    }
+    .header__title-center{
+        text-align: center;
+    }
+    .service__list {
+        column-gap: 50px;
+        row-gap: 70px;
+    }
+    .feedback__top {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .aboutHeader__title{
+        position: relative;
+        top: 0px;
+    }
+    .aboutPhilosophy__subtitle{
+        font-size: 22px;
+        line-height: 30px;
+    }
+    .about__img {
+        max-width: 380px;
+        max-height: 380px;
+    }
+    .procedure__link{
+        width: 800px;
+    }
+    .procedure__result, .procedure__result-img{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 859px){
+    .search{
+        right: 230px;
+    }
+    .philosiphy__container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr 1fr;
+    }
+    .service__img {
+        min-width: auto;
+    }
+    .blog__list {
+        gap: 50px;
+    }
+    .service {
+        margin-top: -200px;
+    }    
+    .footer__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+    }
+    .service__top {
+        gap: 0px;
+    }
+    .header__info {
+        padding-bottom: 550px;
+    }
+    .search{
+        position: relative;
+        right: 0px;
+        top: 0px;
+        height: 42px;
+    }
+    .menu__icons{
+        margin-top: 30px;
+    }
+    .contacts__list{
+        grid-column:none;
+        gap: 50px 50px;
+    }
+    .contacts__text{
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 27px;
+    }
+    .contacts__text-bigger{
+        font-size: 20px;
+    }
+    
+    .procedure__link{
+        width: 700px;
+    }
+    .post__container{
+        grid-template-columns: 1fr;
+    }
+    /* Адаптивное меню */
+    .menu__burger{
+        display: block;
+        z-index: 5;
+        position: relative;
+        width: 40px;
+        height: 20px;
+        cursor: pointer;
+    }
+    .menu__burger span,
+    .menu__burger::before,
+    .menu__burger::after{
+        left: 0;
+        position: absolute;
+        height: 10%;
+        width: 100%;
+        transition: all 0.4s ease 0s;
+        background-color: #ffffff;
+    }
+    .menu__burger::before,
+    .menu__burger::after{
+        content: "";
+    }
+    .menu__burger::before{
+        top: 0;
+        transition: all 0.3s ease 0s;
+    }
+    .menu__burger::after{
+        bottom: 0;
+        transition: all 0.3s ease 0s;
+    }
+    .menu__burger span{
+        top: 50%;
+        transform: scale(1) translate(0px, -50%);
+    }
+    .header__body{
+        background-color: #000000;
+        z-index: 2;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease 0s;
+    }
+    .header__body.active{
+        right: 0%;
+    }
+    .menu__list{
+        margin-top: 30px;
+        flex-direction: column;
+    }
+    .menu__burger.active span{
+        transform: scale(0) translate(0px, -50%);
+    }
+    .menu__burger.active::before{
+        top: 50%;
+        transform: rotate(-45deg) translate(0px, -50%);
+    }
+    .menu__burger.active::after{
+        bottom: 50%;
+        transform: rotate(45deg) translate(0px, 50%);
+    }
+}
+@media (max-width: 767px){
+    .header__title {
+        font-size: 60px;
+        line-height: 70px;
+    }
+    .service{
+        margin-bottom: -50%;
+    }
+    .service__top {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .service__list {
+        grid-template-columns: 1fr;
+    }
+    .service__item:nth-child(5) a{
+        color: #3F3F3F;
+    }
+    .service__item:nth-child(6) a{
+        color: #FFFFFF;
+    }
+    .team__container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .member__container{
+        grid-template-columns: 1fr;
+    }
+    .blog__list {
+        grid-template-columns: 1fr;
+    }
+    .footer__container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .blog__social-footer {
+        padding-bottom: 0px;
+        justify-content: start;
+    }
+    .social__list-footer {
+        justify-content: start;
+    }
+    .title__text {
+        left: 10%;
+    }
+    .aboutPhilosophy__item {
+        flex-direction: column;
+    }
+    .contacts__list{
+        display: flex;
+        flex-direction: column;
+    }
+    .registration__title{
+        font-size: 48px;
+    }
+    .procedure__link{
+        width: 600px;
+    }
+    .feedback__list{
+        margin-right: -100%;
+    }
+    .feedback{
+        margin: 70px auto;
+    }
+}
+@media (max-width: 560px){
+    .title__text{
+        font-size: 55px;
+        line-height: 60px;
+    }
+    .service__bottom_link {
+        font-size: 28px;
+        padding-bottom: 70px;
+    }
+    .philosiphy__container {
+        background-color: #fff;
+    }
+    .procedure__link{
+        width: 500px;
+    }
+    .philosiphy__title, .aboutPhilosophy__title{
+        font-size: 28px;
+        line-height: 30px;
+    }   
+    .philosiphy__subtitle, .aboutPhilosophy__subtitle {
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .philosiphy__link {
+        font-size: 25px;
+        line-height: 26px;
+    }
+    .header__title {
+        font-size: 50px;
+        line-height: 60px;
+    }
+    .service__black {
+        height: 970px;
+        transform: translateY(-96%);
+    }
+    .team { 
+        padding-bottom: 100px;
+        margin-top: -800px;
+    }
+    .aboutTeam{
+        margin: 0px;
+    }
+    .blog__title{
+        font-size: 28px;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+    .team__title, .aboutPhilosophy__header{
+        font-size: 28px;
+        line-height: 30px;
+    }
+    .faceToFace__title {
+        font-size: 28px;
+        line-height: 30px;
+    }
+    .feedback__title {
+        font-size: 28px;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+    .form__title{
+        font-size: 28px;
+        line-height: 30px;
+    }
+    .social__title{
+        font-size: 28px;
+        line-height: 30px;
+    }
+    .social__title-footer{
+        font-size: 20px;
+    }
+    .service__title{
+        font-size: 28px;
+        line-height: 30px;
+    }
+    .service__subtitle, .team__subtitle, .faceToFace__subtitle, .blog__subtitle{
+        font-size: 18px;
+        line-height: 25px;
+    }
+    .blog__subtitle-bigger{
+        font-size: 28px;
+        line-height: 30px;
+    }
+    .feedback__subtitle{
+        font-size: 20px;
+        line-height: 25px;
+    }
+    .service__link, .service__bottom_link, .faceToFace__link, .feedback__link{
+        font-size: 25px;
+    }
+    .service__text{
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .form__input{
+        font-size: 25px;
+    }
+    .form__button{
+        font-size: 25px;
+    }
+    .service__item:nth-child(5) a{
+        color: #FFFFFF;
+    }
+    .feedback__name{
+        font-size: 25px;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+    .feedback__feedback{
+        font-size: 20px;
+        line-height: 22px;
+        max-width: 350px;
+    }
+    .blog__text{
+        padding-top: 70px;
+    }
+    .about__img{
+        min-width: 350px;
+        height: 350px;  
+        overflow: hidden;
+    }
+    .contacts__title{
+        font-size: 28px;
+        line-height: 30px;
+    }
+    .blog__item-subtitle{
+        font-size: 25px;
+    }
+    .profile__title{
+        font-size: 28px;
+        line-height: 30px;
+    }
+    .profile__subtitle, .profile__text{
+        font-size: 25px;
+        line-height: 30px;
+    }
+    .review__subtitle{
+        font-size: 28px;
+        line-height: 30px;
+    }
+    .review__text{
+        font-size: 25px;
+        line-height: 30px;
+    }
+    .post__title{
+        font-size: 28px;
+        line-height: 30px;
+    }
+    .post__info{
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .post__text{
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .procedure__subtitle{
+        font-size: 28px;
+        line-height: 30px;
+    }
+    .procedure__subtitle:nth-child(2){
+        margin-bottom: 20px;
+    }
+    .procedure__text{
+        font-size: 20px;
+        line-height: 28px;
+    }
+    .registration__title{
+        font-size: 32px;
+        line-height: 35px;
+    }
+    .reg__input{
+        font-size: 25px;
+        line-height: 30px;
+    }
+    .member__img{
+        max-height: 365px;
+        max-width: 365px;
+    }
+    .quote__text{
+        font-size: 20px;
+        line-height: 25px;
+    }
+    .member__subtitle{
+        font-size: 28px;
+        line-height: 30px;
+    }
+    .member__text{
+        font-size: 18px;
+        line-height: 25px;
+    }
+    .member__link{
+        font-size: 25px;
+        line-height: 30px;
+    }
+}
+@media (max-width: 480px){
+    .copyrighy__container {
+        margin-top: 20px;
+    }
+    .procedure__link{
+        width: 400px;
+    }
+}

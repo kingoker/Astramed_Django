@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="post__content animate__animated animate__fadeInRight animate__slow wow">
-            <p class="post__text">{{ blog.description }}</p>
+            <p class="post__text">{{ blog.description|safe }}</p>
 
             <div class="accordion">
                 <div class="according__link">
@@ -40,7 +40,7 @@
                 </div>
                 <section>
                     <p class="post__textLinks">
-                        {{ blog.links }}
+                        {{ blog.links|safe  }}
                         <span><br> <br>Информация, представленная на этой странице, предназначена только для образовательных целей и не заменяет консультацию врача или другого квалифицированного медицинского специалиста.</span>
                     </p>
                 </section>
