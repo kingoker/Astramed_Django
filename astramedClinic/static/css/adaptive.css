@@ -1,7 +1,7 @@
 /* Адаптивность сайта */
 @media (min-width: 1500px){
     .team{
-        margin-top: 120px;
+        margin-top: 300px;
     }
 }
 @media (min-width: 1200px) {
