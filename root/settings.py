@@ -128,8 +128,7 @@ CKEDITOR_UPLOAD_PATH = "editor/"
 
 CKEDITOR_CONFIGS = {
     'default': {
-        # 'skin': 'moono',
-        'skin': 'moono-lisa',
+        'skin': 'office2013',
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
         ],
@@ -157,7 +156,6 @@ CKEDITOR_CONFIGS = {
             {'name': 'about', 'items': ['About']},
             '/',  # put this to force next toolbar on new line
             {'name': 'yourcustomtools', 'items': [
-                # put the name of your editor.ui.addButton here
                 'Preview',
                 'Maximize',
                 'lineheight',
@@ -186,5 +184,5 @@ CKEDITOR_CONFIGS = {
             'dialogui',
             'elementspath',
         ]),
-    }
+    },
 }

@@ -206,3 +206,8 @@ a > img {
 	max-height: 1080px;
 	margin:0 auto;
 }
+*{
+    font-family: 'Open Sans', sans-serif;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}

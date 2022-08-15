@@ -4,6 +4,17 @@
 *{
     font-family: 'Open Sans', sans-serif;
     color: #3F3F3F;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+input{
+    border: none;
+}
+:focus,:active{outline: none;}
+body{
+    padding: 0;
+	margin: 0;
+	border: 0;
 }
 .lock{
     overflow: hidden;
@@ -24,10 +35,12 @@
     font-weight: 700;
     font-size: 36px;
     line-height: 49px;
+    margin: 0px;
 }
 .link{
     margin-top: 10px;
     display: block;
+    text-decoration: none;
 }
 .link::after{
     content: '\2192';
@@ -83,6 +96,7 @@
 .header__logo{
     display: flex;
     gap: 10px;
+    text-decoration: none;
 }
 .logo__img{
     width: 38.26px;
@@ -93,6 +107,7 @@
     font-size: 27px;
     color: #FFFFFF;
     line-height: 16px;
+    margin: 0;
 }
 .logo__text span{
     font-size: 12px;
@@ -102,12 +117,17 @@
     display: flex;
     align-items: center;
     gap: 50px;
+    margin: 0px;
+}
+.menu__item, .menu__icons{
+    list-style: none;
 }
 .menu__item a, .menu__icon a{
     font-weight: 400;
     font-size: 20px;
     color: #FFFFFF;
     transition: color 0.3s ease;
+    text-decoration: none;
 }
 .menu__item a:hover, .menu__icon a:hover, .menu__item-active a{
     color: #BEBEBE;
@@ -131,6 +151,9 @@
     transition: width 0.5s ease;
     padding: 10px;
     overflow: hidden;
+    -moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 .seacrch__active{
     position: absolute;
@@ -590,6 +613,7 @@
 .map__info a{
     transition: color 0.3s ease;
     border-bottom: 1px solid;
+    text-decoration: none;
 }
 .map__info a:hover{
     color: #7E7E7E;

@@ -56,7 +56,10 @@
   --object-tools-bg: var(--close-button-bg);
   --object-tools-hover-bg: var(--close-button-hover-bg);
 }
-
+p{
+     margin-block-start: 0em;
+     margin-block-end: 0em;
+}
 html, body {
     height: 100%;
 }
