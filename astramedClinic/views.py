@@ -5,7 +5,7 @@ from astramedClinic.models import Services, Employee, Reviews, Blog
 
 def main(request):
     services = Services.objects.all()[:6]
-    blog = Blog.objects.all()[:3]
+    blog = Blog.objects.order_by("-pk")[:3]
 
     data = {
         'services': services,
@@ -15,7 +15,7 @@ def main(request):
 
 
 def about(request):
-    services = Services.objects.all()[:3]
+    services = Services.objects.order_by("-pk")[:3]
 
     data = {
         'services': services,
@@ -51,7 +51,7 @@ def member(request, employee_name):
 
 def post(request, blog_title):
     blogs = Blog.objects.filter(title=blog_title)
-    recomended_blogs = Blog.objects.all()[:3]
+    recomended_blogs = Blog.objects.order_by("-pk")[:3]
 
     data = {
         'blogs': blogs,
@@ -62,9 +62,10 @@ def post(request, blog_title):
 
 def procedure(request, pk):
     services = Services.objects.filter(id=pk)
-    print(services)
+    recomended_services = Services.objects.order_by("-pk")[:3]
     data = {
-        'services': services
+        'services': services,
+        'recomended_services': recomended_services,
     }
     return render(request, 'main/procedure.html', data)
 
@@ -75,8 +76,11 @@ def profile(request):
         lastname = request.POST.get('lastname')
         password = request.POST.get('password')
         phone = request.POST.get('phone')
-
-    return render(request, 'main/profile.html')
+    recomended_services = Services.objects.order_by("-pk")[:3]
+    data = {
+        'recomended_services': recomended_services,
+    }
+    return render(request, 'main/profile.html', data)
 
 
 def registration(request):

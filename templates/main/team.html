@@ -14,89 +14,81 @@
 </header>
 
 <section class="blog-white marbot-150">
-<div class="blog__container container">
-    <div class="blog__text">
-        <p class="team__text"><span>Вы</span> в самых лучших руках</p>
-    </div>
-    <div class="blog__list team__list">
-
-        {% for employee in employes %}
-        <div class="blog__item team__item animate__animated animate__fadeInUp animate__slow wow">
-            <a href="{% url 'member' employee.name %}" class="service__img team__list-img">
-                <img src="{{ employee.photo.url }}" alt="service" class="img grey-filter">
-            </a> <br>
-            <span>{{employee.title}}</span>
-            <a href="{% url 'member' employee.name %}" class="team__link link">{{employee.name}}</a>
+    <div class="blog__container container">
+        <div class="blog__text">
+            <p class="team__text"><span>Вы</span> в самых лучших руках</p>
         </div>
-        {%endfor%}
+        <div class="blog__list team__list">
 
+            {% for employee in employes %}
+            <div class="blog__item team__item animate__animated animate__fadeInUp animate__slow wow">
+                <a href="{% url 'member' employee.name %}" class="service__img team__list-img">
+                    <img src="{{ employee.photo.url }}" alt="service" class="img grey-filter">
+                </a> <br>
+                <span>{{employee.title}}</span>
+                <a href="{% url 'member' employee.name %}" class="team__link link">{{employee.name}}</a>
+            </div>
+            {%endfor%}
+
+        </div>
     </div>
-</div>
 </section>
 
 <section class="faceToFace">
-<div class="faceToFace__container container">
-    <div class="faceToFace__text animate__animated animate__fadeInLeft animate__slow wow">
-        <h2 class="faceToFace__title title">Лицом к лицу всегда лучше</h2>
-        <p class="faceToFace__subtitle">Мы знаем, что мир медицины может пугать. Наши врачи всегда рады провести с вами время. Запишитесь на консультацию, и мы вместе обсудим ваши мысли, беспокойства и вопросы.</p>
-        <a href="registration.html" class="faceToFace__link link">Записаться на консультацию</a>
+    <div class="faceToFace__container container">
+        <div class="faceToFace__text animate__animated animate__fadeInLeft animate__slow wow">
+            <h2 class="faceToFace__title title">Лицом к лицу всегда лучше</h2>
+            <p class="faceToFace__subtitle">Мы знаем, что мир медицины может пугать. Наши врачи всегда рады провести с
+                вами время. Запишитесь на консультацию, и мы вместе обсудим ваши мысли, беспокойства и вопросы.</p>
+            <a href="registration.html" class="faceToFace__link link">Записаться на консультацию</a>
+        </div>
     </div>
-</div>
 </section>
 
 <section class="blog blog-white marbot-100">
-<div class="blog__container container">
-    <div class="blog__text AboutBlog__text animate__animated animate__fadeInLeft animate__slow wow">
-        <a href="blog.html" class="blog__title link">Наш блог</a>
-        <p class="blog__subtitle">В нашем блоге мы публикуем последние новости, полезные статьи и просто рассказываем о жизни клиники =)</p>
-    </div>
-    <div class="blog__list marbot-100 animate__animated animate__fadeInUp animate__slow wow">
-        <div class="blog__item">
-            <a href="post.html" class="service__img">
-                <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-            </a>
-            <a href="post.html" class="service__link link">Массаж</a>
+    <div class="blog__container container">
+        <div class="blog__text AboutBlog__text animate__animated animate__fadeInLeft animate__slow wow">
+            <a href="blog.html" class="blog__title link">Наш блог</a>
+            <p class="blog__subtitle">В нашем блоге мы публикуем последние новости, полезные статьи и просто
+                рассказываем о жизни клиники =)</p>
         </div>
-        <div class="blog__item">
-            <a href="post.html" class="service__img">
-                <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-            </a>
-            <a href="post.html" class="service__link link">Контурная пластика лица</a>
+        <div class="blog__list marbot-100 animate__animated animate__fadeInUp animate__slow wow">
+            {% for blog in recomended_blogs %}
+            <div class="blog__item">
+                <a href="{% url 'post' blog.title %}" class="service__img">
+                    <img src="{{ blog.photo.url }}" alt="service" class="img grey-filter">
+                </a>
+                <a href="{% url 'post' blog.title %}" class="service__link link">{{ blog.title }}</a>
+            </div>
+            {%endfor%}
         </div>
-        <div class="blog__item">
-            <a href="post.html" class="service__img">
-                <img src="{% static 'img/service/massage.png' %}" alt="service" class="img">
-            </a>
-            <a href="post.html" class="service__link link">Физиотерапия</a>
-        </div>
-    </div>
 
-    <div class="blog__social social blog__social-noPadding">
-        <h3 class="social__title darkGrey">Мы в социальных сетях</h3>
-        <div class="social__list">
-            <div class="social__item">
-                <a href="https://www.instagram.com/astramed_clinic_uzbekistan/">
-                    <svg class="instagram__icon svg darkGreyFill">
-                        <use xlink:href="#instagram"></use>
-                    </svg>
-                </a>
-            </div>
-            <div class="social__item">
-                <a href="https://t.me/+998946651387">
-                    <svg class="phone__icon svg">
-                        <use xlink:href="#telegram"></use>
-                    </svg>
-                </a>
-            </div>
-            <div class="social__item">
-                <a href="https://www.facebook.com/astramedclinic2021/">
-                    <svg class="instagram__icon svg darkGreyFill">
-                        <use xlink:href="#facebook"></use>
-                    </svg>
-                </a>
+        <div class="blog__social social blog__social-noPadding">
+            <h3 class="social__title darkGrey">Мы в социальных сетях</h3>
+            <div class="social__list">
+                <div class="social__item">
+                    <a href="https://www.instagram.com/astramed_clinic_uzbekistan/">
+                        <svg class="instagram__icon svg darkGreyFill">
+                            <use xlink:href="#instagram"></use>
+                        </svg>
+                    </a>
+                </div>
+                <div class="social__item">
+                    <a href="https://t.me/+998946651387">
+                        <svg class="phone__icon svg">
+                            <use xlink:href="#telegram"></use>
+                        </svg>
+                    </a>
+                </div>
+                <div class="social__item">
+                    <a href="https://www.facebook.com/astramedclinic2021/">
+                        <svg class="instagram__icon svg darkGreyFill">
+                            <use xlink:href="#facebook"></use>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </section>
 {% endblock %}
