@@ -17,11 +17,11 @@
 <section class="blog blog-white marbot-150">
     <div class="procedure__container container">
         <div class="procedure__button">
-            <a href="{% url 'registration' %}" class="procedure__link service__link link">Записаться на прием</a>
+            <a href="{% url 'registration' %}" class="procedure__link service__link link">Забронировать палату</a>
         </div>
         <div class="procedure__content">
             <h3 class="procedure__subtitle colorOrange bolder-700">{{ s.type }}</h3>
-            <h3 class="procedure__subtitle marbot-50">Приём ведет: {{ s.doctor }}</h3>
+            <h3 class="procedure__subtitle marbot-50">приём ведет: {{ s.doctor }}</h3>
             <p class="procedure__text animate__animated animate__fadeInLeft animate__slow wow">
                 {{ s.title|safe }}
             </p>
@@ -32,13 +32,13 @@
 
 <section class="blog marbot-150">
     <div class="procedure__container container">
-        <div class="procedure__result">
-            <h2 class="feedback__title colorWhite marbot-50">До и после</h2>
-            <div class="procedure__result-img">
-                <img src="{% static 'img/therapy/1.jpg' %}" alt="before" class="img animate__animated animate__fadeInLeft animate__slow wow">
-                <img src="{% static 'img/therapy/2.jpg' %}" alt="after" class="img animate__animated animate__fadeInRight animate__slow wow">
-            </div>
-        </div>
+<!--        <div class="procedure__result">-->
+<!--            <h2 class="feedback__title colorWhite marbot-50">До и после</h2>-->
+<!--            <div class="procedure__result-img">-->
+<!--                <img src="{% static 'img/therapy/1.jpg' %}" alt="before" class="img animate__animated animate__fadeInLeft animate__slow wow">-->
+<!--                <img src="{% static 'img/therapy/2.jpg' %}" alt="after" class="img animate__animated animate__fadeInRight animate__slow wow">-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="procedure__button__bottom">
             <a href="{% url 'registration' %}" class="procedure__link service__link link">Записаться на прием</a>
         </div>
