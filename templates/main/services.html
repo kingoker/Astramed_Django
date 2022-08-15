@@ -23,10 +23,10 @@
             <div class="blog__list">
                 {% for service in services %}
                 <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                    <a href="{% url 'procedure' service.type %}" class="service__img">
+                    <a href="{% url 'procedure' service.pk %}" class="service__img">
                         <img src="{{ service.photo.url }}" alt="service" class="img grey-filter">
                     </a>
-                    <a href="{% url 'procedure' service.type %}" class="service__link link">{{service.type}}</a>
+                    <a href="{% url 'procedure' service.pk %}" class="service__link link">{{service.type}}</a>
                 </div>
                 {%endfor%}
             </div>
