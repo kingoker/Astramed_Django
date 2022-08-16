@@ -30,8 +30,8 @@
             <h3 class="procedure__subtitle">Услуги:</h3>
             {% for underservice in underServices %}
             <ul class="procedure__text animate__animated animate__fadeInRight animate__slow wow">
-                <a href="{% url 'procedure' underservice.id %}" class="procedure__points link">— {{
-                    underservice.undertype }}</a>
+                <a href="{% url 'procedure' underservice.id %}" class="procedure__points link">—
+                    {{ underservice.undertype }}</a>
             </ul>
             {%endfor%}
             {% endif %}
@@ -62,7 +62,6 @@
                 <a href="{% url 'therapy' service.id %}" class="service__link link">{{ service.type }}</a>
             </div>
             {%endfor%}
-
         </div>
     </div>
 </section>
