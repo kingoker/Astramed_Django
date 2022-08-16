@@ -318,6 +318,7 @@ body{
     font-weight: 400;
     font-size: 22px;
     line-height: 26px;
+    margin-top: 0px;
 }
 .service__bottom{
     max-width: 780px;
@@ -497,6 +498,9 @@ body{
     max-width: 600px;
     padding-top: 150px;
 }
+.blog__category{
+    margin-top: 10px;
+}
 .blog__title{
     display: block;
     font-weight: 700;
@@ -516,6 +520,7 @@ body{
     grid-template-columns: 1fr 1fr 1fr;
     gap: 63px;
 }
+
 .blog__social{
     padding-bottom: 100px;
 }
