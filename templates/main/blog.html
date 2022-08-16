@@ -22,7 +22,7 @@
                 <a href="{% url 'post' f.title %}" class="service__img">
                     <img src="{{ f.photo.url }}" alt="service" class="img grey-filter">
                 </a>
-                <p class="blog__category lightgrey">Категория</p>
+                <p class="blog__category lightgrey">{{ f.category }}</p>
                 <a href="{% url 'post' f.title %}" class="service__link link colorWhite">{{f.title}}</a>
             </div>
             {%endfor%}
@@ -38,7 +38,7 @@
                 <a href="{% url 'post' b.title %}" class="service__img">
                     <img src="{{ b.photo.url }}" alt="service" class="img grey-filter">
                 </a>
-                <p class="blog__category lightgrey">Категория</p>
+                <p class="blog__category lightgrey">{{ b.category }}</p>
                 <a href="{% url 'post' b.title %}" class="service__link link">{{ b.title }}</a>
             </div>
             {% endfor %}

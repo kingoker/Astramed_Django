@@ -12,39 +12,39 @@
             </div>
         </div>
     </header>
-
+    {% for main in mainObjects %}
     <section class="philosiphy">
         <div class="philosiphy__container container">
             <div class="philosiphy__text animate__animated animate__fadeInLeft animate__slow wow">
                 <div>
-                    <h2 class="philosiphy__title title">Ответственно улучшая жизнь</h2>
-                    <p class="philosiphy__subtitle">В нашей клинике мы стремимся к совершенству, где Ваше лечение - это процесс высокой заботы и ответственности, который мы никогда не принимаем как должное.</p>
+                    <h2 class="philosiphy__title title">{{ main.philosophyTitle }}</h2>
+                    <p class="philosiphy__subtitle">{{ main.philosophy }}</p>
                 </div>
                 <a href="{% url 'about'  %}" class="philosiphy__link link">Наша философия</a>
             </div>
-            <img class="philosiphy__img img animate__animated animate__fadeInRight animate__slow wow" src="{% static 'img/philosiphy.png' %}" alt="Astramed sun">
+            <img class="philosiphy__img img animate__animated animate__fadeInRight animate__slow wow" src="{{ main.philosophyPhoto.url }}" alt="Astramed sun">
         </div>
     </section>
 
     <section class="service">
         <div class="service__container container">
             <div class="service__top">
-                <h2 class="service__title title">Территория осознанного отношения к себе</h2>
-                <p class="service__subtitle">Добавьте себе осознанности сегодня и улучшите свое здоровье, постоянно отслеживая свои физические и психические ощущения.</p>
+                <h2 class="service__title title">{{ main.serviceTitle }}</h2>
+                <p class="service__subtitle">{{ main.serviceSubtitle }}</p>
                 <img src="{% static 'img/bg_logo.svg' %}" alt="Astramed" class="service__logo">
             </div>
             <div class="service__list">
                 {% for service in services %}
                 <div class="service__item animate__animated animate__fadeInUp animate__slow wow">
-                    <a href="{% url 'procedure' service.pk %}" class="service__img">
+                    <a href="{% url 'therapy' service.pk %}" class="service__img">
                         <img src="{{ service.photo.url }}" alt="service" class="img grey-filter">
                     </a>
-                    <a href="{% url 'procedure' service.pk %}" class="service__link link">{{service.type}}</a>
+                    <a href="{% url 'therapy' service.pk %}" class="service__link link">{{service.type}}</a>
                 </div>
                 {%endfor%}
             </div>
             <div class="service__bottom">
-                <p class="service__text animate__animated animate__fadeIn animate__slow wow">Регулярные медицинские осмотры должны стать обычным делом, поскольку, получая правильные медицинские услуги, обследования и лечение, вы делаете важные шаги к тому, чтобы жить более долгой и здоровой жизнью.</p>
+                <p class="service__text animate__animated animate__fadeIn animate__slow wow">{{ main.serviceButtonSubtitle }}</p>
                 <a href="{% url 'services' %}" class="service__bottom_link link animate__animated animate__fadeIn animate__slow wow">Посмотреть все услуги</a>
             </div>
         </div>
@@ -54,11 +54,11 @@
     <section class="team">
         <div class="team__container container">
             <div class="team__img">
-                <img src="{% static 'img/team.png' %}" alt="Astramed team" class="img animate__animated animate__fadeInLeft animate__slow wow">
+                <img src="{{ main.teamPhoto.url }}" alt="Astramed team" class="img animate__animated animate__fadeInLeft animate__slow wow">
             </div>
             <div class="team__text">
                 <h2 class="team__title animate__animated animate__fadeInRight animate__slow wow"> <span>Вы</span> в самых лучших руках</h2>
-                <p class="team__subtitle animate__animated animate__fadeInRight animate__slow wow">Мы стремимся предоставить наилучшее, наиболее подходящее лечение для каждого человека, следя за тем, чтобы все вопросы и опасения были решены до начала лечения и чтобы все наши пациенты оставались полностью удовлетворенными.</p>
+                <p class="team__subtitle animate__animated animate__fadeInRight animate__slow wow">{{main.teamSubtitle}}</p>
                 <a href="{% url 'team' %}" class="team__link link animate__animated animate__fadeInUp animate__slow wow">Команда</a>
             </div>
         </div>
@@ -67,8 +67,8 @@
     <section class="faceToFace">
         <div class="faceToFace__container container">
             <div class="faceToFace__text">
-                <h2 class="faceToFace__title title animate__animated animate__fadeInLeft animate__slow wow">Лицом к лицу всегда лучше</h2>
-                <p class="faceToFace__subtitle animate__animated animate__fadeInLeft animate__slow wow">Мы знаем, что мир медицины может пугать. Наши врачи всегда рады провести с вами время. Запишитесь на консультацию, и мы вместе обсудим ваши мысли, беспокойства и вопросы.</p>
+                <h2 class="faceToFace__title title animate__animated animate__fadeInLeft animate__slow wow">{{main.faceToFaceTitle}}</h2>
+                <p class="faceToFace__subtitle animate__animated animate__fadeInLeft animate__slow wow">{{ main.faceToFaceSubtitle }}</p>
                 <a href="{% url 'registration' %}" class="faceToFace__link link animate__animated animate__fadeInLeft animate__slow wow">Записаться на консультацию</a>
             </div>
         </div>
@@ -78,52 +78,25 @@
         <div class="feedback__container container">
             <div class="feedback__top">
                 <div class="feedback__text">
-                    <h2 class="feedback__title animate__animated animate__fadeInLeft animate__slow wow">Что люди говорят о нас?</h2>
-                    <p class="feedback__subtitle animate__animated animate__fadeInLeft animate__slow wow">Ваши отзывы помогут другим людям принять решение</p>
+                    <h2 class="feedback__title animate__animated animate__fadeInLeft animate__slow wow">{{ main.reviewTitle }}</h2>
+                    <p class="feedback__subtitle animate__animated animate__fadeInLeft animate__slow wow">{{ main.reviewSubtitle }}</p>
                     <a href="{% url 'review' %}" class="feedback__link link animate__animated animate__fadeInLeft animate__slow wow">Оставить отзыв</a>
                 </div>
                 <div class="feedback__img">
-                    <img src="{% static 'img/feedback.png' %}" alt="Astramed feedback" class="img animate__animated animate__fadeInRight animate__slow wow">
+                    <img src="{{main.reviewPhoto.url}}" alt="Astramed feedback" class="img animate__animated animate__fadeInRight animate__slow wow">
                 </div>
             </div>
             <div class="vlog3__carusel">
                 <div class="swiper carusel__conteiner feedback__list">
                     <div class="swiper-wrapper">
+                        {% for review in reviews %}
                         <div class="swiper-slide">
                             <div class="vlog3__slide animate__animated animate__fadeInUp animate__slow wow">
-                                <h3 class="feedback__name" >Александра Митрошина</h3>
-                                <p class="feedback__feedback">Мы верим, что забота о каждом из вас поможет
-                                    сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
+                                <h3 class="feedback__name" >{{ review.name }}</h3>
+                                <p class="feedback__feedback">{{ review.description }}</p>
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="vlog3__slide animate__animated animate__fadeInUp animate__slow wow">
-                                <h3 class="feedback__name" >Владимир Яловенка</h3>
-                                <p class="feedback__feedback">Мы верим, что забота о каждом из вас поможет
-                                    сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="vlog3__slide animate__animated animate__fadeInUp animate__slow wow">
-                                <h3 class="feedback__name" >Нуриддинова Нодира</h3>
-                                <p class="feedback__feedback">Мы верим, что забота о каждом из вас поможет
-                                    сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="vlog3__slide">
-                                <h3 class="feedback__name animate__animated animate__fadeInUp animate__slow wow">Александра Митрошина</h3>
-                                <p class="feedback__feedback">Мы верим, что забота о каждом из вас поможет
-                                    сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="vlog3__slide">
-                                <h3 class="feedback__name animate__animated animate__fadeInUp animate__slow wow">Студия дизайна</h3>
-                                <p class="feedback__feedback">Мы верим, что забота о каждом из вас поможет
-                                    сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-                            </div>
-                        </div>
+                        {%endfor%}
                     </div>
                 </div>
                 <div class="feedback__arrows">
@@ -154,6 +127,7 @@
                     <a href="{% url 'post' b.title %}" class="service__img">
                         <img src="{{ b.photo.url }}" alt="service" class="img grey-filter">
                     </a>
+                    <p class="blog__category lightgrey">{{ b.category }}</p>
                     <a href="{% url 'post' b.title %}" class="service__link link colorWhite">{{ b.title }}</a>
                 </div>
                 {% endfor %}
@@ -190,7 +164,7 @@
     <section class="contacts">
         <div class="contacts__container container">
             <div class="contacts__form form animate__animated animate__fadeInLeft animate__slow wow">
-                <h3 class="form__title">Оставьте свои контакты <br> и мы свяжемся с вами</h3>
+                <h3 class="form__title">{{ main.contactsTitle }}</h3>
                 <input type="text" class="form__input" placeholder="Ваше имя">
                 <input type="text" class="form__input" placeholder="Ваш номер телефона">
                 <a href="#" action="#" class="form__button link">Отправить</a>
@@ -231,4 +205,5 @@
             </div>
         </div>
     </section>
+{%endfor%}
 {% endblock %}

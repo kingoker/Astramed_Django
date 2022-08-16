@@ -39,16 +39,33 @@ class Links(models.Model):
 
 class Services(models.Model):
     photo = models.ImageField(upload_to='service/', verbose_name='Фото')
-    type = models.CharField(max_length=255, verbose_name='Тип услуги')
+    type = models.CharField(max_length=255, verbose_name='Название терапии')
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
     title = models.TextField(verbose_name='Описание')
+    buttonname = models.CharField(max_length=255, default='Записаться на приём', verbose_name='Название кнопки')
 
     class Meta:
-        verbose_name = 'Услуга'
-        verbose_name_plural = 'Услуги'
+        verbose_name = 'Терапия'
+        verbose_name_plural = 'Терапии'
 
     def __str__(self):
         return self.type
+
+
+class UnderServices(models.Model):
+    photo = models.ImageField(upload_to='underServices/', verbose_name='Фото')
+    maintype = models.ForeignKey(Services, on_delete=models.CASCADE, null=True, verbose_name='Главная терапия')
+    undertype = models.CharField(max_length=255, default='название терапии', verbose_name='Название терапии')
+    doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
+    title = models.TextField(verbose_name='Описание')
+    buttonname = models.CharField(max_length=255, default='Записаться на приём', verbose_name='Название кнопки')
+
+    class Meta:
+        verbose_name = 'Процедура'
+        verbose_name_plural = 'Процедуры'
+
+    def __str__(self):
+        return self.undertype
 
 
 class Employee(models.Model):
@@ -90,11 +107,23 @@ class Users(models.Model):
         return self.name
 
 
+class CategoryBlog(models.Model):
+    title = models.CharField(max_length=255, default='категория', verbose_name='Название')
+
+    class Meta:
+        verbose_name = 'Категория для блога'
+        verbose_name_plural = 'Категории для блогов'
+
+    def __str__(self):
+        return self.title
+
+
 class Blog(models.Model):
     author = models.CharField(max_length=255, verbose_name='Автор')
     title = models.CharField(max_length=255, verbose_name='Заголовок')
+    category = models.ForeignKey(CategoryBlog, null=True,  on_delete=models.CASCADE, verbose_name='Категория')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
-    photo = models.ImageField(upload_to='blogs/',  verbose_name='Фото')
+    photo = models.ImageField(upload_to='blogs/', verbose_name='Фото')
     description = models.TextField(verbose_name='Описание')
     date = models.DateField(auto_now_add=True, verbose_name='Время')
     links = models.TextField(verbose_name='Скрытые ссылки')
@@ -105,3 +134,36 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class MainModel(models.Model):
+    philosophyTitle = models.CharField(max_length=255, verbose_name='Философия Заголовок')
+    philosophy = models.CharField(max_length=255, verbose_name='Философия подзаголовок')
+    philosophyPhoto = models.ImageField(upload_to='main/', verbose_name='Философия Фото')
+
+    serviceTitle = models.CharField(max_length=255, verbose_name='Услуга Заголовок')
+    serviceSubtitle = models.CharField(max_length=255, verbose_name='Услуга подзаголовок')
+    serviceButtonSubtitle = models.CharField(max_length=255, verbose_name='Услуга нижний подзаголовок')
+
+    teamTitle = models.CharField(max_length=255, verbose_name='Команда Заголовок')
+    teamSubtitle = models.CharField(max_length=255, verbose_name='Команда подзаголовок')
+    teamPhoto = models.ImageField(upload_to='main/', verbose_name='Команда Фото')
+
+    faceToFaceTitle = models.CharField(max_length=255, verbose_name='F2F Заголовок')
+    faceToFaceSubtitle = models.CharField(max_length=255, verbose_name='F2F подзаголовок')
+
+    reviewTitle = models.CharField(max_length=255, verbose_name='Отзыв Заголовок')
+    reviewSubtitle = models.CharField(max_length=255, verbose_name='Отзыв подзаголовок')
+    reviewPhoto = models.ImageField(upload_to='main/', verbose_name='Отзыв Фото')
+
+    BlogTitle = models.CharField(max_length=255, verbose_name='Блог Заголовок')
+    BlogSubtitle = models.CharField(max_length=255, verbose_name='Блог подзаголовок')
+
+    contactsTitle = models.CharField(max_length=255, verbose_name='Контакты Заголовок')
+
+    class Meta:
+        verbose_name = 'Главная'
+        verbose_name_plural = 'Главная'
+
+    def __str__(self):
+        return "Главная"

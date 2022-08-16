@@ -85,10 +85,10 @@
         <div class="blog__list">
             {% for service in recomended_services %}
             <div class="blog__item">
-                <a href="{% url 'procedure' service.id %}" class="service__img">
+                <a href="{% url 'therapy' service.pk %}" class="service__img">
                     <img src="{{ service.photo.url }}" alt="service" class="img">
                 </a>
-                <a href="{% url 'therapy' %}" class="service__link link">{{ service.type }}</a>
+                <a href="{% url 'therapy' service.pk %}" class="service__link link">{{ service.type }}</a>
             </div>
             {%endfor%}
         </div>

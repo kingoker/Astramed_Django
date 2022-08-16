@@ -9,7 +9,7 @@
     {% include 'custom/navbar.html' %}
     <div class="header__title aboutHeader__title">
         <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
-        <h1 class="title__text animate__animated animate__fadeInRight animate__slow wow">{{ s.type }}</h1>
+        <h1 class="title__text animate__animated animate__fadeInRight animate__slow wow">{{ s.undertype }}</h1>
     </div>
 </div>
 </header>
@@ -17,10 +17,10 @@
 <section class="blog blog-white marbot-150">
     <div class="procedure__container container">
         <div class="procedure__button">
-            <a href="{% url 'registration' %}" class="procedure__link service__link link">Забронировать палату</a>
+            <a href="{% url 'registration' %}" class="procedure__link service__link link">{{ s.buttonname }}</a>
         </div>
         <div class="procedure__content">
-            <h3 class="procedure__subtitle colorOrange bolder-700">{{ s.type }}</h3>
+            <h3 class="procedure__subtitle colorOrange bolder-700">{{ s.undertype }}</h3>
             <h3 class="procedure__subtitle marbot-50">приём ведет: {{ s.doctor }}</h3>
             <p class="procedure__text animate__animated animate__fadeInLeft animate__slow wow">
                 {{ s.title|safe }}
@@ -33,7 +33,7 @@
 <section class="blog marbot-150">
     <div class="procedure__container container">
         <div class="procedure__button__bottom">
-            <a href="{% url 'registration' %}" class="procedure__link service__link link">Записаться на прием</a>
+            <a href="{% url 'registration' %}" class="procedure__link service__link link">{{ s.buttonname }}</a>
         </div>
     </div>
 </section>
@@ -46,10 +46,10 @@
         <div class="blog__list">
             {% for service in recomended_services %}
             <div class="blog__item">
-                <a href="{% url 'procedure' service.id %}" class="service__img">
+                <a href="{% url 'therapy' service.pk %}" class="service__img">
                     <img src="{{ service.photo.url }}" alt="service" class="img">
                 </a>
-                <a href="{% url 'therapy' %}" class="service__link link">{{ service.type }}</a>
+                <a href="{% url 'therapy' service.pk %}" class="service__link link">{{ service.type }}</a>
             </div>
             {%endfor%}
 

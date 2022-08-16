@@ -1,15 +1,18 @@
 from django.shortcuts import render
 
-from astramedClinic.models import Services, Employee, Reviews, Blog
+from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainModel
 
 
 def main(request):
     services = Services.objects.all()[:6]
     blog = Blog.objects.order_by("-pk")[:3]
-
+    mainObjects = MainModel.objects.all()
+    reviews = Reviews.objects.all()[:6]
     data = {
         'services': services,
         'blog': blog,
+        'mainObjects': mainObjects,
+        'reviews': reviews
     }
     return render(request, 'main/index.html', data)
 
@@ -61,7 +64,7 @@ def post(request, blog_title):
 
 
 def procedure(request, pk):
-    services = Services.objects.filter(id=pk)
+    services = UnderServices.objects.filter(id=pk)
     recomended_services = Services.objects.order_by("-pk")[:3]
     data = {
         'services': services,
@@ -116,8 +119,16 @@ def team(request):
     return render(request, 'main/team.html', data)
 
 
-def therapy(request):
-    return render(request, 'main/therapy.html')
+def therapy(request, pk):
+    services = Services.objects.filter(id=pk)
+    recomended_services = Services.objects.order_by("-pk")[:3]
+    underServices = UnderServices.objects.filter(maintype_id=pk)
+    data = {
+        'services': services,
+        'recomended_services': recomended_services,
+        'underServices': underServices
+    }
+    return render(request, 'main/therapy.html', data)
 
 
 def thanks(request):
