@@ -700,13 +700,12 @@ body{
 .aboutPhilosophy__container{
     padding-top: 150px;
 }
-.aboutPhilosophy__list{
+.aboutPhilosophy__list {
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
 }
 .aboutPhilosophy__item{
-    display: flex;
-    gap: 30px;
 }
 .aboutPhilosophy__title{
     font-weight: 700;
@@ -714,11 +713,14 @@ body{
     line-height: 28px;
     color: #FE8F1D;
 }
-.aboutPhilosophy__subtitle{
+.aboutPhilosophy__text{
+    margin-top: 20px;
+}
+.aboutPhilosophy__subtitle {
     margin-top: 10px;
     font-weight: 400;
-    font-size: 30px;
-    line-height: 41px;
+    font-size: 18px;
+    line-height: 26px;
     color: #3F3F3F;
 }
 .aboutPhilosophy__header{
@@ -739,8 +741,7 @@ body{
     margin: 0 auto;
 }
 .about__img{
-    min-width: 480px;
-    max-height: 480px;
+    max-height: 350px;
 }
 .contacts__list{
     display: grid;
