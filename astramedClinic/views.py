@@ -5,7 +5,7 @@ from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServic
 
 def main(request):
     services = Services.objects.all()[:6]
-    blog = Blog.objects.order_by("-pk")[:3]
+    blog = Blog.objects.order_by("?")[:3]
     mainObjects = MainModel.objects.all()
     reviews = Reviews.objects.all()[:6]
     data = {
@@ -32,7 +32,7 @@ def authorization(request):
 
 def blog(request):
     blogs = Blog.objects.all()
-    fresh = Blog.objects.order_by("-pk")[:3]
+    fresh = Blog.objects.order_by("?")[:3]
     data = {
         'blogs': blogs,
         'fresh': fresh,
@@ -54,7 +54,7 @@ def member(request, employee_name):
 
 def post(request, blog_title):
     blogs = Blog.objects.filter(title=blog_title)
-    recomended_blogs = Blog.objects.order_by("-pk")[:3]
+    recomended_blogs = Blog.objects.order_by("?")[:3]
 
     data = {
         'blogs': blogs,
@@ -133,3 +133,8 @@ def therapy(request, pk):
 
 def thanks(request):
     return render(request, 'main/thanks.html')
+
+
+
+def info(request):
+    return render(request, 'main/info.html')

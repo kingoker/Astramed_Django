@@ -9,7 +9,7 @@ class Photos(models.Model):
         ('About', 'О нас'),
         ('Main', 'Главная')
     ]
-    photo = models.ImageField(upload_to='img/', verbose_name='Фото')
+    photo = models.ImageField(upload_to='img/', verbose_name='Фото', max_length=255)
     title = models.CharField(max_length=50, choices=Photo_Type)
 
     class Meta:
@@ -38,7 +38,7 @@ class Links(models.Model):
 
 
 class Services(models.Model):
-    photo = models.ImageField(upload_to='service/', verbose_name='Фото')
+    photo = models.ImageField(upload_to='service/', verbose_name='Фото', max_length=255)
     type = models.CharField(max_length=255, verbose_name='Название терапии')
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
     title = models.TextField(verbose_name='Описание')
@@ -53,7 +53,7 @@ class Services(models.Model):
 
 
 class UnderServices(models.Model):
-    photo = models.ImageField(upload_to='underServices/', verbose_name='Фото')
+    photo = models.ImageField(upload_to='underServices/', verbose_name='Фото', max_length=255)
     maintype = models.ForeignKey(Services, on_delete=models.CASCADE, null=True, verbose_name='Главная терапия')
     undertype = models.CharField(max_length=255, default='название терапии', verbose_name='Название терапии')
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
@@ -69,7 +69,7 @@ class UnderServices(models.Model):
 
 
 class Employee(models.Model):
-    photo = models.ImageField(upload_to='employee/', verbose_name='Фото')
+    photo = models.ImageField(upload_to='employee/', verbose_name='Фото', max_length=255)
     name = models.CharField(max_length=255, verbose_name='ФИО')
     title = models.CharField(max_length=255, verbose_name='Должность')
     quote = models.CharField(max_length=255, verbose_name='Цитата')
@@ -121,9 +121,9 @@ class CategoryBlog(models.Model):
 class Blog(models.Model):
     author = models.CharField(max_length=255, verbose_name='Автор')
     title = models.CharField(max_length=255, verbose_name='Заголовок')
-    category = models.ForeignKey(CategoryBlog, null=True,  on_delete=models.CASCADE, verbose_name='Категория')
+    category = models.ForeignKey(CategoryBlog, null=True, on_delete=models.CASCADE, verbose_name='Категория')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
-    photo = models.ImageField(upload_to='blogs/', verbose_name='Фото')
+    photo = models.ImageField(upload_to='blogs/', verbose_name='Фото', max_length=255)
     description = models.TextField(verbose_name='Описание')
     date = models.DateField(auto_now_add=True, verbose_name='Время')
     links = models.TextField(verbose_name='Скрытые ссылки')
@@ -139,7 +139,7 @@ class Blog(models.Model):
 class MainModel(models.Model):
     philosophyTitle = models.CharField(max_length=255, verbose_name='Философия Заголовок')
     philosophy = models.CharField(max_length=255, verbose_name='Философия подзаголовок')
-    philosophyPhoto = models.ImageField(upload_to='main/', verbose_name='Философия Фото')
+    philosophyPhoto = models.ImageField(upload_to='main/', verbose_name='Философия Фото', max_length=255)
 
     serviceTitle = models.CharField(max_length=255, verbose_name='Услуга Заголовок')
     serviceSubtitle = models.CharField(max_length=255, verbose_name='Услуга подзаголовок')
@@ -147,14 +147,14 @@ class MainModel(models.Model):
 
     teamTitle = models.CharField(max_length=255, verbose_name='Команда Заголовок')
     teamSubtitle = models.CharField(max_length=255, verbose_name='Команда подзаголовок')
-    teamPhoto = models.ImageField(upload_to='main/', verbose_name='Команда Фото')
+    teamPhoto = models.ImageField(upload_to='main/', verbose_name='Команда Фото', max_length=255)
 
     faceToFaceTitle = models.CharField(max_length=255, verbose_name='F2F Заголовок')
     faceToFaceSubtitle = models.CharField(max_length=255, verbose_name='F2F подзаголовок')
 
     reviewTitle = models.CharField(max_length=255, verbose_name='Отзыв Заголовок')
     reviewSubtitle = models.CharField(max_length=255, verbose_name='Отзыв подзаголовок')
-    reviewPhoto = models.ImageField(upload_to='main/', verbose_name='Отзыв Фото')
+    reviewPhoto = models.ImageField(upload_to='main/', verbose_name='Отзыв Фото', max_length=255)
 
     BlogTitle = models.CharField(max_length=255, verbose_name='Блог Заголовок')
     BlogSubtitle = models.CharField(max_length=255, verbose_name='Блог подзаголовок')
@@ -167,3 +167,15 @@ class MainModel(models.Model):
 
     def __str__(self):
         return "Главная"
+
+
+class Info(models.Model):
+    title = models.CharField(max_length=255, verbose_name='Заголовок')
+    description = models.TextField(verbose_name='Описание')
+
+    class Meta:
+        verbose_name = 'Дополнительная информация'
+        verbose_name_plural = 'Дополнительные информации'
+
+    def __str__(self):
+        return self.title

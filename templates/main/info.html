@@ -1,0 +1,72 @@
+{% extends 'custom/base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+
+{% block content %}
+<header class="header header-half">
+    <div class="header__container container">
+
+        <!-- Тут подключаю navbar из папки Cutsom-->
+        {% include 'custom/navbar.html' %}
+
+        <div class="header__title aboutHeader__title">
+            <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
+            {% for blog in blogs %}
+            <h2 class="title__text animate__animated animate__fadeInRight animate__slow wow">{{ blog.title }}</h2>
+            {% endfor %}
+        </div>
+    </div>
+</header>
+
+<section class="post">
+    <div class="post__container container">
+        {% for blog in blogs %}
+        <div class="post__top animate__animated animate__fadeInLeft animate__slow wow">
+            <img src="{{ blog.photo.url }}" alt="" class="img post__img">
+            <div class="post__textSide">
+                <h3 class="post__title">{{ blog.title }}</h3>
+                <p class="post__info">
+                    Категория: <span class="lighter-300">LifeStyle</span> <br>
+                    Автор: <span class="lighter-300">{{ blog.author }}</span>
+                </p>
+            </div>
+        </div>
+        <div class="post__content animate__animated animate__fadeInRight animate__slow wow">
+            <p class="post__text">{{ blog.description|safe }}</p>
+
+            <div class="accordion">
+                <div class="according__link">
+                    Источники
+                </div>
+                <section>
+                    <p class="post__textLinks">
+                        {{ blog.links|safe  }}
+                        <span><br> <br>Информация, представленная на этой странице, предназначена только для образовательных целей и не заменяет консультацию врача или другого квалифицированного медицинского специалиста.</span>
+                    </p>
+                </section>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</section>
+
+<section class="blog blog-white marbot-100">
+    <div class="blog__container container">
+        <div class="AboutBlog__text">
+            <p class="service__link black animate__animated animate__fadeInLeft animate__slow wow">Возможно вам будет
+                интересно</p>
+        </div>
+        <div class="blog__list animate__animated animate__fadeInUp animate__slow wow">
+
+            {% for blog in recomended_blogs %}
+            <div class="blog__item">
+                <a href="{% url 'post' blog.title %}" class="service__img">
+                    <img src="{{ blog.photo.url }}" alt="service" class="img grey-filter">
+                </a>
+                <a href="{% url 'post' blog.title %}" class="service__link link">{{ blog.title }}</a>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</section>
+{% endblock %}
