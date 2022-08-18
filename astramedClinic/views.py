@@ -115,8 +115,11 @@ def services(request):
 
 def team(request):
     employes = Employee.objects.all()
+    recomended_blogs = Blog.objects.order_by("?")[:3]
+
     data = {
-        'employes': employes
+        'employes': employes,
+        'recomended_blogs': recomended_blogs,
     }
     return render(request, 'main/team.html', data)
 
