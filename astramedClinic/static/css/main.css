@@ -590,6 +590,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     font-size: 30px;
     line-height: 41px;
     background: none;
+    border: none;
 }
 .form__input{
     width: 100%;
@@ -702,8 +703,8 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     position: absolute;
     left: 159px;
     font-weight: 700;
-    font-size: 64px;
-    line-height: 87px;
+    font-size: 48px;
+    line-height: 50px;
     color: #FFFFFF;
 }
 .halfheader__img{
@@ -769,6 +770,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 .contacts__text a{
     transition: color 0.3s ease;
     border-bottom: 1px solid;
+    text-decoration: none;
 }
 .contacts__text a:hover{
     color: #7E7E7E;
@@ -835,10 +837,11 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 .procedure__content{
     max-width: 800px;
 }
-.procedure__subtitle{
+.procedure__subtitle {
     font-size: 32px;
     line-height: 42px;
     color: #7E7E7E;
+    align-self: self-start;
 }
 .procedure__text{
     font-size: 26px;
@@ -888,6 +891,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 }
 textarea{
     resize: none;
+    border: none;
 }
 .allreviews__container{
     display: flex;
@@ -900,9 +904,9 @@ textarea{
     color: #FFFFFF;
     margin-bottom: 30px;
 }
-.review__text{
-    font-size: 30px;
-    line-height: 40px;
+.review__text {
+    font-size: 22px;
+    line-height: 28px;
     color: #BEBEBE;
 }
 .review{
@@ -921,6 +925,16 @@ textarea{
 .review a:hover{
     color: #7E7E7E;
 }
+.member__review{
+    margin-top: 150px;
+}
+.review__form_member{
+    margin-top: 0px;
+}
+.review__subtitle_member{
+    margin-bottom: 0px;
+}
+
 
 /* Регистрация */
 .registration__container{
@@ -1028,10 +1042,24 @@ textarea{
     line-height: 42px;
 }
 .quote__text{
-    margin-top: 30px;
     font-weight: 400;
     font-size: 28px;
     line-height: 38px;
+}
+.quote__text-top{
+    margin-top: 30px;
+    font-size: 18px;
+    line-height: 25px;
+    color: #BEBEBE;
+}
+
+
+/* Доп информация */
+.info{
+    margin: 50px 0px;
+}
+.info__text{
+    font-size: 13px;
 }
 
 
@@ -1152,4 +1180,7 @@ textarea{
 }
 .text-center{
     text-align: center;
+}
+.header-little{
+    padding-bottom: 0px;
 }

@@ -26,16 +26,20 @@
                 {{ s.title|safe }}
             </p>
             <br><br>
-            {% if underServices %}
-            <h3 class="procedure__subtitle">Услуги:</h3>
-            {% for underservice in underServices %}
-            <ul class="procedure__text animate__animated animate__fadeInRight animate__slow wow">
-                <a href="{% url 'procedure' underservice.id %}" class="procedure__points link">—
-                    {{ underservice.undertype }}</a>
-            </ul>
-            {%endfor%}
-            {% endif %}
         </div>
+        {% if underServices %}
+            <h3 class="procedure__subtitle">Услуги:</h3>
+            <div class="blog__list">
+                {% for underservice in underServices %}
+                <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
+                    <a href="{% url 'procedure' underservice.id %}" class="service__img">
+                        <img src="{{ underservice.photo.url }}" alt="service" class="img grey-filter">
+                    </a>
+                    <a href="{% url 'procedure' underservice.id %}" class="service__link link">{{underservice.undertype}}</a>
+                </div>
+                {%endfor%}
+            </div>
+        {% endif %}
     </div>
 
 </section>
@@ -57,7 +61,7 @@
             {% for service in recomended_services %}
             <div class="blog__item">
                 <a href="{% url 'procedure' service.id %}" class="service__img">
-                    <img src="{{ service.photo.url }}" alt="service" class="img">
+                    <img src="{{ service.photo.url }}" alt="service" class="img grey-filter">
                 </a>
                 <a href="{% url 'therapy' service.id %}" class="service__link link">{{ service.type }}</a>
             </div>

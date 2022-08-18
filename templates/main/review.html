@@ -50,13 +50,12 @@
         <div class="blog__list marbot-100 review animate__animated animate__fadeInUp animate__slow wow">
             {% for service in services %}
             <div class="blog__item">
-                <a href="{% url 'therapy' %}" class="service__img">
+                <a href="{% url 'therapy' service.id %}" class="service__img">
                     <img src="{{ service.photo.url }}" alt="service" class="img">
                 </a>
-                <a href="{% url 'therapy' %}" class="service__link link">{{service.type}}</a>
+                <a href="{% url 'therapy' service.id %}" class="service__link link">{{service.type}}</a>
             </div>
             {%endfor%}
-
         </div>
         <div class="blog__social social blog__social-noPadding">
             <h3 class="social__title darkGrey">Мы в социальных сетях</h3>

@@ -16,13 +16,13 @@
     </div>
     </header>
 
-
 <section class="blog-white marbot-150">
         <div class="member__container container">
             {% for employee in employes %}
             <div class="member__info animate__animated animate__fadeInLeft animate__slow wow">
                 <img src="{{ employee.photo.url }}" alt="" class="member__img img">
                 <div class="member__quote">
+                    <p class="quote__text-top">Вдохновляющая цитата:</p>
                     <p class="quote__text">{{employee.quote}}</p>
                 </div>
             </div>
@@ -36,4 +36,26 @@
             {%endfor%}
         </div>
     </section>
+
+<section class="blog">
+    <div class="allreviews__container container memberReview__container">
+        <form action="" class="review__form form animate__animated animate__fadeInUp animate__slow wow">
+            <h4 class="review__subtitle review__subtitle_member">Оставить отзыв</h4>
+            <input type="text" class="form__input reg__input " placeholder="Ваше имя">
+            <textarea class="form__input reg__input" name="" id="" cols="30" rows="5" placeholder="Текст"></textarea>
+            <a href="#" action="#" class="form__button link colorWhite">Оставить отзыв</a>
+        </form>
+        <div class="member__review">
+            <h4 class="review__subtitle">Все отзывы</h4>
+            <div class="review animate__animated animate__fadeInRight animate__slow wow">
+                <h5 class="review__text bolder-700 colorWhite">Нуриддинова Нодира</h5>
+                <p class="review__text">Мы верим, что забота о каждом из вас поможет сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
+            </div>
+            <div class="review animate__animated animate__fadeInRight animate__slow wow">
+                <h5 class="review__text bolder-700 colorWhite">Нуриддинова Нодира</h5>
+                <p class="review__text">Мы верим, что забота о каждом из вас поможет сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

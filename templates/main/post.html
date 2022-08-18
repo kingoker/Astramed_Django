@@ -26,7 +26,7 @@
             <div class="post__textSide">
                 <h3 class="post__title">{{ blog.title }}</h3>
                 <p class="post__info">
-                    Категория: <span class="lighter-300">LifeStyle</span> <br>
+                    Категория: <span class="lighter-300">{{ blog.category }}</span> <br>
                     Автор: <span class="lighter-300">{{ blog.author }}</span>
                 </p>
             </div>
@@ -63,6 +63,7 @@
                 <a href="{% url 'post' blog.title %}" class="service__img">
                     <img src="{{ blog.photo.url }}" alt="service" class="img grey-filter">
                 </a>
+                <p class="blog__category lightgrey">{{ blog.category }}</p>
                 <a href="{% url 'post' blog.title %}" class="service__link link">{{ blog.title }}</a>
             </div>
             {%endfor%}

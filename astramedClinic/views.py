@@ -7,7 +7,7 @@ def main(request):
     services = Services.objects.all()[:6]
     blog = Blog.objects.order_by("?")[:3]
     mainObjects = MainModel.objects.all()
-    reviews = Reviews.objects.all()[:6]
+    reviews = Reviews.objects.all()
     data = {
         'services': services,
         'blog': blog,
@@ -18,7 +18,7 @@ def main(request):
 
 
 def about(request):
-    services = Services.objects.order_by("-pk")[:3]
+    services = Services.objects.order_by("?")[:3]
 
     data = {
         'services': services,
@@ -32,7 +32,7 @@ def authorization(request):
 
 def blog(request):
     blogs = Blog.objects.all()
-    fresh = Blog.objects.order_by("?")[:3]
+    fresh = Blog.objects.order_by("-id")[:3]
     data = {
         'blogs': blogs,
         'fresh': fresh,
@@ -65,7 +65,7 @@ def post(request, blog_title):
 
 def procedure(request, pk):
     services = UnderServices.objects.filter(id=pk)
-    recomended_services = Services.objects.order_by("-pk")[:3]
+    recomended_services = Services.objects.order_by("?")[:3]
     data = {
         'services': services,
         'recomended_services': recomended_services,
@@ -79,7 +79,9 @@ def profile(request):
         lastname = request.POST.get('lastname')
         password = request.POST.get('password')
         phone = request.POST.get('phone')
+
     recomended_services = Services.objects.order_by("-pk")[:3]
+
     data = {
         'recomended_services': recomended_services,
     }
@@ -92,8 +94,8 @@ def registration(request):
 
 def review(request):
     reviews = Reviews.objects.filter(published=True)
-    services = Services.objects.all()[:3]
-    print(request.user)
+    services = Services.objects.order_by("?")[:3]
+
     data = {
         'services': services,
         'reviews': reviews
@@ -121,7 +123,7 @@ def team(request):
 
 def therapy(request, pk):
     services = Services.objects.filter(id=pk)
-    recomended_services = Services.objects.order_by("-pk")[:3]
+    recomended_services = Services.objects.order_by("?")[:3]
     underServices = UnderServices.objects.filter(maintype_id=pk)
     data = {
         'services': services,
@@ -134,6 +136,9 @@ def therapy(request, pk):
 def thanks(request):
     return render(request, 'main/thanks.html')
 
+
+def all_info(request):
+    return render(request, 'main/all_info.html')
 
 
 def info(request):
