@@ -282,8 +282,8 @@
 }
 @media (max-width: 767px){
     .header__title {
-        font-size: 60px;
-        line-height: 70px;
+        font-size: 50px;
+        line-height: 60px;
     }
     .service{
         margin-bottom: -50%;
@@ -376,8 +376,8 @@
         line-height: 26px;
     }
     .header__title {
-        font-size: 50px;
-        line-height: 60px;
+        font-size: 44px;
+        line-height: 48px;
     }
     .service__black {
         height: 970px;
