@@ -21,5 +21,5 @@ urlpatterns = [
     path('therapy/<pk>', views.therapy, name='therapy'),
     path('thanks/', views.thanks, name='thanks'),
     path('all_info/', views.all_info, name='all_info'),
-    path('info/', views.info, name='info'),
+    path('info/<str>', views.info, name='info'),
 ]

@@ -11,10 +11,12 @@
 
 <div class="container">
     <div class="info">
-        <h3 class="procedure__subtitle">Заголовок:</h3>
+        {% for info in current_info %}
+        <h3 class="procedure__subtitle">{{info.title}}</h3>
          <p class="procedure__text animate__animated animate__fadeInLeft animate__slow wow">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae deleniti dolore, earum est et ex excepturi expedita in iste non officiis optio praesentium quisquam quos ratione saepe similique sit tempora? Alias animi aperiam aspernatur at commodi consectetur, debitis dicta dolorem doloribus, earum eius expedita fugit, in itaque labore laboriosam laudantium magnam magni molestiae nemo nesciunt nihil nulla obcaecati odit officiis omnis qui quibusdam recusandae repellat repellendus repudiandae sunt tempore veniam vitae voluptas voluptate voluptatem? Architecto dicta eos libero quibusdam similique sunt! Cum est quae voluptates. Autem corporis, dolore dolores doloribus minima nobis officia perspiciatis quae ratione similique velit vero voluptatum?
-        </p>
+            {{info.description}}
+         </p>
+        {%endfor%}
     </div>
 </div>
 

@@ -12,9 +12,9 @@
 <div class="container">
     <div class="info">
             <h3 class="procedure__subtitle">Доп информация:</h3>
-            <a href="" class="procedure__points link info__text">1</a>
-            <a href="" class="procedure__points link info__text">2</a>
-            <a href="" class="procedure__points link info__text">3</a>
+            {% for info in all_info %}
+            <a href="{% url 'info' info.title %}" class="procedure__points link info__text">{{ info.title }}</a>
+            {%endfor%}
     </div>
 </div>
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainModel
+from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainModel, Info
 
 
 def main(request):
@@ -141,8 +141,16 @@ def thanks(request):
 
 
 def all_info(request):
-    return render(request, 'main/all_info.html')
+    all_info = Info.objects.all()
+    data = {
+        'all_info': all_info
+    }
+    return render(request, 'main/all_info.html', data)
 
 
-def info(request):
-    return render(request, 'main/info.html')
+def info(request,str):
+    current_info = Info.objects.filter(title=str)
+    data = {
+        'current_info': current_info,
+    }
+    return render(request, 'main/info.html', data)
