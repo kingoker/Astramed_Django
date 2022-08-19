@@ -54,6 +54,7 @@ class AddInfoAdminForm(forms.ModelForm):
 class InfoAdmin(admin.ModelAdmin):
     form = AddInfoAdminForm
 
+
 admin.site.register(Photos)
 admin.site.register(Links)
 admin.site.register(Services, ServicesAdmin)
@@ -64,4 +65,4 @@ admin.site.register(Blog, PostAdmin)
 admin.site.register(MainModel)
 admin.site.register(UnderServices, UnderServicesAdmin)
 admin.site.register(CategoryBlog)
-admin.site.register(Info,InfoAdmin)
+admin.site.register(Info)

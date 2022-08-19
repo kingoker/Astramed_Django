@@ -154,3 +154,8 @@ def info(request,str):
         'current_info': current_info,
     }
     return render(request, 'main/info.html', data)
+
+
+def cooperation(request):
+    return render(request, 'main/cooperation.html')
+

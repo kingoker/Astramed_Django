@@ -93,7 +93,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 .header__body{
     display: flex;
     justify-content: space-between;
-    width: 70%;
+    width: 77%;
 }
 .header__nav{
     display: flex;
@@ -151,17 +151,17 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     align-items: center;
     justify-content: center;
 }
-.search{
+.search {
     position: absolute;
-    right: 150px;
+    right: 50px;
     width: 30px;
-    height: 40px;
+    height: 47px;
     transition: width 0.5s ease;
     padding: 10px;
     overflow: hidden;
     -moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 .seacrch__active{
     position: absolute;

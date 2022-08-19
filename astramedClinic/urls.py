@@ -22,4 +22,5 @@ urlpatterns = [
     path('thanks/', views.thanks, name='thanks'),
     path('all_info/', views.all_info, name='all_info'),
     path('info/<str>', views.info, name='info'),
+    path('cooperation/', views.cooperation, name='cooperation'),
 ]

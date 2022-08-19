@@ -1,0 +1,30 @@
+{% extends 'custom/base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+
+{% block content %}
+<header class="header header-half">
+    <div class="header__container container">
+
+        <!-- Тут подключаю navbar из папки Cutsom-->
+        {% include 'custom/navbar.html' %}
+
+        <div class="header__title aboutHeader__title">
+            <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
+            <h2 class="title__text animate__animated animate__fadeInRight animate__slow wow">Страница сотрудничества</h2>
+        </div>
+    </div>
+</header>
+
+
+<section class="blog blog-white marbot-100">
+    <div class="blog__container container">
+        <div class="AboutBlog__text">
+            <p class="service__link black animate__animated animate__fadeInLeft animate__slow wow">Партнёры</p>
+        </div>
+         <div class="AboutBlog__text">
+            <p class="service__link black animate__animated animate__fadeInLeft animate__slow wow">Вакансии</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
