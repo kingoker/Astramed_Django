@@ -6,11 +6,11 @@ icon.onclick = function(){
 }
 
 // Расскрывающийся список
-const accordingLink = document.querySelector('.according__link');
+/*const accordingLink = document.querySelector('.according__link');
 const accordion = document.querySelector('.accordion');
 accordingLink.onclick = function(){
     accordion.classList.toggle('accordion-active');
-}
+}*/
 
 
 // Бергер меню

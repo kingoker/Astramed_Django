@@ -1,13 +1,23 @@
-from django.shortcuts import render
+from __future__ import print_function
 
-from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainModel, Info
+import base64
+from email.message import EmailMessage
+
+import requests
+from django.shortcuts import render
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
+from astramedClinic.config import gmail_send_message
+from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainModel, Info, Applications
 
 
 def main(request):
     services = Services.objects.all()[:6]
     blog = Blog.objects.order_by("?")[:3]
     mainObjects = MainModel.objects.all()
-    reviews = Reviews.objects.all()
+    reviews = Reviews.objects.filter(published=True)
+    print(reviews)
     data = {
         'services': services,
         'blog': blog,
@@ -89,7 +99,11 @@ def profile(request):
 
 
 def registration(request):
-    return render(request, 'main/registration.html')
+    underServices = UnderServices.objects.all()
+    data = {
+        'underServices': underServices
+    }
+    return render(request, 'main/registration.html', data)
 
 
 def review(request):
@@ -137,6 +151,53 @@ def therapy(request, pk):
 
 
 def thanks(request):
+    if request.method == 'POST':
+        name = request.POST.get('LFname')
+        birth = request.POST.get('birth')
+        address = request.POST.get('address')
+        therapy = request.POST.get('therapy')
+        number = request.POST.get('number')
+        Applications.objects.create(name=name, birth=birth, address=address, therapy=therapy, number=number)
+        method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
+        text = f'ФИО: {name}\n' \
+               f'Дата рождения: {birth}\n' \
+               f'Адрес: {address}\n' \
+               f'Терапия: {therapy}\n' \
+               f'Номер: {number}',
+        requests.post(method, data={
+            'chat_id': 1600170280,
+            'text': text
+        })
+
+        creds = gmail_send_message()
+        try:
+            service = build('gmail', 'v1', credentials=creds)
+            message = EmailMessage()
+
+            message.set_content(f'ФИО: {name}\n' \
+               f'Дата рождения: {birth}\n' \
+               f'Адрес: {address}\n' \
+               f'Терапия: {therapy}\n' \
+               f'Номер: {number}')
+
+            message['To'] = 'bear.lvb@gmail.com'
+            message['From'] = 'DekontFarmBot@gmail.com'
+            message['Subject'] = 'Automated draft'
+
+            # encoded message
+
+            encoded_message = base64.urlsafe_b64encode(message.as_bytes()) \
+                .decode()
+            create_message = {
+                'raw': encoded_message
+            }
+            # pylint: disable=E1101
+            send_message = (service.users().messages().send
+                            (userId="me", body=create_message).execute())
+            print(F'Message Id: {send_message["id"]}')
+        except HttpError as error:
+            print(F'An error occurred: {error}')
+            send_message = None
     return render(request, 'main/thanks.html')
 
 
@@ -148,7 +209,7 @@ def all_info(request):
     return render(request, 'main/all_info.html', data)
 
 
-def info(request,str):
+def info(request, str):
     current_info = Info.objects.filter(title=str)
     data = {
         'current_info': current_info,
@@ -158,4 +219,3 @@ def info(request,str):
 
 def cooperation(request):
     return render(request, 'main/cooperation.html')
-

@@ -179,3 +179,19 @@ class Info(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Applications(models.Model):
+    name = models.CharField(max_length=255, verbose_name='ФИО')
+    birth = models.CharField(max_length=255, verbose_name='Год рождения')
+    address = models.CharField(max_length=255, verbose_name='Адрес')
+    therapy = models.CharField(max_length=255, default='Массаж', verbose_name='Терапия')
+    number = models.CharField(max_length=255, verbose_name='number')
+
+    class Meta:
+        verbose_name = 'Заявка'
+        verbose_name_plural = 'Заявки'
+
+    def __str__(self):
+        return self.name
+
