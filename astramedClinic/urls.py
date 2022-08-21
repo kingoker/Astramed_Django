@@ -14,7 +14,7 @@ urlpatterns = [
     path('post/<blog_title>', views.post, name='post'),
     path('procedure/<pk>', views.procedure, name='procedure'),
     path('profile/', views.profile, name='profile'),
-    path('registration/', views.registration, name='registration'),
+    path('order/', views.order, name='order'),
     path('review/', views.review, name='review'),
     path('services/', views.services, name='services'),
     path('team/', views.team, name='team'),
@@ -23,4 +23,5 @@ urlpatterns = [
     path('all_info/', views.all_info, name='all_info'),
     path('info/<str>', views.info, name='info'),
     path('cooperation/', views.cooperation, name='cooperation'),
+    path('priceList/', views.priceList, name='priceList'),
 ]

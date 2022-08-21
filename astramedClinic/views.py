@@ -98,12 +98,12 @@ def profile(request):
     return render(request, 'main/profile.html', data)
 
 
-def registration(request):
+def order(request):
     underServices = UnderServices.objects.all()
     data = {
         'underServices': underServices
     }
-    return render(request, 'main/registration.html', data)
+    return render(request, 'main/order.html', data)
 
 
 def review(request):
@@ -219,3 +219,7 @@ def info(request, str):
 
 def cooperation(request):
     return render(request, 'main/cooperation.html')
+
+
+def priceList(request):
+    return render(request, 'main/priceList.html')

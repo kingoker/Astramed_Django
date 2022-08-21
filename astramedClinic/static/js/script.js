@@ -1,3 +1,10 @@
+//Запрет на копирование
+document.ondragstart = noselect;
+document.onselectstart = noselect;
+document.oncontextmenu = noselect;
+function noselect() {return false;}
+
+
 // Поиск
 const icon = document.querySelector('.search__icon');
 const search = document.querySelector('.search');
@@ -6,11 +13,11 @@ icon.onclick = function(){
 }
 
 // Расскрывающийся список
-/*const accordingLink = document.querySelector('.according__link');
+const accordingLink = document.querySelector('.according__link');
 const accordion = document.querySelector('.accordion');
 accordingLink.onclick = function(){
     accordion.classList.toggle('accordion-active');
-}*/
+}
 
 
 // Бергер меню
