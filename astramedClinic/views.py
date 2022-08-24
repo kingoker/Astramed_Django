@@ -99,10 +99,23 @@ def profile(request):
 
 
 def order(request):
-    underServices = UnderServices.objects.all()
+    path = str(request.META.get('HTTP_REFERER'))
     data = {
-        'underServices': underServices
+        'services': ['Терапия']
     }
+    try:
+        if "therapy" in path:
+            services = Services.objects.filter(pk=int(path[-1]))
+            data = {
+                'services': [services.values('type')[0]['type']]
+            }
+        elif "procedure" in path:
+            services = UnderServices.objects.filter(pk=int(path[-1]))
+            data = {
+                'services': [services.values('undertype')[0]['undertype']]
+            }
+    except:
+        pass
     return render(request, 'main/order.html', data)
 
 
@@ -175,10 +188,10 @@ def thanks(request):
             message = EmailMessage()
 
             message.set_content(f'ФИО: {name}\n' \
-               f'Дата рождения: {birth}\n' \
-               f'Адрес: {address}\n' \
-               f'Терапия: {therapy}\n' \
-               f'Номер: {number}')
+                                f'Дата рождения: {birth}\n' \
+                                f'Адрес: {address}\n' \
+                                f'Терапия: {therapy}\n' \
+                                f'Номер: {number}')
 
             message['To'] = 'bear.lvb@gmail.com'
             message['From'] = 'DekontFarmBot@gmail.com'
