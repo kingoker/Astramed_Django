@@ -195,3 +195,15 @@ class Applications(models.Model):
     def __str__(self):
         return self.name
 
+
+class PriceList(models.Model):
+    priceFile = models.FileField(upload_to='priceList/', max_length=255, verbose_name='ФИО')
+
+
+    class Meta:
+        verbose_name = 'Прайс Лист'
+        verbose_name_plural = 'Прайс Листы'
+
+    def __str__(self):
+        return self.priceFile
+

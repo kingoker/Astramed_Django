@@ -756,7 +756,6 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     font-size: 48px;
     line-height: 65px;
     color: #3F3F3F;
-    margin: 0px auto 50px 0px;
 }
 .aboutTeam {
     padding-bottom: 150px;
@@ -1120,6 +1119,25 @@ textarea{
   top: 16px;
 }
 
+/* Партнеры */
+.partners__list{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.partners__item{
+    height: 100px;
+}
+.partners__item img{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    transition: all 0.7s ease 0s;
+}
+.partners__item img:hover{
+    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%);
+    opacity: 1;
+}
 
 /* Страница прайс листа*/
 .priceList__link{

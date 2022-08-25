@@ -19,7 +19,7 @@
                 <input type="date" min="1900-01-01" max="2012-12-31" name="birth" autocomplete="disabled" class="form__input reg__input" placeholder="Год рождения">
                 <input type="text" name="address" autocomplete="disabled" class="form__input reg__input" placeholder="Адрес проживания">
                 {% for service in services %}
-                <input type="text" name="therapy" autocomplete="disabled" class="form__input reg__input" placeholder="{{service}}">
+                <input type="text" name="therapy" autocomplete="disabled" class="form__input reg__input" value="{{service}}">
                 {%endfor%}
                 <input type="tel" required name="number" autocomplete="disabled" class="form__input reg__input" placeholder="Телефон">
                 <button type="submit" class="form__button link colorWhite">Записаться</button>

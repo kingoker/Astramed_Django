@@ -20,8 +20,8 @@
     <div class="review__container container">
         <form method="POST" action="{% url 'thanks' %}" class="review__form form animate__animated animate__fadeInUp animate__slow wow">
             {% csrf_token %}
-            <input type="text" class="form__input" placeholder="Ваше имя">
-            <textarea class="form__input" name="" id="" cols="30" rows="5" placeholder="Текст"></textarea>
+            <input type="text" name="name" class="form__input" placeholder="Ваше имя">
+            <textarea class="form__input" name="description" cols="30" rows="5" placeholder="Текст"></textarea>
             <button type="submit" class="form__button link">Отправить</button>
         </form>
     </div>

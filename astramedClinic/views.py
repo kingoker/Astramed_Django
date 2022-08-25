@@ -164,53 +164,66 @@ def therapy(request, pk):
 
 
 def thanks(request):
+    path = str(request.META.get('HTTP_REFERER'))
     if request.method == 'POST':
-        name = request.POST.get('LFname')
-        birth = request.POST.get('birth')
-        address = request.POST.get('address')
-        therapy = request.POST.get('therapy')
-        number = request.POST.get('number')
-        Applications.objects.create(name=name, birth=birth, address=address, therapy=therapy, number=number)
-        method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
-        text = f'ФИО: {name}\n' \
-               f'Дата рождения: {birth}\n' \
-               f'Адрес: {address}\n' \
-               f'Терапия: {therapy}\n' \
-               f'Номер: {number}',
-        requests.post(method, data={
-            'chat_id': 1600170280,
-            'text': text
-        })
+        if 'order' in path:
+            name = request.POST.get('LFname')
+            birth = request.POST.get('birth')
+            address = request.POST.get('address')
+            therapy = request.POST.get('therapy')
+            number = request.POST.get('number')
+            Applications.objects.create(name=name, birth=birth, address=address, therapy=therapy, number=number)
+            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
+            text = f'ФИО: {name}\n' \
+                   f'Дата рождения: {birth}\n' \
+                   f'Адрес: {address}\n' \
+                   f'Терапия: {therapy}\n' \
+                   f'Номер: {number}',
+            requests.post(method, data={
+                'chat_id': 1600170280,
+                'text': text
+            })
 
-        creds = gmail_send_message()
-        try:
-            service = build('gmail', 'v1', credentials=creds)
-            message = EmailMessage()
+            creds = gmail_send_message()
+            try:
+                service = build('gmail', 'v1', credentials=creds)
+                message = EmailMessage()
 
-            message.set_content(f'ФИО: {name}\n' \
-                                f'Дата рождения: {birth}\n' \
-                                f'Адрес: {address}\n' \
-                                f'Терапия: {therapy}\n' \
-                                f'Номер: {number}')
+                message.set_content(f'ФИО: {name}\n' \
+                                    f'Дата рождения: {birth}\n' \
+                                    f'Адрес: {address}\n' \
+                                    f'Терапия: {therapy}\n' \
+                                    f'Номер: {number}')
 
-            message['To'] = 'bear.lvb@gmail.com'
-            message['From'] = 'DekontFarmBot@gmail.com'
-            message['Subject'] = 'Automated draft'
+                message['To'] = 'bear.lvb@gmail.com'
+                message['From'] = 'DekontFarmBot@gmail.com'
+                message['Subject'] = 'Automated draft'
 
-            # encoded message
+                # encoded message
 
-            encoded_message = base64.urlsafe_b64encode(message.as_bytes()) \
-                .decode()
-            create_message = {
-                'raw': encoded_message
-            }
-            # pylint: disable=E1101
-            send_message = (service.users().messages().send
-                            (userId="me", body=create_message).execute())
-            print(F'Message Id: {send_message["id"]}')
-        except HttpError as error:
-            print(F'An error occurred: {error}')
-            send_message = None
+                encoded_message = base64.urlsafe_b64encode(message.as_bytes()) \
+                    .decode()
+                create_message = {
+                    'raw': encoded_message
+                }
+                # pylint: disable=E1101
+                send_message = (service.users().messages().send
+                                (userId="me", body=create_message).execute())
+                print(F'Message Id: {send_message["id"]}')
+            except HttpError as error:
+                print(F'An error occurred: {error}')
+                send_message = None
+        if 'review' in path:
+            name = request.POST.get('name')
+            description = request.POST.get('description')
+            Reviews.objects.create(name=name, description=description)
+            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
+            text = f'ФИО: {name}\n' \
+                   f'Отзыв: {description}\n'
+            requests.post(method, data={
+                'chat_id': 1600170280,
+                'text': text
+            })
     return render(request, 'main/thanks.html')
 
 

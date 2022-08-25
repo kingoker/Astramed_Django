@@ -12,12 +12,7 @@ icon.onclick = function(){
     search.classList.toggle('seacrch__active');
 }
 
-// Расскрывающийся список
-const accordingLink = document.querySelector('.according__link');
-const accordion = document.querySelector('.accordion');
-accordingLink.onclick = function(){
-    accordion.classList.toggle('accordion-active');
-}
+
 
 
 // Бергер меню
@@ -59,3 +54,10 @@ var swiper = new Swiper(".swiper", {
         }
     }
 });
+
+// Расскрывающийся список
+const accordingLink = document.querySelector('.according__link');
+const accordion = document.querySelector('.accordion');
+accordingLink.onclick = function(){
+    accordion.classList.toggle('accordion-active');
+}

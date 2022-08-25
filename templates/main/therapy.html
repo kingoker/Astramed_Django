@@ -27,21 +27,41 @@
             </p>
             <br><br>
         </div>
-        {% if underServices %}
-            <h3 class="procedure__subtitle">Подробнее об:</h3>
-            <div class="blog__list">
-                {% for underservice in underServices %}
-                <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                    <a href="{% url 'procedure' underservice.id %}" class="service__img">
-                        <img src="{{ underservice.photo.url }}" alt="service" class="img grey-filter">
-                    </a>
-                    <a href="{% url 'procedure' underservice.id %}" class="service__link link">{{underservice.undertype}}</a>
-                </div>
-                {%endfor%}
+    </div>
+</section>
+
+<section class="blog marbot-150">
+    <div class="procedure__container container">
+        <div class="procedure__result">
+            <h2 class="feedback__title colorWhite marbot-50">До и после</h2>
+            <div class="procedure__result-img">
+                <img src="img/therapy/1.jpg" alt="before" class="img animate__animated animate__fadeInLeft animate__slow wow">
+                <img src="img/therapy/2.jpg" alt="after" class="img animate__animated animate__fadeInRight animate__slow wow">
             </div>
+        </div>
+        <div class="procedure__button__bottom">
+            <a href="registration.html" class="procedure__link service__link link">Записаться на прием</a>
+        </div>
+    </div>
+</section>
+
+<section class="underservice">
+    <div class="underservice__container container">
+        {% if underServices %}
+        <h3 class="procedure__subtitle">Подробнее об:</h3>
+        <div class="blog__list">
+            {% for underservice in underServices %}
+            <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
+                <a href="{% url 'procedure' underservice.id %}" class="service__img">
+                    <img src="{{ underservice.photo.url }}" alt="service" class="img grey-filter">
+                </a>
+                <a href="{% url 'procedure' underservice.id %}"
+                   class="service__link link">{{underservice.undertype}}</a>
+            </div>
+            {%endfor%}
+        </div>
         {% endif %}
     </div>
-
 </section>
 
 <section class="blog marbot-150">
