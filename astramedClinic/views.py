@@ -9,7 +9,8 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 from astramedClinic.config import gmail_send_message
-from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainModel, Info, Applications
+from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainModel, Info, Applications, Jobs, \
+    Partners
 
 
 def main(request):
@@ -244,7 +245,20 @@ def info(request, str):
 
 
 def cooperation(request):
-    return render(request, 'main/cooperation.html')
+    jobs = Jobs.objects.all()
+    partners = Partners.objects.all()
+    data = {
+        'jobs': jobs,
+        'partners': partners
+    }
+    return render(request, 'main/cooperation.html', data)
+
+def offer(request,job):
+    jobs = Jobs.objects.filter(title=job)
+    data = {
+        'jobs': jobs,
+    }
+    return render(request, 'main/jobOffer.html', data)
 
 
 def priceList(request):

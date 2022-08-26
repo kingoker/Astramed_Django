@@ -24,21 +24,13 @@
                 <h2 class="aboutPhilosophy__header martop-100 animate__animated animate__fadeInLeft animate__slow wow">Партнёры</h2>
                 <p class="blog__subtitle marbot-50 animate__animated animate__fadeInLeft animate__slow wow">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio incidunt excepturi explicabo velit repellat nihil modi et, saepe enim animi.</p>
                 <div class="partners__list">
+                    {% for partner in partners %}
                     <div class="partners__item">
-                        <a href="https://www.giz.de/en/html/index.html">
-                            <img src="img/main.png" alt="" class="img">
+                        <a href="{{ partner.url }}">
+                            <img src="{{ partner.photo.url }}" alt="{{ partner.title }}" class="img">
                         </a>
                     </div>
-                    <div class="partners__item">
-                        <a href="https://www.giz.de/en/html/index.html">
-                            <img src="img/main.png" alt="" class="img">
-                        </a>
-                    </div>
-                    <div class="partners__item">
-                        <a href="https://www.giz.de/en/html/index.html">
-                            <img src="img/main.png" alt="" class="img">
-                        </a>
-                    </div>
+                    {%endfor%}
                 </div>
             </div>
 
@@ -49,36 +41,14 @@
                 <p class="service__link black animate__animated animate__fadeInLeft animate__slow wow">Вакансии</p>
                 <div class="blog__list">
                     <!-- При нажатии на вакансию попадаешь на страницу похожую на запись на приём, только + поле отправки файла, что бы отправлять резюме -->
+                    {% for job in jobs %}
                     <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                        <a href="procedure.html" class="service__img">
-                            <img src="img/service/massage.png" alt="service" class="img">
+                        <a href="{% url 'jobOffer' job.title %}" class=""job.title %}" class="service__img">
+                            <img src="{{ job.photo.url }}" alt="service" class="img">
                         </a>
-                        <a href="procedure.html" class="service__link link">Массаж</a>
+                        <a href="{% url 'jobOffer' job.title %}" class="service__link link">{{job.title}}</a>
                     </div>
-                    <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                        <a href="procedure.html" class="service__img">
-                            <img src="img/service/massage.png" alt="service" class="img">
-                        </a>
-                        <a href="procedure.html" class="service__link link">Контурная пластика лица</a>
-                    </div>
-                    <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                        <a href="procedure.html" class="service__img">
-                            <img src="img/service/massage.png" alt="service" class="img">
-                        </a>
-                        <a href="procedure.html" class="service__link link">Физиотерапия</a>
-                    </div>
-                    <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                        <a href="procedure.html" class="service__img">
-                            <img src="img/service/massage.png" alt="service" class="img">
-                        </a>
-                        <a href="procedure.html" class="service__link link">Массаж</a>
-                    </div>
-                    <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                        <a href="procedure.html" class="service__img">
-                            <img src="img/service/massage.png" alt="service" class="img">
-                        </a>
-                        <a href="procedure.html" class="service__link link">Контурная пластика лица</a>
-                    </div>
+                    {%endfor%}
                 </div>
             </div>
         </div>

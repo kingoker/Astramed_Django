@@ -3,7 +3,7 @@ from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 from astramedClinic.models import Photos, Links, Services, Employee, Reviews, Blog, Users, MainModel, UnderServices, \
-    CategoryBlog, Info, Applications
+    CategoryBlog, Info, Applications, PriceList, Jobs, Partners
 
 
 class BlogAdminForm(forms.ModelForm):
@@ -67,3 +67,6 @@ admin.site.register(UnderServices, UnderServicesAdmin)
 admin.site.register(CategoryBlog)
 admin.site.register(Info, InfoAdmin)
 admin.site.register(Applications)
+admin.site.register(PriceList)
+admin.site.register(Jobs)
+admin.site.register(Partners)

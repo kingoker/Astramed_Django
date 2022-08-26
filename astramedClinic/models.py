@@ -199,7 +199,6 @@ class Applications(models.Model):
 class PriceList(models.Model):
     priceFile = models.FileField(upload_to='priceList/', max_length=255, verbose_name='ФИО')
 
-
     class Meta:
         verbose_name = 'Прайс Лист'
         verbose_name_plural = 'Прайс Листы'
@@ -207,3 +206,28 @@ class PriceList(models.Model):
     def __str__(self):
         return self.priceFile
 
+
+class Jobs(models.Model):
+    title = models.CharField(max_length=255, verbose_name='Должность')
+    photo = models.ImageField(upload_to='jobs/', verbose_name='Фото', max_length=255)
+    description = models.TextField(verbose_name='Описание')
+
+    class Meta:
+        verbose_name = 'Вакансия'
+        verbose_name_plural = 'Вакансии'
+
+    def __str__(self):
+        return self.title
+
+
+class Partners(models.Model):
+    title = models.CharField(max_length=255, verbose_name='Название партнера')
+    photo = models.ImageField(upload_to='partners/', verbose_name='Фото', max_length=255)
+    url = models.CharField(max_length=255,verbose_name='Ссылка')
+
+    class Meta:
+        verbose_name = 'Партнер'
+        verbose_name_plural = 'Партнеры'
+
+    def __str__(self):
+        return self.title
