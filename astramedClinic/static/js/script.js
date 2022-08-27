@@ -12,9 +12,6 @@ icon.onclick = function(){
     search.classList.toggle('seacrch__active');
 }
 
-
-
-
 // Бергер меню
 const iconMenu = document.querySelector('.menu__burger');
 const menuBody = document.querySelector('.header__body');
@@ -35,7 +32,6 @@ if(iconMenu){
     })
 }
 
-
 // Карусель
 var swiper = new Swiper(".swiper", {
     loop: true,
@@ -54,6 +50,7 @@ var swiper = new Swiper(".swiper", {
         }
     }
 });
+
 
 // Расскрывающийся список
 const accordingLink = document.querySelector('.according__link');
