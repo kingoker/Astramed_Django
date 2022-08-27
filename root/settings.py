@@ -80,14 +80,12 @@ WSGI_APPLICATION = 'root.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            },
-        'NAME': 'ci79299_astramed',
-        'USER': 'ci79299_astramed',
-        'PASSWORD': '5WsZ4Ggp',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'default_db',
+        'USER': 'gen_user',
+        'PASSWORD': 'l05roygla6',
+        'HOST': '188.225.47.26',
+        'PORT': '5432',
     }
 }
 
