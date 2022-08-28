@@ -120,7 +120,7 @@ class CategoryBlog(models.Model):
 
 class Blog(models.Model):
     author = models.CharField(max_length=255, verbose_name='Автор')
-    title = models.CharField(max_length=255, verbose_name='Заголовок')
+    title = models.TextField(max_length=255, verbose_name='Заголовок')
     category = models.ForeignKey(CategoryBlog, null=True, on_delete=models.CASCADE, verbose_name='Категория')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
     photo = models.ImageField(upload_to='blogs/', verbose_name='Фото', max_length=255)
