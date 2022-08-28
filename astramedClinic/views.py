@@ -9,8 +9,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 from astramedClinic.config import gmail_send_message
-from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainModel, Info, Applications, Jobs, \
-    Partners
+from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainModel, Info, Applications, Jobs, Partners, PriceList
 
 
 def main(request):
@@ -99,19 +98,19 @@ def profile(request):
     return render(request, 'main/profile.html', data)
 
 
-def order(request):
+def order(request, pk):
     path = str(request.META.get('HTTP_REFERER'))
     data = {
-        'services': ['Терапия']
+        'services': ['Записаться на консультацию']
     }
     try:
         if "therapy" in path:
-            services = Services.objects.filter(pk=int(path[-1]))
+            services = Services.objects.filter(pk=pk)
             data = {
                 'services': [services.values('type')[0]['type']]
             }
         elif "procedure" in path:
-            services = UnderServices.objects.filter(pk=int(path[-1]))
+            services = UnderServices.objects.filter(pk=pk)
             data = {
                 'services': [services.values('undertype')[0]['undertype']]
             }
@@ -185,35 +184,36 @@ def thanks(request):
                 'text': text
             })
 
-            creds = gmail_send_message()
-            try:
-                service = build('gmail', 'v1', credentials=creds)
-                message = EmailMessage()
+            # creds = gmail_send_message()
+            # try:
+            #     service = build('gmail', 'v1', credentials=creds)
+            #     message = EmailMessage()
+            #
+            #     message.set_content(f'ФИО: {name}\n' \
+            #                         f'Дата рождения: {birth}\n' \
+            #                         f'Адрес: {address}\n' \
+            #                         f'Терапия: {therapy}\n' \
+            #                         f'Номер: {number}')
+            #
+            #     message['To'] = 'bear.lvb@gmail.com'
+            #     message['From'] = 'DekontFarmBot@gmail.com'
+            #     message['Subject'] = 'Automated draft'
+            #
+            #     # encoded message
+            #
+            #     encoded_message = base64.urlsafe_b64encode(message.as_bytes()) \
+            #         .decode()
+            #     create_message = {
+            #         'raw': encoded_message
+            #     }
+            #     # pylint: disable=E1101
+            #     send_message = (service.users().messages().send
+            #                     (userId="me", body=create_message).execute())
+            #     print(F'Message Id: {send_message["id"]}')
+            # except HttpError as error:
+            #     print(F'An error occurred: {error}')
+            #     send_message = None
 
-                message.set_content(f'ФИО: {name}\n' \
-                                    f'Дата рождения: {birth}\n' \
-                                    f'Адрес: {address}\n' \
-                                    f'Терапия: {therapy}\n' \
-                                    f'Номер: {number}')
-
-                message['To'] = 'bear.lvb@gmail.com'
-                message['From'] = 'DekontFarmBot@gmail.com'
-                message['Subject'] = 'Automated draft'
-
-                # encoded message
-
-                encoded_message = base64.urlsafe_b64encode(message.as_bytes()) \
-                    .decode()
-                create_message = {
-                    'raw': encoded_message
-                }
-                # pylint: disable=E1101
-                send_message = (service.users().messages().send
-                                (userId="me", body=create_message).execute())
-                print(F'Message Id: {send_message["id"]}')
-            except HttpError as error:
-                print(F'An error occurred: {error}')
-                send_message = None
         if 'review' in path:
             name = request.POST.get('name')
             description = request.POST.get('description')
@@ -253,6 +253,7 @@ def cooperation(request):
     }
     return render(request, 'main/cooperation.html', data)
 
+
 def offer(request,job):
     jobs = Jobs.objects.filter(title=job)
     data = {
@@ -262,4 +263,9 @@ def offer(request,job):
 
 
 def priceList(request):
-    return render(request, 'main/priceList.html')
+    price = PriceList.objects.all()
+    data = {
+        'price': price,
+    }
+    print(price.values('priceFile'))
+    return render(request, 'main/priceList.html', data)

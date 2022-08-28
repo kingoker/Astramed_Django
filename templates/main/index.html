@@ -67,9 +67,9 @@
     <section class="faceToFace">
         <div class="faceToFace__container container">
             <div class="faceToFace__text">
-                <h2 class="faceToFace__title title animate__animated animate__fadeInLeft animate__slow wow">{{main.faceToFaceTitle}}</h2>
+                <h2 class="faceToFace__title title animate__animated animate__fadeInLeft animate__slow wow">{{ main.faceToFaceTitle }}</h2>
                 <p class="faceToFace__subtitle animate__animated animate__fadeInLeft animate__slow wow">{{ main.faceToFaceSubtitle }}</p>
-                <a href="{% url 'order' %}" class="faceToFace__link link animate__animated animate__fadeInLeft animate__slow wow">Записаться на консультацию</a>
+                <a href="{% url 'order' main.pk %}" class="faceToFace__link link animate__animated animate__fadeInLeft animate__slow wow">Записаться на консультацию</a>
             </div>
         </div>
     </section>

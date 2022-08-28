@@ -17,13 +17,13 @@
             <p class="blog__subtitle blog__subtitle-bigger colorWhite">Самое свежее</p>
         </div>
         <div class="blog__list padbot-100 animate__animated animate__fadeInUp animate__slow wow">
-            {% for f in fresh %}
+            {% for b in fresh %}
             <div class="blog__item">
-                <a href="{% url 'post' f.title %}" class="service__img">
-                    <img src="{{ f.photo.url }}" alt="service" class="img grey-filter">
+                <a href="{% url 'post' b.pk %}" class="service__img">
+                    <img src="{{ b.photo.url }}" alt="service" class="img grey-filter">
                 </a>
-                <p class="blog__category lightgrey">{{ f.category }}</p>
-                <a href="{% url 'post' f.title %}" class="service__link link colorWhite">{{f.title}}</a>
+                <p class="blog__category lightgrey">{{ b.category }}</p>
+                <a href="{% url 'post' b.pk %}" class="service__link link colorWhite">{{b.title}}</a>
             </div>
             {%endfor%}
         </div>

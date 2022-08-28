@@ -203,9 +203,6 @@ class PriceList(models.Model):
         verbose_name = 'Прайс Лист'
         verbose_name_plural = 'Прайс Листы'
 
-    def __str__(self):
-        return self.priceFile
-
 
 class Jobs(models.Model):
     title = models.CharField(max_length=255, verbose_name='Должность')

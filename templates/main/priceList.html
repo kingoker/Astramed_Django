@@ -19,7 +19,10 @@
 
 <section class="blog blog-white marbot-100 martop-100">
     <div class="blog__container container">
+        {% for p in price %}
+<!--        <embed src="{{ p.priceFile }}#toolbar=0" width="100%" height="1000" />-->
         <embed src="{% static '1.pdf' %}#toolbar=0" width="100%" height="1000" />
+        {% endfor %}
     </div>
 </section>
 {% endblock %}
