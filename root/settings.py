@@ -110,11 +110,13 @@ WSGI_APPLICATION = 'root.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ci79299_clinic',
-        'USER': 'ci79299_clinic',
-        'PASSWORD': 'Aa6814930',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            },
+        'NAME': 'ci79299_studio',
+        'USER': 'ci79299_studio',
+        'PASSWORD': 'Zz6814930',
         'HOST': 'localhost',
-        'PORT': '3306',
     }
 }
 
