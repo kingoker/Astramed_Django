@@ -70,7 +70,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'root.wsgi.application'
 
 
-
+#Local SqLite
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -78,21 +78,35 @@ WSGI_APPLICATION = 'root.wsgi.application'
 #     }
 # }
 
+
+# Postgres
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'default_db',
+#         'USER': 'gen_user',
+#         'PASSWORD': 'l05roygla6',
+#         'HOST': '188.225.47.26',
+#         'PORT': '5432',
+#     }
+# }
+
+
+#Servers MySQL
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'default_db',
-        'USER': 'gen_user',
-        'PASSWORD': 'l05roygla6',
-        'HOST': '188.225.47.26',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            },
+        'NAME': 'ci79299_astramed',
+        'USER': 'ci79299_astramed',
+        'PASSWORD': '5WsZ4Ggp',
+        'HOST': 'localhost',
     }
 }
 
 
-
-# Password validation
-# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
