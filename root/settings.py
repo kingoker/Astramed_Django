@@ -93,21 +93,30 @@ WSGI_APPLICATION = 'root.wsgi.application'
 
 
 #Servers MySQL
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#             },
+#         'NAME': 'ci79299_astramed',
+#         'USER': 'ci79299_astramed',
+#         'PASSWORD': 'Aa6814930',
+#         'HOST': 'localhost',
+#     }
+# }
+
+#new SQL
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            },
         'NAME': 'ci79299_clinic',
-        # 'NAME': 'ci79299_astramed',
-        # 'USER': 'ci79299_astramed',
         'USER': 'ci79299_clinic',
         'PASSWORD': 'Aa6814930',
         'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
-
 
 
 AUTH_PASSWORD_VALIDATORS = [
