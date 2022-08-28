@@ -1,7 +1,7 @@
 /* Адаптивность сайта */
 @media (min-width: 1500px){
     .team{
-        margin-top: 300px;
+        margin-top: 200px;
     }
 }
 @media (min-width: 1200px) {
@@ -69,6 +69,9 @@
     }
 }
 @media (max-width: 991px){
+    .aboutPhilosophy__list {
+        grid-template-columns: 1fr 1fr;
+    }
     .location__icon{
         width: 40px;
     }
@@ -279,8 +282,8 @@
 }
 @media (max-width: 767px){
     .header__title {
-        font-size: 60px;
-        line-height: 70px;
+        font-size: 50px;
+        line-height: 60px;
     }
     .service{
         margin-bottom: -50%;
@@ -343,6 +346,9 @@
     }
 }
 @media (max-width: 560px){
+    .aboutPhilosophy__list {
+        grid-template-columns: 1fr;
+    }
     .title__text{
         font-size: 55px;
         line-height: 60px;
@@ -370,8 +376,8 @@
         line-height: 26px;
     }
     .header__title {
-        font-size: 50px;
-        line-height: 60px;
+        font-size: 44px;
+        line-height: 48px;
     }
     .service__black {
         height: 970px;

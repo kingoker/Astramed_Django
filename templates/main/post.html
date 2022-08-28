@@ -24,10 +24,10 @@
         <div class="post__top animate__animated animate__fadeInLeft animate__slow wow">
             <img src="{{ blog.photo.url }}" alt="" class="img post__img">
             <div class="post__textSide">
-                <h3 class="post__title">{{ blog.title }}</h3>
+                <h3 class="post__title">{{ blog.title|safe  }}</h3>
                 <p class="post__info">
-                    категория: <span class="lighter-300">{{ blog.category }}</span> <br>
-                    автор: <span class="lighter-300">{{ blog.author }}</span>
+                    категория: <span class="lighter-300">{{ blog.category|safe  }}</span> <br>
+                    автор: <span class="lighter-300">{{ blog.author|safe  }}</span>
                 </p>
             </div>
         </div>

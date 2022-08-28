@@ -1,17 +1,16 @@
+//Запрет на копирование
+document.ondragstart = noselect;
+document.onselectstart = noselect;
+document.oncontextmenu = noselect;
+function noselect() {return false;}
+
+
 // Поиск
 const icon = document.querySelector('.search__icon');
 const search = document.querySelector('.search');
 icon.onclick = function(){
     search.classList.toggle('seacrch__active');
 }
-
-// Расскрывающийся список
-const accordingLink = document.querySelector('.according__link');
-const accordion = document.querySelector('.accordion');
-accordingLink.onclick = function(){
-    accordion.classList.toggle('accordion-active');
-}
-
 
 // Бергер меню
 const iconMenu = document.querySelector('.menu__burger');
@@ -33,7 +32,6 @@ if(iconMenu){
     })
 }
 
-
 // Карусель
 var swiper = new Swiper(".swiper", {
     loop: true,
@@ -52,3 +50,11 @@ var swiper = new Swiper(".swiper", {
         }
     }
 });
+
+
+// Расскрывающийся список
+const accordingLink = document.querySelector('.according__link');
+const accordion = document.querySelector('.accordion');
+accordingLink.onclick = function(){
+    accordion.classList.toggle('accordion-active');
+}

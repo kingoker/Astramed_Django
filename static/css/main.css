@@ -3,7 +3,6 @@
 
 *{
     font-family: 'Open Sans', sans-serif;
-    color: #3F3F3F;
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
@@ -11,6 +10,12 @@ input{
     border: none;
 }
 :focus,:active{outline: none;}
+
+/* Цвет календаря */
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
 body{
     padding: 0;
 	margin: 0;
@@ -36,11 +41,13 @@ body{
     font-size: 36px;
     line-height: 49px;
     margin: 0px;
+    color: #3F3F3F;
 }
 .link{
     margin-top: 10px;
     display: block;
     text-decoration: none;
+    color: #3F3F3F;
 }
 .link::after{
     content: '\2192';
@@ -76,6 +83,14 @@ body{
 }
 
 
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
+    -webkit-box-shadow: inset 0 0 0 50px black;
+    box-shadow: inset 0 0 0 50px black;
+    -webkit-text-fill-color: #FE8F1D;
+    font-size: 30px;
+}
+
+
 /* ГЛАВНАЯ СТРАНИЦА */
 /* вверх */
 .header{
@@ -85,7 +100,7 @@ body{
 .header__body{
     display: flex;
     justify-content: space-between;
-    width: 70%;
+    width: 77%;
 }
 .header__nav{
     display: flex;
@@ -143,17 +158,17 @@ body{
     align-items: center;
     justify-content: center;
 }
-.search{
+.search {
     position: absolute;
-    right: 150px;
+    right: 0px;
     width: 30px;
-    height: 40px;
+    height: 47px;
     transition: width 0.5s ease;
     padding: 10px;
     overflow: hidden;
     -moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 .seacrch__active{
     position: absolute;
@@ -242,6 +257,7 @@ body{
     display: grid;
     align-items: space-between;
     padding: 70px;
+    color: #3F3F3F;
 }
 .philosiphy__img{
     max-height: 600px;
@@ -318,6 +334,7 @@ body{
     font-weight: 400;
     font-size: 22px;
     line-height: 26px;
+    margin-top: 0px;
 }
 .service__bottom{
     max-width: 780px;
@@ -497,6 +514,9 @@ body{
     max-width: 600px;
     padding-top: 150px;
 }
+.blog__category{
+    margin-top: 10px;
+}
 .blog__title{
     display: block;
     font-weight: 700;
@@ -516,6 +536,7 @@ body{
     grid-template-columns: 1fr 1fr 1fr;
     gap: 63px;
 }
+
 .blog__social{
     padding-bottom: 100px;
 }
@@ -577,6 +598,7 @@ body{
     font-size: 30px;
     line-height: 41px;
     background: none;
+    border: none;
 }
 .form__input{
     width: 100%;
@@ -614,6 +636,10 @@ body{
     transition: color 0.3s ease;
     border-bottom: 1px solid;
     text-decoration: none;
+    color: #3F3F3F;
+}
+.map__info_footer a{
+    color: white;
 }
 .map__info a:hover{
     color: #7E7E7E;
@@ -630,9 +656,9 @@ body{
 }
 
 /* Подвал */
-.footer{
+.footer {
     background-color: #000;
-    padding: 50px 0px;
+    padding: 50px 0px 25px 0;
 }
 .footer__container{
     display: flex;
@@ -657,9 +683,9 @@ body{
 }
 
 /* Авторские права */
-.copyrighy__container{
-    display: grid;
-    justify-content: center;
+.copyrighy__container {
+    display: flex;
+    justify-content: space-between;
     gap: 10px;
     margin-top: 50px;
     border-top: 1px solid #7E7E7E;
@@ -667,9 +693,11 @@ body{
 }
 .copyrighy__asyramed{
     text-align: center;
+    color: grey;
 }
 .created__kingdesignn{
     text-decoration: underline;
+    color: grey;
 }
 
 
@@ -689,8 +717,8 @@ body{
     position: absolute;
     left: 159px;
     font-weight: 700;
-    font-size: 64px;
-    line-height: 87px;
+    font-size: 48px;
+    line-height: 50px;
     color: #FFFFFF;
 }
 .halfheader__img{
@@ -700,13 +728,12 @@ body{
 .aboutPhilosophy__container{
     padding-top: 150px;
 }
-.aboutPhilosophy__list{
+.aboutPhilosophy__list {
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
 }
 .aboutPhilosophy__item{
-    display: flex;
-    gap: 30px;
 }
 .aboutPhilosophy__title{
     font-weight: 700;
@@ -714,11 +741,14 @@ body{
     line-height: 28px;
     color: #FE8F1D;
 }
-.aboutPhilosophy__subtitle{
+.aboutPhilosophy__text{
+    margin-top: 20px;
+}
+.aboutPhilosophy__subtitle {
     margin-top: 10px;
     font-weight: 400;
-    font-size: 30px;
-    line-height: 41px;
+    font-size: 18px;
+    line-height: 26px;
     color: #3F3F3F;
 }
 .aboutPhilosophy__header{
@@ -726,7 +756,6 @@ body{
     font-size: 48px;
     line-height: 65px;
     color: #3F3F3F;
-    margin: 0px auto 50px 0px;
 }
 .aboutTeam {
     padding-bottom: 150px;
@@ -739,8 +768,7 @@ body{
     margin: 0 auto;
 }
 .about__img{
-    min-width: 480px;
-    max-height: 480px;
+    max-height: 350px;
 }
 .contacts__list{
     display: grid;
@@ -755,6 +783,7 @@ body{
 .contacts__text a{
     transition: color 0.3s ease;
     border-bottom: 1px solid;
+    text-decoration: none;
 }
 .contacts__text a:hover{
     color: #7E7E7E;
@@ -821,10 +850,11 @@ body{
 .procedure__content{
     max-width: 800px;
 }
-.procedure__subtitle{
+.procedure__subtitle {
     font-size: 32px;
     line-height: 42px;
     color: #7E7E7E;
+    align-self: self-start;
 }
 .procedure__text{
     font-size: 26px;
@@ -874,6 +904,7 @@ body{
 }
 textarea{
     resize: none;
+    border: none;
 }
 .allreviews__container{
     display: flex;
@@ -886,9 +917,9 @@ textarea{
     color: #FFFFFF;
     margin-bottom: 30px;
 }
-.review__text{
-    font-size: 30px;
-    line-height: 40px;
+.review__text {
+    font-size: 22px;
+    line-height: 28px;
     color: #BEBEBE;
 }
 .review{
@@ -907,6 +938,16 @@ textarea{
 .review a:hover{
     color: #7E7E7E;
 }
+.member__review{
+    margin-top: 150px;
+}
+.review__form_member{
+    margin-top: 0px;
+}
+.review__subtitle_member{
+    margin-bottom: 0px;
+}
+
 
 /* Регистрация */
 .registration__container{
@@ -1014,10 +1055,24 @@ textarea{
     line-height: 42px;
 }
 .quote__text{
-    margin-top: 30px;
     font-weight: 400;
     font-size: 28px;
     line-height: 38px;
+}
+.quote__text-top{
+    margin-top: 30px;
+    font-size: 18px;
+    line-height: 25px;
+    color: #BEBEBE;
+}
+
+
+/* Доп информация */
+.info{
+    margin: 50px 0px;
+}
+.info__text{
+    font-size: 13px;
 }
 
 
@@ -1064,6 +1119,42 @@ textarea{
   top: 16px;
 }
 
+/* Партнеры */
+.partners__list{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.partners__item{
+    height: 100px;
+}
+.partners__item img{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    transition: all 0.7s ease 0s;
+}
+.partners__item img:hover{
+    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* Страница прайс листа*/
+.priceList__link{
+    font-size: 28px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+
+/* Стили для тексов */
+.orange-block{
+    padding: 15px;
+    background-color: #F1F1F1;
+    border-left: 5px solid #FE8F1D;
+}
+
+
 /* Состояния и декораторы */
 .feedback__arrow-white{
     stroke: #FFFFFF;
@@ -1108,6 +1199,9 @@ textarea{
 .marbot-50{
     margin-bottom: 50px;
 }
+.martop-100{
+    margin-top: 100px;
+}
 .marbot-100{
     margin-bottom: 100px;
 }
@@ -1138,4 +1232,7 @@ textarea{
 }
 .text-center{
     text-align: center;
+}
+.header-little{
+    padding-bottom: 0px;
 }
