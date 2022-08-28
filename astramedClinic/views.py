@@ -63,8 +63,8 @@ def member(request, employee_name):
     return render(request, 'main/member.html', data)
 
 
-def post(request, blog_title):
-    blogs = Blog.objects.filter(title=blog_title)
+def post(request, pk):
+    blogs = Blog.objects.filter(pk=pk)
     recomended_blogs = Blog.objects.order_by("?")[:3]
 
     data = {

@@ -35,11 +35,11 @@
         <div class="blog__list">
             {% for b in blogs %}
             <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
-                <a href="{% url 'post' b.title %}" class="service__img">
+                <a href="{% url 'post' b.id %}" class="service__img">
                     <img src="{{ b.photo.url }}" alt="service" class="img grey-filter">
                 </a>
                 <p class="blog__category lightgrey">{{ b.category }}</p>
-                <a href="{% url 'post' b.title %}" class="service__link link">{{ b.title }}</a>
+                <a href="{% url 'post' b.id %}" class="service__link link">{{ b.title }}</a>
             </div>
             {% endfor %}
         </div>
