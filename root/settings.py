@@ -99,9 +99,11 @@ DATABASES = {
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
             },
-        'NAME': 'ci79299_astramed',
-        'USER': 'ci79299_astramed',
-        'PASSWORD': '5WsZ4Ggp',
+        'NAME': 'ci79299_clinic',
+        # 'NAME': 'ci79299_astramed',
+        # 'USER': 'ci79299_astramed',
+        'USER': 'ci79299_clinic',
+        'PASSWORD': 'Aa6814930',
         'HOST': 'localhost',
     }
 }
