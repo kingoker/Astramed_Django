@@ -22,12 +22,12 @@ class Photos(models.Model):
 
 class Links(models.Model):
     Link_Type = [
-        ('Instagram', 'Инстаграм'),
-        ('Telegram', 'Телеграм'),
-        ('Facebook', 'Фейсбук'),
+        ('instagram', 'Инстаграм'),
+        ('telegram', 'Телеграм'),
+        ('facebook', 'Фейсбук'),
     ]
     links = models.CharField(max_length=50, verbose_name='Ссылки')
-    title = models.CharField(max_length=50, choices=Link_Type)
+    title = models.CharField(max_length=50, choices=Link_Type, verbose_name='Соц.Сеть')
 
     class Meta:
         verbose_name = 'Ссылка'
@@ -228,3 +228,19 @@ class Partners(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Contacs(models.Model):
+    address = models.CharField(max_length=255, verbose_name='Наш адрес')
+    worktime = models.CharField(max_length=255, verbose_name='Время работы')
+    mainnumber = models.CharField(max_length=255, verbose_name='Номер телефона №1')
+    secondnumber = models.CharField(max_length=255,default="", verbose_name='Номер телефона №2')
+    telegram = models.CharField(max_length=255, verbose_name='Телеграм/SMS')
+    email = models.CharField(max_length=255, verbose_name='Почта')
+
+    class Meta:
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'
+
+    def __str__(self):
+        return 'Контакт'

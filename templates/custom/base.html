@@ -45,27 +45,15 @@
         <div class="blog__social social blog__social-footer">
             <h3 class="social__title social__title-footer">Мы в социальных сетях</h3>
             <div class="social__list social__list-footer">
+                {% for link in links %}
                 <div class="social__item">
-                    <a href="https://www.instagram.com/astramed_clinic_uzbekistan/">
-                        <svg class="instagram__icon svg">
-                            <use xlink:href="#instagram"></use>
+                    <a href="{{link.links}}" >
+                        <svg class="instagram__icon svg whiteStroke">
+                            <use xlink:href="#{{link.title}}"></use>
                         </svg>
                     </a>
                 </div>
-                <div class="social__item">
-                    <a href="https://t.me/+998946651387" class="whiteStroke">
-                        <svg class="instagram__icon svg">
-                            <use xlink:href="#telegram"></use>
-                        </svg>
-                    </a>
-                </div>
-                <div class="social__item">
-                    <a href="https://www.facebook.com/astramedclinic2021/">
-                        <svg class="instagram__icon svg">
-                            <use xlink:href="#facebook"></use>
-                        </svg>
-                    </a>
-                </div>
+                {% endfor %}
             </div>
         </div>
         <div class="map__text footer__text">
@@ -78,9 +66,10 @@
                 <svg class="phone__icon svg phone__icon-footer">
                     <use xlink:href="#phone"></use>
                 </svg>
+                {% for contact in contacts %}
                 <div class="map__info_footer menu__item colorWhite">
-                    <a href="tel: 555 013 663" class="colorWhite">555 013 663</a> /
-                    <a href="tel: 555 023 663" class="colorWhite">555 023 663</a>
+                    <a href="tel: {{contact.mainnumber}}" class="colorWhite">{{contact.mainnumber}}</a> /
+                    <a href="tel: {{contact.secondnumber}}" class="colorWhite">{{contact.secondnumber}}</a>
                 </div>
             </div>
             <div class="map__info map__info-footer">
@@ -88,7 +77,7 @@
                     <use xlink:href="#telegram"></use>
                 </svg>
                 <div class="map__info_footer menu__item colorWhite">
-                    Telegram/sms: <a href="https://t.me/+998946651387" class="colorWhite">946 651 387</a>
+                    Telegram/sms: <a href="https://t.me/+998{{contact.telegram}}" class="colorWhite">{{contact.telegram}}</a>
                 </div>
             </div>
             <div class="map__info map__info-footer">
@@ -99,6 +88,7 @@
             </div>
         </div>
     </div>
+        {% endfor %}
     <div class="footer__copyright">
         <div class="copyrighy__container container">
             <p class="copyrighy__asyramed">© Astramed 2022</p>

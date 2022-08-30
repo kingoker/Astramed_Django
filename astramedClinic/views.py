@@ -4,12 +4,14 @@ import base64
 from email.message import EmailMessage
 
 import requests
+from django.core.mail import send_mail
 from django.shortcuts import render
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 from astramedClinic.config import gmail_send_message
-from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainModel, Info, Applications, Jobs, Partners, PriceList
+from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainModel, Info, Applications, Jobs, \
+    Partners, PriceList, Links, Contacs
 
 
 def main(request):
@@ -24,6 +26,15 @@ def main(request):
         'mainObjects': mainObjects,
         'reviews': reviews
     }
+
+    send_mail(
+        'Subject here',
+        'Here is the message.',
+        'temp@astramed-clinic.com',
+        ['bear.lvvb@mail.ru'],
+        fail_silently=False,
+    )
+
     return render(request, 'main/index.html', data)
 
 
@@ -51,7 +62,14 @@ def blog(request):
 
 
 def contacts(request):
-    return render(request, 'main/contacts.html')
+    contacts = Contacs.objects.all()
+    links = Links.objects.all()
+    print(links.values())
+    data = {
+        'contacts': contacts,
+        'links': links,
+    }
+    return render(request, 'main/contacts.html', data)
 
 
 def member(request, employee_name):
@@ -267,5 +285,13 @@ def priceList(request):
     data = {
         'price': price,
     }
-    print(price.values('priceFile'))
     return render(request, 'main/priceList.html', data)
+
+def base(request):
+    contacts = Contacs.objects.all()
+    links = Links.objects.all()
+    data = {
+        'contacts': contacts,
+        'links': links,
+    }
+    return data

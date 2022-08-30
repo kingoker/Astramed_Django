@@ -18,7 +18,18 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '*',
     'astramed.kingdesignn.ru',
+    'smtp.timeweb.ru',
 ]
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.timeweb.ru'
+EMAIL_HOST_USER = 'temp@astramed-clinic.com'
+EMAIL_HOST_PASSWORD = '9Bbj3PVg'
+
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
 
 
 # Application definition
@@ -37,6 +48,8 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
 ]
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -46,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'root.urls'
 
@@ -62,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'astramedClinic.views.base'
             ],
         },
     },
@@ -71,12 +86,12 @@ WSGI_APPLICATION = 'root.wsgi.application'
 
 
 #Local SqLite
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # Postgres
@@ -93,18 +108,18 @@ WSGI_APPLICATION = 'root.wsgi.application'
 
 
 #Servers MySQL
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            },
-        'NAME': 'ci79299_astramed',
-        'USER': 'ci79299_astramed',
-        'PASSWORD': 'Aa6814930',
-        'HOST': 'localhost',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#             },
+#         'NAME': 'ci79299_astramed',
+#         'USER': 'ci79299_astramed',
+#         'PASSWORD': 'Aa6814930',
+#         'HOST': 'localhost',
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
