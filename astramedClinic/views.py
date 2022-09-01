@@ -1,5 +1,5 @@
 from __future__ import print_function
-
+import random
 import base64
 from email.message import EmailMessage
 
@@ -16,7 +16,8 @@ from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServic
 
 def main(request):
     services = Services.objects.all()[:6]
-    blog = Blog.objects.order_by("?")[:3]
+    items = list(Blog.objects.all())
+    blog = random.sample(items, 3)
     mainObjects = MainModel.objects.all()
     reviews = Reviews.objects.filter(published=True)
     print(reviews)
@@ -27,20 +28,21 @@ def main(request):
         'reviews': reviews
     }
 
-    send_mail(
-        'Subject here',
-        'Here is the message.',
-        'temp@astramed-clinic.com',
-        ['bear.lvvb@mail.ru'],
-        fail_silently=False,
-    )
+    # Код для отправки емейла
+    # send_mail(
+    #     'Subject here',
+    #     'Here is the message.',
+    #     'temp@astramed-clinic.com',
+    #     ['bear.lvvb@mail.ru'],
+    #     fail_silently=False,
+    # )
 
     return render(request, 'main/index.html', data)
 
 
 def about(request):
-    services = Services.objects.order_by("?")[:3]
-
+    items = list(Services.objects.all())
+    services = random.sample(items, 3)
     data = {
         'services': services,
     }
@@ -74,15 +76,18 @@ def contacts(request):
 
 def member(request, employee_name):
     employes = Employee.objects.filter(name=employee_name)
+    review_list = Reviews.objects.filter(description__iregex=rf'({employee_name})')
     data = {
-        'employes': employes
+        'employes': employes,
+        'review_list': review_list
     }
     return render(request, 'main/member.html', data)
 
 
 def post(request, pk):
     blogs = Blog.objects.filter(pk=pk)
-    recomended_blogs = Blog.objects.order_by("?")[:3]
+    items = list(Blog.objects.all())
+    recomended_blogs = random.sample(items, 3)
 
     data = {
         'blogs': blogs,
@@ -93,7 +98,8 @@ def post(request, pk):
 
 def procedure(request, pk):
     services = UnderServices.objects.filter(id=pk)
-    recomended_services = Services.objects.order_by("?")[:3]
+    items = list(Services.objects.all())
+    recomended_services = random.sample(items, 3)
     data = {
         'services': services,
         'recomended_services': recomended_services,
@@ -139,8 +145,8 @@ def order(request, pk):
 
 def review(request):
     reviews = Reviews.objects.filter(published=True)
-    services = Services.objects.order_by("?")[:3]
-
+    items = list(Services.objects.all())
+    services = random.sample(items, 3)
     data = {
         'services': services,
         'reviews': reviews
@@ -160,8 +166,8 @@ def services(request):
 
 def team(request):
     employes = Employee.objects.all()
-    recomended_blogs = Blog.objects.order_by("?")[:3]
-
+    items = list(Blog.objects.all())
+    recomended_blogs = random.sample(items, 3)
     data = {
         'employes': employes,
         'recomended_blogs': recomended_blogs,
@@ -171,7 +177,8 @@ def team(request):
 
 def therapy(request, pk):
     services = Services.objects.filter(id=pk)
-    recomended_services = Services.objects.order_by("?")[:3]
+    items = list(Services.objects.all())
+    recomended_services = random.sample(items, 3)
     underServices = UnderServices.objects.filter(maintype_id=pk)
     data = {
         'services': services,
@@ -295,3 +302,15 @@ def base(request):
         'links': links,
     }
     return data
+
+def search(request):
+    if request.method == "POST":
+        print(request.POST)
+        searched = request.POST['searched']
+        blog_list = Blog.objects.filter(title__iregex=rf'({searched})')
+        print(blog_list)
+        services_list = Services.objects.filter(type__iregex=rf'({searched})')
+        underservices_list = UnderServices.objects.filter(undertype__iregex=rf'({searched})')
+        return render(request, 'main/result.html', {'blog_list': blog_list, 'services_list': services_list, 'underservices_list': underservices_list})
+    else:
+        return render(request, 'main/result.html', {})

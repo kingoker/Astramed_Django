@@ -25,4 +25,5 @@ urlpatterns = [
     path('cooperation/', views.cooperation, name='cooperation'),
     path('priceList/', views.priceList, name='priceList'),
     path('jobOffer/<job>', views.offer, name='jobOffer'),
+    path('result/', views.search, name='search'),
 ]

@@ -29,9 +29,10 @@
                     <svg class="search__icon svg">
                         <use xlink:href="#search"></use>
                     </svg>
-                    <div class="search__input">
-                        <input type="text" placeholder="Поиск..." id="mysearch">
-                    </div>
+                    <form action="{% url 'search' %}" class="search__input" method="post">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Поиск..." id="mysearch" name="searched">
+                    </form>
                 </div>
             </li>
 <!--            <li class="menu__icon menu__profile">-->

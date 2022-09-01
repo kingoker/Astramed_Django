@@ -47,14 +47,12 @@
         </form>
         <div class="member__review">
             <h4 class="review__subtitle">Все отзывы</h4>
+            {% for review in review_list %}
             <div class="review animate__animated animate__fadeInRight animate__slow wow">
-                <h5 class="review__text bolder-700 colorWhite">Нуриддинова Нодира</h5>
-                <p class="review__text">Мы верим, что забота о каждом из вас поможет сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
+                <h5 class="review__text bolder-700 colorWhite">{{review.name}}</h5>
+                <p class="review__text">{{review.description}}</p>
             </div>
-            <div class="review animate__animated animate__fadeInRight animate__slow wow">
-                <h5 class="review__text bolder-700 colorWhite">Нуриддинова Нодира</h5>
-                <p class="review__text">Мы верим, что забота о каждом из вас поможет сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

@@ -1,0 +1,57 @@
+{% extends 'custom/base.html' %}
+{% load static %}
+{% block title %}Блог{% endblock %}
+
+{% block content %}
+<header class="header">
+    <div class="header__container container">
+
+        <!-- Тут подключаю navbar из папки Cutsom-->
+        {% include 'custom/navbar.html' %}
+
+    </div>
+</header>
+
+<section class="blog-white marbot-150">
+    <div class="blog__container container">
+        <div class="blog__list">
+            <h1>Блогов Найдено</h1>
+            {% for b in blog_list %}
+            <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
+                <a href="{% url 'post' b.id %}" class="service__img">
+                    <img src="{{ b.photo.url }}" alt="service" class="img grey-filter">
+                </a>
+                <p class="blog__category lightgrey">{{ b.category }}</p>
+                <a href="{% url 'post' b.id %}" class="service__link link">{{ b.title }}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<section class="blog blog-white marbot-150">
+        <div class="blog__container container">
+            <div class="blog__list">
+                <h1>Найдено услуг</h1>
+                {% for service in services_list %}
+                <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
+                    <a href="{% url 'therapy' service.pk %}" class="service__img">
+                        <img src="{{ service.photo.url }}" alt="service" class="img grey-filter">
+                    </a>
+                    <a href="{% url 'therapy' service.pk %}" class="service__link link">{{service.type}}</a>
+                </div>
+                {%endfor%}
+                {% for underservice in underservices_list %}
+                    <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
+                        <a href="{% url 'procedure' underservice.id %}" class="service__img">
+                            <img src="{{ underservice.photo.url }}" alt="service" class="img grey-filter">
+                        </a>
+                        <a href="{% url 'procedure' underservice.id %}" class="service__link link">{{underservice.undertype}}</a>
+                    </div>
+                {%endfor%}
+            </div>
+            <a href="{% url 'priceList' %}" class="link priceList__link animate__animated animate__fadeInUp animate__slow wow">Прайс лист</a>
+        </div>
+</section>
+{% endblock %}
