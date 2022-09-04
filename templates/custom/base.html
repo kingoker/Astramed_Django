@@ -18,8 +18,8 @@
 </head>
 
 <body class="body">
-
     {% block content %}{% endblock %}
+
     <footer class="footer">
     <div class="footer__container container">
         <nav class="footer__nav">
@@ -62,11 +62,12 @@
                     <use xlink:href="#location"></use>
                 </svg>
                 улица Зохидова, 8Г, <br> Яшнабадский район, Ташкент</div>
+
+            {% for contact in contacts %}
             <div class="map__info map__info-footer">
                 <svg class="phone__icon svg phone__icon-footer">
                     <use xlink:href="#phone"></use>
                 </svg>
-                {% for contact in contacts %}
                 <div class="map__info_footer menu__item colorWhite">
                     <a href="tel: {{contact.mainnumber}}" class="colorWhite">{{contact.mainnumber}}</a> /
                     <a href="tel: {{contact.secondnumber}}" class="colorWhite">{{contact.secondnumber}}</a>
@@ -86,9 +87,9 @@
                 </svg>
                 Пн-Сб: 9:00-21:00
             </div>
+           {% endfor %}
         </div>
     </div>
-        {% endfor %}
     <div class="footer__copyright">
         <div class="copyrighy__container container">
             <p class="copyrighy__asyramed">© Astramed 2022</p>
