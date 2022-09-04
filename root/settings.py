@@ -86,40 +86,27 @@ WSGI_APPLICATION = 'root.wsgi.application'
 
 
 #Local SqLite
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
-# Postgres
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'default_db',
-#         'USER': 'gen_user',
-#         'PASSWORD': 'l05roygla6',
-#         'HOST': '188.225.47.26',
-#         'PORT': '5432',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
 
 
 #Servers MySQL
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'OPTIONS': {
-#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-#             },
-#         'NAME': 'ci79299_astramed',
-#         'USER': 'ci79299_astramed',
-#         'PASSWORD': 'Aa6814930',
-#         'HOST': 'localhost',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            },
+        'NAME': 'ci79299_astramed',
+        'USER': 'ci79299_astramed',
+        'PASSWORD': 'Aa6814930',
+        'HOST': 'localhost',
+    }
+}
 
 
 AUTH_PASSWORD_VALIDATORS = [
