@@ -3,19 +3,20 @@
 {% block title %}— About{% endblock %}
 
 {% block content %}
+{% for mainPage in mainPage %}
 <header class="header header-half">
     <div class="header__container container">
     {% include 'custom/navbar.html' %}
          <div class="header__title aboutHeader__title">
             <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
-            <h1 class="title__text animate__animated animate__fadeInRight animate__slow wow">О клинике</h1>
+            <h1 class="title__text animate__animated animate__fadeInRight animate__slow wow">{{ mainPage.AboutPageTitle }} О клинике</h1>
         </div>
     </div>
 </header>
 
 <section class="aboutPhilosophy">
     <div class="aboutPhilosophy__container container">
-        <h2 class="aboutPhilosophy__header">Наша философия</h2>
+        <h2 class="aboutPhilosophy__header marbot-50">Наша философия</h2>
         <div class="aboutPhilosophy__list">
             <div class="aboutPhilosophy__item animate__animated animate__fadeInUp animate__slow wow">
                 <div class="aboutPhilosophy__img">
@@ -136,8 +137,8 @@
 <section class="blog blog-white">
     <div class="blog__container container">
         <div class="blog__text AboutBlog__text animate__animated animate__fadeInLeft animate__slow wow">
-            <a href="services.html" class="blog__title link">Наши услуги</a>
-            <p class="blog__subtitle">Услуги в нашем блоге мы публикуем последние новости, полезные статьи и просто рассказываем о жизни клиники =)</p>
+            <a href="services.html" class="blog__title link">Наши услуги {{ mainPage.AboutPageServicesTitle }}</a>
+            <p class="blog__subtitle">{{ mainPage.AboutPageServicesSubtitle }} Услуги в нашем блоге мы публикуем последние новости, полезные статьи и просто рассказываем о жизни клиники =)</p>
         </div>
         <div class="blog__list animate__animated animate__fadeInUp animate__slow wow">
             {% for service in services %}
@@ -200,4 +201,6 @@
         </div>
     </div>
 </section>
+
+{% endfor %}
 {% endblock %}

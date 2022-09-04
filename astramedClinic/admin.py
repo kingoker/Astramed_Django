@@ -2,8 +2,8 @@ from django.contrib import admin
 from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
-from astramedClinic.models import Photos, Links, Services, Employee, Reviews, Blog, Users, MainModel, UnderServices, \
-    CategoryBlog, Info, Applications, PriceList, Jobs, Partners, Contacs
+from astramedClinic.models import Links, Services, Employee, Reviews, Blog, MainPage, UnderServices, \
+    CategoryBlog, Info, Applications, PriceList, Jobs, Partners, Contacs, AboutPage, CooperationPage
 
 
 class BlogAdminForm(forms.ModelForm):
@@ -55,14 +55,14 @@ class InfoAdmin(admin.ModelAdmin):
     form = AddInfoAdminForm
 
 
-admin.site.register(Photos)
 admin.site.register(Links)
+admin.site.register(CooperationPage)
+admin.site.register(AboutPage)
 admin.site.register(Services, ServicesAdmin)
 admin.site.register(Employee)
 admin.site.register(Reviews)
-admin.site.register(Users)
 admin.site.register(Blog, PostAdmin)
-admin.site.register(MainModel)
+admin.site.register(MainPage)
 admin.site.register(UnderServices, UnderServicesAdmin)
 admin.site.register(CategoryBlog)
 admin.site.register(Info, InfoAdmin)

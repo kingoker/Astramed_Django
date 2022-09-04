@@ -1,23 +1,6 @@
 from random import choices
 
-from django.contrib.auth.models import User
 from django.db import models
-
-
-class Photos(models.Model):
-    Photo_Type = [
-        ('About', 'О нас'),
-        ('Main', 'Главная')
-    ]
-    photo = models.ImageField(upload_to='img/', verbose_name='Фото', max_length=255)
-    title = models.CharField(max_length=50, choices=Photo_Type)
-
-    class Meta:
-        verbose_name = 'Фотография'
-        verbose_name_plural = 'Фотографии'
-
-    def __str__(self):
-        return self.title
 
 
 class Links(models.Model):
@@ -96,17 +79,6 @@ class Reviews(models.Model):
         return self.name
 
 
-class Users(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = 'Пользователь'
-        verbose_name_plural = 'Пользователи'
-
-    def __str__(self):
-        return self.name
-
-
 class CategoryBlog(models.Model):
     title = models.CharField(max_length=255, default='категория', verbose_name='Название')
 
@@ -136,7 +108,7 @@ class Blog(models.Model):
         return self.title
 
 
-class MainModel(models.Model):
+class MainPage(models.Model):
     philosophyTitle = models.CharField(max_length=255, verbose_name='Философия Заголовок')
     philosophy = models.CharField(max_length=255, verbose_name='Философия подзаголовок')
     philosophyPhoto = models.ImageField(upload_to='main/', verbose_name='Философия Фото', max_length=255)
@@ -162,11 +134,37 @@ class MainModel(models.Model):
     contactsTitle = models.CharField(max_length=255, verbose_name='Контакты Заголовок')
 
     class Meta:
-        verbose_name = 'Главная'
-        verbose_name_plural = 'Главная'
+        verbose_name = 'Страница Главная'
+        verbose_name_plural = 'Страница Главная'
 
     def __str__(self):
-        return "Главная"
+        return "Страница Главная"
+
+
+class AboutPage(models.Model):
+    AboutPageTitle = models.CharField(max_length=255, verbose_name='Шапка')
+    AboutPageServicesTitle = models.CharField(max_length=255, verbose_name='Заголовок услуг')
+    AboutPageServicesSubtitle = models.CharField(max_length=255, verbose_name='Подзаголовок услуг')
+
+    class Meta:
+        verbose_name = 'Страница о нас'
+        verbose_name_plural = 'Страница о нас'
+
+    def __str__(self):
+        return "Страница о нас"
+
+
+class CooperationPage(models.Model):
+    CooperationTitle = models.CharField(max_length=255, verbose_name='Шапка')
+    CooperationPageTitle = models.CharField(max_length=255, verbose_name='Заголовок')
+    CooperationPageSubtitle = models.CharField(max_length=255, verbose_name='Подзаголовок')
+
+    class Meta:
+        verbose_name = 'Страница сотрудничества'
+        verbose_name_plural = 'Страница сотрудничества'
+
+    def __str__(self):
+        return "Страница сотрудничества"
 
 
 class Info(models.Model):
@@ -201,7 +199,10 @@ class PriceList(models.Model):
 
     class Meta:
         verbose_name = 'Прайс Лист'
-        verbose_name_plural = 'Прайс Листы'
+        verbose_name_plural = 'Прайс Лист'
+
+    def __str__(self):
+        return 'Цены'
 
 
 class Jobs(models.Model):
@@ -218,9 +219,14 @@ class Jobs(models.Model):
 
 
 class Partners(models.Model):
+    color = [
+        ('partner__orange', 'Оранжевый'),
+        ('partner__yellow', 'Жёлтый'),
+        ('partner__grey', 'Серый'),
+    ]
     title = models.CharField(max_length=255, verbose_name='Название партнера')
-    photo = models.ImageField(upload_to='partners/', verbose_name='Фото', max_length=255)
-    url = models.CharField(max_length=255,verbose_name='Ссылка')
+    url = models.CharField(max_length=255, verbose_name='Ссылка', default="#")
+    color = models.CharField(max_length=50, choices=color, verbose_name='Цвет', default=color[2])
 
     class Meta:
         verbose_name = 'Партнер'
@@ -234,9 +240,11 @@ class Contacs(models.Model):
     address = models.CharField(max_length=255, verbose_name='Наш адрес')
     worktime = models.CharField(max_length=255, verbose_name='Время работы')
     mainnumber = models.CharField(max_length=255, verbose_name='Номер телефона №1')
-    secondnumber = models.CharField(max_length=255,default="", verbose_name='Номер телефона №2')
+    secondnumber = models.CharField(max_length=255, default="", verbose_name='Номер телефона №2')
     telegram = models.CharField(max_length=255, verbose_name='Телеграм/SMS')
     email = models.CharField(max_length=255, verbose_name='Почта')
+    transport = models.TextField(verbose_name='Общественный транспорт', default="")
+    parking = models.TextField(verbose_name='Парковка', default="")
 
     class Meta:
         verbose_name = 'Контакт'

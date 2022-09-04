@@ -3,19 +3,24 @@
 {% block title %}Блог{% endblock %}
 
 {% block content %}
-<header class="header">
+<header class="header header-half">
     <div class="header__container container">
 
         <!-- Тут подключаю navbar из папки Cutsom-->
         {% include 'custom/navbar.html' %}
 
+        <div class="header__title aboutHeader__title">
+            <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
+            <h2 class="title__text animate__animated animate__fadeInRight animate__slow wow">Результаты поиска</h2>
+        </div>
     </div>
 </header>
 
+
 <section class="blog-white marbot-150">
     <div class="blog__container container">
+        <h1 class="martop-100">Блогов Найдено ({{ blog_list.count }})</h1>
         <div class="blog__list">
-            <h1>Блогов Найдено</h1>
             {% for b in blog_list %}
             <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
                 <a href="{% url 'post' b.id %}" class="service__img">
@@ -32,8 +37,8 @@
 
 <section class="blog blog-white marbot-150">
         <div class="blog__container container">
+            <h1 class="martop-100">Найдено услуг ({{ services_list.count|add:underservices_list.count}})</h1>
             <div class="blog__list">
-                <h1>Найдено услуг</h1>
                 {% for service in services_list %}
                 <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
                     <a href="{% url 'therapy' service.pk %}" class="service__img">
@@ -41,6 +46,7 @@
                     </a>
                     <a href="{% url 'therapy' service.pk %}" class="service__link link">{{service.type}}</a>
                 </div>
+
                 {%endfor%}
                 {% for underservice in underservices_list %}
                     <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">

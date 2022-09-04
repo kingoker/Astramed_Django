@@ -10,15 +10,14 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 from astramedClinic.config import gmail_send_message
-from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainModel, Info, Applications, Jobs, \
-    Partners, PriceList, Links, Contacs
+from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainPage, Info, Applications, Jobs, Partners, PriceList, Links, Contacs, AboutPage, CooperationPage
 
 
 def main(request):
     services = Services.objects.all()[:6]
     items = list(Blog.objects.all())
     blog = random.sample(items, 3)
-    mainObjects = MainModel.objects.all()
+    mainObjects = MainPage.objects.all()
     reviews = Reviews.objects.filter(published=True)
     print(reviews)
     data = {
@@ -43,8 +42,13 @@ def main(request):
 def about(request):
     items = list(Services.objects.all())
     services = random.sample(items, 3)
+    aboutPage = AboutPage.objects.all()
+    mainPage = MainPage.objects.all()
+
     data = {
         'services': services,
+        'aboutPage': aboutPage,
+        'mainPage': mainPage,
     }
     return render(request, 'main/about.html', data)
 
@@ -209,36 +213,6 @@ def thanks(request):
                 'text': text
             })
 
-            # creds = gmail_send_message()
-            # try:
-            #     service = build('gmail', 'v1', credentials=creds)
-            #     message = EmailMessage()
-            #
-            #     message.set_content(f'ФИО: {name}\n' \
-            #                         f'Дата рождения: {birth}\n' \
-            #                         f'Адрес: {address}\n' \
-            #                         f'Терапия: {therapy}\n' \
-            #                         f'Номер: {number}')
-            #
-            #     message['To'] = 'bear.lvb@gmail.com'
-            #     message['From'] = 'DekontFarmBot@gmail.com'
-            #     message['Subject'] = 'Automated draft'
-            #
-            #     # encoded message
-            #
-            #     encoded_message = base64.urlsafe_b64encode(message.as_bytes()) \
-            #         .decode()
-            #     create_message = {
-            #         'raw': encoded_message
-            #     }
-            #     # pylint: disable=E1101
-            #     send_message = (service.users().messages().send
-            #                     (userId="me", body=create_message).execute())
-            #     print(F'Message Id: {send_message["id"]}')
-            # except HttpError as error:
-            #     print(F'An error occurred: {error}')
-            #     send_message = None
-
         if 'review' in path:
             name = request.POST.get('name')
             description = request.POST.get('description')
@@ -272,7 +246,10 @@ def info(request, str):
 def cooperation(request):
     jobs = Jobs.objects.all()
     partners = Partners.objects.all()
+    cooperationPage = CooperationPage.objects.all()
+
     data = {
+        'cooperationPage': cooperationPage,
         'jobs': jobs,
         'partners': partners
     }
@@ -294,6 +271,7 @@ def priceList(request):
     }
     return render(request, 'main/priceList.html', data)
 
+
 def base(request):
     contacts = Contacs.objects.all()
     links = Links.objects.all()
@@ -302,6 +280,7 @@ def base(request):
         'links': links,
     }
     return data
+
 
 def search(request):
     if request.method == "POST":

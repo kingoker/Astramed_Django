@@ -3,6 +3,8 @@
 {% block title %}{% endblock %}
 
 {% block content %}
+{% for cooperationPage in cooperationPage %}
+
 <header class="header header-half">
     <div class="header__container container">
 
@@ -11,7 +13,7 @@
 
         <div class="header__title aboutHeader__title">
             <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
-            <h2 class="title__text animate__animated animate__fadeInRight animate__slow wow">Страница сотрудничества</h2>
+            <h2 class="title__text animate__animated animate__fadeInRight animate__slow wow">{{ cooperationPage.CooperationTitle }}</h2>
         </div>
     </div>
 </header>
@@ -21,14 +23,12 @@
 <section class="blog blog-white marbot-100">
         <div class="blog__container container">
             <div class="AboutBlog__text">
-                <h2 class="aboutPhilosophy__header martop-100 animate__animated animate__fadeInLeft animate__slow wow">Партнёры</h2>
-                <p class="blog__subtitle marbot-50 animate__animated animate__fadeInLeft animate__slow wow">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio incidunt excepturi explicabo velit repellat nihil modi et, saepe enim animi.</p>
+                <h2 class="aboutPhilosophy__header martop-100 animate__animated animate__fadeInLeft animate__slow wow">{{ cooperationPage.CooperationPageTitle }}</h2>
+                <p class="blog__subtitle marbot-50 animate__animated animate__fadeInLeft animate__slow wow">{{ cooperationPage.CooperationSubtitle }}</p>
                 <div class="partners__list">
                     {% for partner in partners %}
-                    <div class="partners__item">
-                        <a href="{{ partner.url }}">
-                            <img src="{{ partner.photo.url }}" alt="{{ partner.title }}" class="img">
-                        </a>
+                    <div class="partners__item {{ partner.color }}">
+                        <a href="{{ partner.url }}"> {{ partner.title }} </a>
                     </div>
                     {%endfor%}
                 </div>
@@ -53,4 +53,6 @@
             </div>
         </div>
     </section>
+
+{% endfor %}
 {% endblock %}

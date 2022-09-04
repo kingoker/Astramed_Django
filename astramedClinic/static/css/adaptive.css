@@ -349,9 +349,9 @@
     .aboutPhilosophy__list {
         grid-template-columns: 1fr;
     }
-    .title__text{
-        font-size: 55px;
-        line-height: 60px;
+    .title__text {
+        font-size: 30px;
+        line-height: 35px;
     }
     .service__bottom_link {
         font-size: 28px;

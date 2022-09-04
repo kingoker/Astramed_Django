@@ -44,7 +44,7 @@
                     {% for link in links %}
                     <div class="social__item">
                         <a href="{{link.links}}">
-                            <svg class="  phone__icon svg darkGreyFill">
+                            <svg class="phone__icon svg darkGreyFill">
                                  <use xlink:href="#{{link.title}}"></use>
                             </svg>
                         </a>
@@ -54,11 +54,11 @@
             </div>
             <div class="blog__item fullRow animate__animated animate__fadeInUp animate__slow wow">
                 <h5 class="blog__item-subtitle">Общественный транспорт</h5>
-                <p class="contacts__text">До клиники можно доехать на рейсовых автобусах № 15, 26, 106, на маршрутном такси № 47. Выйти на остановке «Акдарьинский проезд». Ориентир: улица Джаркурганская, ресторан Obi-Hayot, КВД-8. От главной дороги пройти в сторону Кожно-венерологического Диспансера № 8, 250 метров. Клиника находиться за КВД.</p>
+                <p class="contacts__text">{{ contact.transport }}</p>
             </div>
             <div class="blog__item fullRow animate__animated animate__fadeInUp animate__slow wow">
                 <h5 class="blog__item-subtitle">Парковка</h5>
-                <p class="contacts__text">Имеется открытая бесплатная парковка слева от входа в клинику.</p>
+                <p class="contacts__text">{{ contact.parking }}</p>
             </div>
         </div>
     </div>
