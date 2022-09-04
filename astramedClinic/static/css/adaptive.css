@@ -155,63 +155,6 @@
         display: grid;
         grid-template-columns: 1fr;
     }
-}
-@media (max-width: 859px){
-    .search{
-        right: 230px;
-    }
-    .philosiphy__container {
-        grid-template-columns: 1fr;
-        grid-template-rows: 0.5fr 1fr;
-    }
-    .service__img {
-        min-width: auto;
-    }
-    .blog__list {
-        gap: 50px;
-    }
-    .service {
-        margin-top: -200px;
-    }    
-    .footer__container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 50px;
-    }
-    .service__top {
-        gap: 0px;
-    }
-    .header__info {
-        padding-bottom: 550px;
-    }
-    .search{
-        position: relative;
-        right: 0px;
-        top: 0px;
-        height: 42px;
-    }
-    .menu__icons{
-        margin-top: 30px;
-    }
-    .contacts__list{
-        grid-column:none;
-        gap: 50px 50px;
-    }
-    .contacts__text{
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 27px;
-    }
-    .contacts__text-bigger{
-        font-size: 20px;
-    }
-    
-    .procedure__link{
-        width: 700px;
-    }
-    .post__container{
-        grid-template-columns: 1fr;
-    }
     /* Адаптивное меню */
     .menu__burger{
         display: block;
@@ -278,6 +221,63 @@
     .menu__burger.active::after{
         bottom: 50%;
         transform: rotate(45deg) translate(0px, 50%);
+    }
+}
+@media (max-width: 859px){
+    .search{
+        right: 230px;
+    }
+    .philosiphy__container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr 1fr;
+    }
+    .service__img {
+        min-width: auto;
+    }
+    .blog__list {
+        gap: 50px;
+    }
+    .service {
+        margin-top: -200px;
+    }    
+    .footer__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+    }
+    .service__top {
+        gap: 0px;
+    }
+    .header__info {
+        padding-bottom: 550px;
+    }
+    .search{
+        position: relative;
+        right: 0px;
+        top: 0px;
+        height: 42px;
+    }
+    .menu__icons{
+        margin-top: 30px;
+    }
+    .contacts__list{
+        grid-column:none;
+        gap: 50px 50px;
+    }
+    .contacts__text{
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 27px;
+    }
+    .contacts__text-bigger{
+        font-size: 20px;
+    }
+    
+    .procedure__link{
+        width: 700px;
+    }
+    .post__container{
+        grid-template-columns: 1fr;
     }
 }
 @media (max-width: 767px){
