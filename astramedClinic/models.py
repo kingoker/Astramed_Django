@@ -1,5 +1,4 @@
 from random import choices
-
 from django.db import models
 
 
@@ -26,6 +25,7 @@ class Services(models.Model):
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
     title = models.TextField(verbose_name='Описание')
     buttonname = models.CharField(max_length=255, default='Записаться на приём', verbose_name='Название кнопки')
+    published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:
         verbose_name = 'Терапия'
@@ -42,6 +42,7 @@ class UnderServices(models.Model):
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
     title = models.TextField(verbose_name='Описание')
     buttonname = models.CharField(max_length=255, default='Записаться на приём', verbose_name='Название кнопки')
+    published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:
         verbose_name = 'Процедура'
@@ -57,6 +58,7 @@ class Employee(models.Model):
     title = models.CharField(max_length=255, verbose_name='Должность')
     quote = models.CharField(max_length=255, verbose_name='Цитата')
     description = models.TextField(verbose_name='Описание')
+    published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:
         verbose_name = 'Сотрудник'
@@ -170,6 +172,7 @@ class CooperationPage(models.Model):
 class Info(models.Model):
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     description = models.TextField(verbose_name='Описание')
+    published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:
         verbose_name = 'Дополнительная информация'
@@ -180,11 +183,19 @@ class Info(models.Model):
 
 
 class Applications(models.Model):
+    statuses = [
+        ('new', 'Новая'),
+        ('process', 'В процессе'),
+        ('done', 'Завершён'),
+    ]
+    status = models.CharField(max_length=50, choices=statuses, verbose_name='Статус', default=statuses[0])
     name = models.CharField(max_length=255, verbose_name='ФИО')
     birth = models.CharField(max_length=255, verbose_name='Год рождения')
     address = models.CharField(max_length=255, verbose_name='Адрес')
     therapy = models.CharField(max_length=255, default='Массаж', verbose_name='Терапия')
-    number = models.CharField(max_length=255, verbose_name='number')
+    number = models.CharField(max_length=255, verbose_name='Телефон')
+    date = models.DateTimeField(auto_now_add=True, verbose_name='Дата заявки')
+    finish_date = models.DateTimeField(verbose_name='Дата закрытия заявки', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Заявка'
@@ -209,6 +220,7 @@ class Jobs(models.Model):
     title = models.CharField(max_length=255, verbose_name='Должность')
     photo = models.ImageField(upload_to='jobs/', verbose_name='Фото', max_length=255)
     description = models.TextField(verbose_name='Описание')
+    published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:
         verbose_name = 'Вакансия'
@@ -227,6 +239,7 @@ class Partners(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название партнера')
     url = models.CharField(max_length=255, verbose_name='Ссылка', default="#")
     color = models.CharField(max_length=50, choices=color, verbose_name='Цвет', default=color[2])
+    published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:
         verbose_name = 'Партнер'
