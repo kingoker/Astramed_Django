@@ -6,6 +6,24 @@ from astramedClinic.models import Links, Services, Employee, Reviews, Blog, Main
     CategoryBlog, Info, Applications, PriceList, Jobs, Partners, Contacs, AboutPage, CooperationPage
 
 
+# Просто регистрация модели
+class PostAdmin(admin.ModelAdmin):
+    form = BlogAdminForm
+
+
+class ServicesAdmin(admin.ModelAdmin):
+    form = ServicesAdminForm
+
+
+class UnderServicesAdmin(admin.ModelAdmin):
+    form = UnderServicesAdminForm
+
+
+class InfoAdmin(admin.ModelAdmin):
+    form = AddInfoAdminForm
+
+
+# CKeditor
 class BlogAdminForm(forms.ModelForm):
     description = forms.CharField(label='Текст', widget=CKEditorUploadingWidget())
     links = forms.CharField(label='Источники', widget=CKEditorUploadingWidget())
@@ -23,14 +41,6 @@ class ServicesAdminForm(forms.ModelForm):
         fields = '__all__'
 
 
-class PostAdmin(admin.ModelAdmin):
-    form = BlogAdminForm
-
-
-class ServicesAdmin(admin.ModelAdmin):
-    form = ServicesAdminForm
-
-
 class UnderServicesAdminForm(forms.ModelForm):
     title = forms.CharField(label='Описание', widget=CKEditorUploadingWidget())
 
@@ -39,20 +49,12 @@ class UnderServicesAdminForm(forms.ModelForm):
         fields = '__all__'
 
 
-class UnderServicesAdmin(admin.ModelAdmin):
-    form = UnderServicesAdminForm
-
-
 class AddInfoAdminForm(forms.ModelForm):
     description = forms.CharField(label='Описание', widget=CKEditorUploadingWidget())
 
     class Meta:
         model = Info
         fields = '__all__'
-
-
-class InfoAdmin(admin.ModelAdmin):
-    form = AddInfoAdminForm
 
 
 admin.site.register(Links)
