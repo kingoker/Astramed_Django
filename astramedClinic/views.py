@@ -41,6 +41,7 @@ def main(request):
 
 def about(request):
     items = list(Services.objects.all())
+    reviews = Reviews.objects.filter(published=True)
     services = random.sample(items, 3)
     aboutPage = AboutPage.objects.all()
     mainPage = MainPage.objects.all()
@@ -49,6 +50,7 @@ def about(request):
         'services': services,
         'aboutPage': aboutPage,
         'mainPage': mainPage,
+        'reviews': reviews
     }
     return render(request, 'main/about.html', data)
 

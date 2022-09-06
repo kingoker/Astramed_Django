@@ -83,7 +83,7 @@
             <form action="{% url 'thanks' %}" autocomplete="off" class="form" method="POST">
                 {% csrf_token %}
             <input type="text" class="form__input" name="name" placeholder="Ваше имя">
-            <input type="text" class="form__input" name="phone" placeholder="Ваш номер телефона">
+            <input type="tel" class="form__input" name="phone" placeholder="Ваш номер телефона">
             <button type="submit" class="form__button link">Отправить</button>
             </form>
         </div>

@@ -81,41 +81,14 @@
         <div class="vlog3__carusel">
             <div class="swiper carusel__conteiner feedback__list">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="vlog3__slide animate__animated animate__fadeInUp animate__slow wow">
-                            <h3 class="colorWhite feedback__name">Александра Митрошина</h3>
-                            <p class="feedback__feedback lightgrey">Мы верим, что забота о каждом из вас поможет
-                                сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
+                    {% for review in reviews %}
+                        <div class="swiper-slide">
+                            <div class="vlog3__slide animate__animated animate__fadeInUp animate__slow wow">
+                                <h3 class="colorWhite feedback__name">{{ review.name }}</h3>
+                                <p class="feedback__feedback lightgrey">{{ review.description }}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="vlog3__slide animate__animated animate__fadeInUp animate__slow wow">
-                            <h3 class="colorWhite feedback__name">Владимир Яловенка</h3>
-                            <p class="feedback__feedback lightgrey">Мы верим, что забота о каждом из вас поможет
-                                сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="vlog3__slide animate__animated animate__fadeInUp animate__slow wow">
-                            <h3 class="colorWhite feedback__name">Нуриддинова Нодира</h3>
-                            <p class="feedback__feedback lightgrey">Мы верим, что забота о каждом из вас поможет
-                                сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="vlog3__slide">
-                            <h3 class="colorWhite feedback__name animate__animated animate__fadeInUp animate__slow wow">Александра Митрошина</h3>
-                            <p class="feedback__feedback lightgrey">Мы верим, что забота о каждом из вас поможет
-                                сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="vlog3__slide">
-                            <h3 class="feedback__name colorWhite animate__animated animate__fadeInUp animate__slow wow">Студия дизайна</h3>
-                            <p class="feedback__feedback lightgrey">Мы верим, что забота о каждом из вас поможет
-                                сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-                        </div>
-                    </div>
+                    {%endfor%}
                 </div>
             </div>
             <div class="feedback__arrows">
@@ -164,7 +137,7 @@
             <form action="{% url 'thanks' %}" autocomplete="off" class="form" method="POST">
                 {% csrf_token %}
             <input type="text" class="form__input" name="name" placeholder="Ваше имя">
-            <input type="text" class="form__input" name="phone" placeholder="Ваш номер телефона">
+            <input type="tel" class="form__input" name="phone" placeholder="Ваш номер телефона">
             <button type="submit" class="form__button link">Отправить</button>
             </form>
         </div>

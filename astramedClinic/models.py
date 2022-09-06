@@ -25,9 +25,10 @@ class Services(models.Model):
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
     title = models.TextField(verbose_name='Описание')
     buttonname = models.CharField(max_length=255, default='Записаться на приём', verbose_name='Название кнопки')
+    before = models.ImageField(upload_to='service/before/', null=True, verbose_name='Фото До ', max_length=255)
+    after = models.ImageField(upload_to='service/after/', null=True, verbose_name='Фото После', max_length=255)
     published = models.BooleanField(default=True, verbose_name='Опубликован')
-    before = models.ImageField(upload_to='service/before/', null=True, verbose_name='Фото', max_length=255)
-    after = models.ImageField(upload_to='service/after/', null=True, verbose_name='Фото', max_length=255)
+
 
     class Meta:
         verbose_name = 'Терапия'
@@ -44,9 +45,10 @@ class UnderServices(models.Model):
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
     title = models.TextField(verbose_name='Описание')
     buttonname = models.CharField(max_length=255, default='Записаться на приём', verbose_name='Название кнопки')
+    before = models.ImageField(upload_to='underServices/before/', null=True, verbose_name='Фото До', max_length=255)
+    after = models.ImageField(upload_to='underServices/after/', null=True, verbose_name='Фото После', max_length=255)
     published = models.BooleanField(default=True, verbose_name='Опубликован')
-    before = models.ImageField(upload_to='underServices/before/', null=True, verbose_name='Фото', max_length=255)
-    after = models.ImageField(upload_to='underServices/after/', null=True, verbose_name='Фото', max_length=255)
+
 
     class Meta:
         verbose_name = 'Процедура'
