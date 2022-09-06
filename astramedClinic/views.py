@@ -80,7 +80,7 @@ def contacts(request):
 
 def member(request, employee_name):
     employes = Employee.objects.filter(name=employee_name)
-    review_list = Reviews.objects.filter(description__iregex=rf'({employee_name})')
+    review_list = Reviews.objects.filter(doctor=employee_name)
     data = {
         'employes': employes,
         'review_list': review_list
@@ -142,6 +142,12 @@ def order(request, pk):
             data = {
                 'services': [services.values('undertype')[0]['undertype']]
             }
+        elif "member" in path:
+            member = Employee.objects.filter(pk=pk)
+            print(member)
+            data = {
+                'member': [member.values('name')[0]['name']]
+            }
     except:
         pass
     return render(request, 'main/order.html', data)
@@ -200,15 +206,34 @@ def thanks(request):
             name = request.POST.get('LFname')
             birth = request.POST.get('birth')
             address = request.POST.get('address')
-            therapy = request.POST.get('therapy')
+            therapy=""
+            doctor=""
             number = request.POST.get('number')
-            Applications.objects.create(name=name, birth=birth, address=address, therapy=therapy, number=number)
+            if request.POST.get('therapy'):
+                therapy = request.POST.get('therapy')
+                text = f'Запись на прием: {therapy}\n' \
+                       f'ФИО: {name}\n' \
+                       f'Дата рождения: {birth}\n' \
+                       f'Адрес: {address}\n' \
+                       f'Терапия: {therapy}\n' \
+                       f'Номер: {number}\n',
+            elif request.POST.get('doctor'):
+                doctor = request.POST.get('doctor')
+                text = f'Запись к врачу: {doctor}\n' \
+                       f'ФИО: {name}\n' \
+                       f'Дата рождения: {birth}\n' \
+                       f'Адрес: {address}\n' \
+                       f'Терапия: {therapy}\n' \
+                       f'Номер: {number}\n',
+            else:
+                text = f'Запись на консультацию\n' \
+                       f'ФИО: {name}\n' \
+                       f'Дата рождения: {birth}\n' \
+                       f'Адрес: {address}\n' \
+                       f'Номер: {number}\n',
+            Applications.objects.create(name=name, birth=birth, address=address, therapy=therapy, number=number, doctor=doctor)
             method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
-            text = f'ФИО: {name}\n' \
-                   f'Дата рождения: {birth}\n' \
-                   f'Адрес: {address}\n' \
-                   f'Терапия: {therapy}\n' \
-                   f'Номер: {number}',
+
             requests.post(method, data={
                 'chat_id': 1600170280,
                 'text': text
@@ -217,7 +242,11 @@ def thanks(request):
         if 'review' in path or 'member' in path:
             name = request.POST.get('name')
             description = request.POST.get('description')
-            Reviews.objects.create(name=name, description=description)
+            doctor = ""
+            print(request.POST.get('doctor'))
+            if 'member' in path:
+                doctor = request.POST.get('doctor')
+            Reviews.objects.create(name=name, description=description, doctor=doctor)
             method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
             text = f'ФИО: {name}\n' \
                    f'Отзыв: {description}\n'

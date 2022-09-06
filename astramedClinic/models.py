@@ -76,6 +76,7 @@ class Reviews(models.Model):
     name = models.CharField(max_length=255, verbose_name='Имя')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
     description = models.TextField(verbose_name='Комментарий')
+    doctor = models.CharField(max_length=255, blank=True, null=True, verbose_name='Доктор')
 
     class Meta:
         verbose_name = 'Отзыв'
@@ -196,8 +197,9 @@ class Applications(models.Model):
     name = models.CharField(max_length=255, verbose_name='ФИО')
     birth = models.CharField(max_length=255, verbose_name='Год рождения')
     address = models.CharField(max_length=255, verbose_name='Адрес')
-    therapy = models.CharField(max_length=255, default='Массаж', verbose_name='Терапия')
+    therapy = models.CharField(max_length=255,blank=True, null=True, default='Массаж', verbose_name='Терапия')
     number = models.CharField(max_length=255, verbose_name='Телефон')
+    doctor = models.CharField(max_length=255, blank=True, null=True, verbose_name='Доктор')
     date = models.DateTimeField(auto_now_add=True, verbose_name='Дата заявки')
     finish_date = models.DateTimeField(verbose_name='Дата закрытия заявки', null=True, blank=True)
 
