@@ -22,6 +22,7 @@
                 <input type="text" name="therapy" autocomplete="disabled" class="form__input reg__input" readonly value="{{service}}">
                 {%endfor%}
                 <input type="tel" required name="number" autocomplete="disabled" class="form__input reg__input" placeholder="Телефон">
+                <input type="tel" required name="doctor" autocomplete="disabled" class="form__input reg__input" placeholder="Врач" style="display:none" value="{{doctor}}">
                 <button type="submit" class="form__button link colorWhite">Записаться</button>
                 </datalist>
             </form>

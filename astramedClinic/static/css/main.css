@@ -474,15 +474,15 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 .feedback__item{
    width: 450px;
 }
-.feedback__name{
+.feedback__name {
     font-weight: 700;
-    font-size: 28px; 
-    line-height: 39px;
-}
-.feedback__feedback{
-    font-weight: 400;
     font-size: 24px;
-    line-height: 33px;
+    line-height: 28px;
+}
+.feedback__feedback {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
 }
 .swiper-wrapper{
     cursor: pointer;
@@ -615,6 +615,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 .form__input::placeholder{
     color: #d7d7d7;
 }
+
 .contacts__map{
     margin-bottom: 150px;
 }
@@ -958,16 +959,25 @@ textarea{
     margin: 0px auto;
     padding-bottom: 150px;
 }
-.registration__title{
+.registration__title {
     font-weight: 700;
-    font-size: 64px;
-    line-height: 87px;
+    font-size: 48px;
+    line-height: 50px;
     color: #FFFFFF;
 }
 .reg__input{
+    position: relative;
     background-color: #000;
     border-bottom: 3px solid #fff;
     color: #FE8F1D;
+}
+.reg__input-file{
+    margin-top: 30px;
+}
+.reg__input p{
+    position: absolute;
+    top: 10px;
+    left: 0;
 }
 .reg__input::placeholder{
     color: #7E7E7E;
