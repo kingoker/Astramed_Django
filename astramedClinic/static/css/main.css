@@ -899,6 +899,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 }
 .procedure__result-img{
     display: flex;
+    width: 50%;
 }
 
 /* Отзывы */
