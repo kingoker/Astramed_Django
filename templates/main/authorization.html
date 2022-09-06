@@ -13,10 +13,12 @@
         <div class="registration__container container">
             <h2 class="registration__title animate__animated animate__fadeInUp animate__slow wow">Авторизация</h2>
             <div class="registration__form">
-                <form action="" class="form animate__animated animate__fadeInUp animate__slow wow">
-                    <input type="text" class="form__input reg__input " placeholder="Ваше имя">
+                <form action="{% url 'thanks' %}" class="form animate__animated animate__fadeInUp animate__slow wow">
+                    {% csrf_token %}
+
+                    <input type="text" class="form__input reg__input" name="name" placeholder="Ваше имя">
                     <input type="password" class="form__input reg__input" placeholder="Пароль" required>
-                    <a href="#" action="#" class="form__button link colorWhite">Войти</a>
+                    <button type="submit" class="form__button link colorWhite">Войти</button>
                 </form>
             </div>
         </div>

@@ -39,11 +39,12 @@
 
 <section class="blog">
     <div class="allreviews__container container memberReview__container">
-        <form action="" class="review__form form animate__animated animate__fadeInUp animate__slow wow">
+        <form method="POST" action="{% url 'thanks' %}" class="review__form form animate__animated animate__fadeInUp animate__slow wow">
+            {% csrf_token %}
             <h4 class="review__subtitle review__subtitle_member">Оставить отзыв</h4>
-            <input type="text" class="form__input reg__input " placeholder="Ваше имя">
-            <textarea class="form__input reg__input" name="" id="" cols="30" rows="5" placeholder="Текст"></textarea>
-            <a href="#" action="#" class="form__button link colorWhite">Оставить отзыв</a>
+            <input type="text" name="name" class="form__input reg__input " placeholder="Ваше имя">
+            <textarea class="form__input reg__input" name="description" id="" cols="30" rows="5" placeholder="Текст"></textarea>
+            <button type="submit" class="form__button link colorWhite">Оставить отзыв</button>
         </form>
         <div class="member__review">
             <h4 class="review__subtitle">Все отзывы</h4>

@@ -161,9 +161,12 @@
     <div class="contacts__container container">
         <div class="contacts__form form animate__animated animate__fadeInLeft animate__slow wow">
             <h3 class="form__title">Оставьте свои контакты <br> и мы свяжемся с вами</h3>
-            <input type="text" class="form__input" placeholder="Ваше имя">
-            <input type="text" class="form__input" placeholder="Ваш номер телефона">
-            <a href="#" action="#" class="form__button link">Отправить</a>
+            <form action="{% url 'thanks' %}" autocomplete="off" class="form" method="POST">
+                {% csrf_token %}
+            <input type="text" class="form__input" name="name" placeholder="Ваше имя">
+            <input type="text" class="form__input" name="phone" placeholder="Ваш номер телефона">
+            <button type="submit" class="form__button link">Отправить</button>
+            </form>
         </div>
         <div class="contacts__map animate__animated animate__fadeInRight animate__slow wow">
             <div class="map">

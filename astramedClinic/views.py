@@ -182,6 +182,7 @@ def team(request):
 def therapy(request, pk):
     services = Services.objects.filter(id=pk)
     items = list(Services.objects.all())
+    print(services.values())
     recomended_services = random.sample(items, 3)
     underServices = UnderServices.objects.filter(maintype_id=pk)
     data = {
@@ -213,13 +214,38 @@ def thanks(request):
                 'text': text
             })
 
-        if 'review' in path:
+        if 'review' in path or 'member' in path:
             name = request.POST.get('name')
             description = request.POST.get('description')
             Reviews.objects.create(name=name, description=description)
             method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
             text = f'ФИО: {name}\n' \
                    f'Отзыв: {description}\n'
+            requests.post(method, data={
+                'chat_id': 1600170280,
+                'text': text
+            })
+        if 'jobOffer' in path:
+            name = request.POST.get('LFname')
+            number = request.POST.get('number')
+            address = request.POST.get('address')
+            therapy = request.POST.get('therapy')
+            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
+            text = f'Вакансия: {therapy}' \
+                   f'ФИО: {name}\n' \
+                   f'Номер: {number}\n' \
+                   f'Адрес: {address}'
+            requests.post(method, data={
+                'chat_id': 1600170280,
+                'text': text
+            })
+        if 'about' in path or 'blog' in path or 'contacts' in path or 'index' in path or 'services' in path:
+            name = request.POST.get('name')
+            phone = request.POST.get('phone')
+            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
+            text = f'Просьба позвонить:' \
+                   f'ФИО: {name}\n' \
+                   f'Номер: {phone}\n'
             requests.post(method, data={
                 'chat_id': 1600170280,
                 'text': text
