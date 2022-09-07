@@ -237,7 +237,8 @@ def thanks(request):
             method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
 
             requests.post(method, data={
-                'chat_id': 1600170280,
+                # 'chat_id': 1600170280,
+                'chat_id': 99940983,
                 'text': text
             })
 
@@ -253,7 +254,8 @@ def thanks(request):
             text = f'ФИО: {name}\n' \
                    f'Отзыв: {description}\n'
             requests.post(method, data={
-                'chat_id': 1600170280,
+                # 'chat_id': 1600170280,
+                'chat_id': 99940983,
                 'text': text
             })
         elif 'jobOffer' in path:
@@ -267,7 +269,8 @@ def thanks(request):
                    f'Номер: {number}\n' \
                    f'Адрес: {address}'
             requests.post(method, data={
-                'chat_id': 1600170280,
+                # 'chat_id': 1600170280,
+                'chat_id': 99940983,
                 'text': text
             })
             method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendDocument'
@@ -282,7 +285,8 @@ def thanks(request):
                    f'ФИО: {name}\n' \
                    f'Номер: {phone}\n'
             requests.post(method, data={
-                'chat_id': 1600170280,
+                # 'chat_id': 1600170280,
+                'chat_id': 99940983,
                 'text': text
             })
     return render(request, 'main/thanks.html')
