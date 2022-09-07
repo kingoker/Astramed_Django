@@ -788,6 +788,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     transition: color 0.3s ease;
     border-bottom: 1px solid;
     text-decoration: none;
+    color: #3F3F3F;
 }
 .contacts__text a:hover{
     color: #7E7E7E;
