@@ -241,7 +241,7 @@ def thanks(request):
                 'text': text
             })
 
-        if 'review' in path or 'member' in path:
+        elif 'review' in path or 'member' in path:
             name = request.POST.get('name')
             description = request.POST.get('description')
             doctor = ""
@@ -256,7 +256,7 @@ def thanks(request):
                 'chat_id': 1600170280,
                 'text': text
             })
-        if 'jobOffer' in path:
+        elif 'jobOffer' in path:
             name = request.POST.get('LFname')
             number = request.POST.get('number')
             address = request.POST.get('address')
@@ -270,6 +270,10 @@ def thanks(request):
                 'chat_id': 1600170280,
                 'text': text
             })
+            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendDocument'
+            files = {"document": request.FILES['resume']}
+            title = name
+            requests.post(method, data={"chat_id": 1600170280, "caption": title}, files=files)
         if 'about' in path or 'blog' in path or 'contacts' in path or 'index' in path or 'services' in path:
             name = request.POST.get('name')
             phone = request.POST.get('phone')

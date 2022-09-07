@@ -14,7 +14,7 @@
         {% for job in jobs %}
         <h2 class="registration__title animate__animated animate__fadeInDown animate__slow wow">Подача заявления на вакансию {{job.title}}</h2>
         <div class="registration__form animate__animated animate__fadeInUp animate__slow wow">
-            <form action="{% url 'thanks' %}" autocomplete="off" class="form" method="POST">
+            <form action="{% url 'thanks' %}" autocomplete="off" class="form" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="text" name="therapy" autocomplete="disabled" class="form__input reg__input" style="display: none;" readonly value="{{job.title}}">
                 <input type="text" name="LFname" autocomplete="disabled" class="form__input reg__input" placeholder="ФИО">
