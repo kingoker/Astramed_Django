@@ -25,10 +25,11 @@ class Services(models.Model):
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
     title = models.TextField(verbose_name='Описание')
     buttonname = models.CharField(max_length=255, default='Записаться на приём', verbose_name='Название кнопки')
-    before = models.ImageField(upload_to='service/before/', null=True, verbose_name='Фото До ', max_length=255)
-    after = models.ImageField(upload_to='service/after/', null=True, verbose_name='Фото После', max_length=255)
+    before = models.ImageField(upload_to='service/before/', null=True, blank=True, verbose_name='Фото До ',
+                               max_length=255)
+    after = models.ImageField(upload_to='service/after/', null=True, blank=True, verbose_name='Фото После',
+                              max_length=255)
     published = models.BooleanField(default=True, verbose_name='Опубликован')
-
 
     class Meta:
         verbose_name = 'Терапия'
@@ -45,10 +46,11 @@ class UnderServices(models.Model):
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
     title = models.TextField(verbose_name='Описание')
     buttonname = models.CharField(max_length=255, default='Записаться на приём', verbose_name='Название кнопки')
-    before = models.ImageField(upload_to='underServices/before/', null=True, verbose_name='Фото До', max_length=255)
-    after = models.ImageField(upload_to='underServices/after/', null=True, verbose_name='Фото После', max_length=255)
+    before = models.ImageField(upload_to='underServices/before/', null=True, blank=True, verbose_name='Фото До',
+                               max_length=255)
+    after = models.ImageField(upload_to='underServices/after/', null=True, blank=True, verbose_name='Фото После',
+                              max_length=255)
     published = models.BooleanField(default=True, verbose_name='Опубликован')
-
 
     class Meta:
         verbose_name = 'Процедура'
@@ -150,19 +152,6 @@ class MainPage(models.Model):
         return "Страница Главная"
 
 
-class AboutPage(models.Model):
-    AboutPageTitle = models.CharField(max_length=255, verbose_name='Шапка')
-    AboutPageServicesTitle = models.CharField(max_length=255, verbose_name='Заголовок услуг')
-    AboutPageServicesSubtitle = models.CharField(max_length=255, verbose_name='Подзаголовок услуг')
-
-    class Meta:
-        verbose_name = 'Страница о нас'
-        verbose_name_plural = 'Страница о нас'
-
-    def __str__(self):
-        return "Страница о нас"
-
-
 class CooperationPage(models.Model):
     CooperationTitle = models.CharField(max_length=255, verbose_name='Шапка')
     CooperationPageTitle = models.CharField(max_length=255, verbose_name='Заголовок')
@@ -199,7 +188,7 @@ class Applications(models.Model):
     name = models.CharField(max_length=255, verbose_name='ФИО')
     birth = models.CharField(max_length=255, verbose_name='Год рождения')
     address = models.CharField(max_length=255, verbose_name='Адрес')
-    therapy = models.CharField(max_length=255,blank=True, null=True, default='Массаж', verbose_name='Терапия')
+    therapy = models.CharField(max_length=255, blank=True, null=True, default='Массаж', verbose_name='Терапия')
     number = models.CharField(max_length=255, verbose_name='Телефон')
     doctor = models.CharField(max_length=255, blank=True, null=True, verbose_name='Доктор')
     date = models.DateTimeField(auto_now_add=True, verbose_name='Дата заявки')
@@ -273,3 +262,60 @@ class Contacs(models.Model):
 
     def __str__(self):
         return 'Контакт'
+
+
+class ServicesPage(models.Model):
+    headerTitle = models.CharField(max_length=255, default="", verbose_name='Услуги Заголовок')
+
+    faceToFaceTitle = models.CharField(max_length=255, default="", verbose_name='F2F Заголовок')
+    faceToFaceSubtitle = models.CharField(max_length=255, default="", verbose_name='F2F подзаголовок')
+
+    contactsTitle = models.CharField(max_length=255, default="", verbose_name='Контакты Заголовок')
+
+    class Meta:
+        verbose_name = 'Страница Услуги'
+        verbose_name_plural = 'Страница Услуги'
+
+    def __str__(self):
+        return "Страница Услуги"
+
+
+class PhilosBlog(models.Model):
+    philosophyPhotoTitle = models.CharField(max_length=255, default="", verbose_name='Заголовок Фотографии')
+    philosophydescription = models.CharField(max_length=255, default="", verbose_name='Описание фотографии')
+    philosophyPhoto = models.ImageField(upload_to='main/', default="", verbose_name='Философия Фото', max_length=255)
+
+    class Meta:
+        verbose_name = 'Фотография философии'
+        verbose_name_plural = 'Фотографии философии'
+
+    def __str__(self):
+        return "Наша философия"
+
+
+class AboutPage(models.Model):
+    headerTitle = models.CharField(max_length=255, default="", verbose_name='О нас Заголовок')
+
+    philosophyMainTitle = models.CharField(max_length=255, default="", verbose_name='Философия Заголовок')
+    philosopyBlock = models.ForeignKey(PhilosBlog, null=True, blank=True, on_delete=models.CASCADE,
+                                       verbose_name='Заголовок фотографии')
+
+    teamTitle = models.CharField(max_length=255, default="", verbose_name='Команда Заголовок')
+    teamSubtitle = models.CharField(max_length=255, default="", verbose_name='Команда подзаголовок')
+    teamPhoto = models.ImageField(upload_to='main/', default="", verbose_name='Команда Фото', max_length=255)
+
+    reviewTitle = models.CharField(max_length=255, default="", verbose_name='Отзыв Заголовок')
+    reviewSubtitle = models.CharField(max_length=255, default="", verbose_name='Отзыв подзаголовок')
+    reviewPhoto = models.ImageField(upload_to='main/', default="", verbose_name='Отзыв Фото', max_length=255)
+
+    serviceTitle = models.CharField(max_length=255, default="", verbose_name='Услуга Заголовок')
+    serviceSubtitle = models.CharField(max_length=255, default="", verbose_name='Услуга подзаголовок')
+
+    contactsTitle = models.CharField(max_length=255, default="", verbose_name='Контакты Заголовок')
+
+    class Meta:
+        verbose_name = 'Страница О нас'
+        verbose_name_plural = 'Страница О нас'
+
+    def __str__(self):
+        return "Страница О нас"

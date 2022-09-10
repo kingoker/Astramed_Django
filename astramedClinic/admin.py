@@ -3,7 +3,8 @@ from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 from astramedClinic.models import Links, Services, Employee, Reviews, Blog, MainPage, UnderServices, \
-    CategoryBlog, Info, Applications, PriceList, Jobs, Partners, Contacs, AboutPage, CooperationPage
+    CategoryBlog, Info, Applications, PriceList, Jobs, Partners, Contacs, AboutPage, CooperationPage, ServicesPage, \
+    PhilosBlog
 
 
 # CKeditor
@@ -87,6 +88,8 @@ class ReviewsAdmin(admin.ModelAdmin):
 admin.site.register(Links)
 admin.site.register(CooperationPage)
 admin.site.register(AboutPage)
+admin.site.register(PhilosBlog)
+admin.site.register(ServicesPage)
 admin.site.register(Services, ServicesAdmin)
 admin.site.register(Employee)
 admin.site.register(Reviews, ReviewsAdmin)

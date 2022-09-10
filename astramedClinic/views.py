@@ -10,7 +10,8 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 from astramedClinic.config import gmail_send_message
-from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainPage, Info, Applications, Jobs, Partners, PriceList, Links, Contacs, AboutPage, CooperationPage
+from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainPage, Info, Applications, Jobs, \
+    Partners, PriceList, Links, Contacs, AboutPage, CooperationPage, PhilosBlog, ServicesPage
 
 
 def main(request):
@@ -44,12 +45,12 @@ def about(request):
     reviews = Reviews.objects.filter(published=True)
     services = random.sample(items, 3)
     aboutPage = AboutPage.objects.all()
-    mainPage = MainPage.objects.all()
+    philosopies = PhilosBlog.objects.all()
 
     data = {
         'services': services,
         'aboutPage': aboutPage,
-        'mainPage': mainPage,
+        'philosopies': philosopies,
         'reviews': reviews
     }
     return render(request, 'main/about.html', data)
@@ -168,9 +169,10 @@ def review(request):
 
 def services(request):
     services = Services.objects.all()
-
+    servicePage = ServicesPage.objects.all()
     data = {
         'services': services,
+        'servicePage': servicePage
     }
 
     return render(request, 'main/services.html', data)
