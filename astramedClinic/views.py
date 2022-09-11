@@ -20,7 +20,6 @@ def main(request):
     blog = random.sample(items, 3)
     mainObjects = MainPage.objects.all()
     reviews = Reviews.objects.filter(published=True)
-    print(reviews)
     data = {
         'services': services,
         'blog': blog,
@@ -291,6 +290,29 @@ def thanks(request):
                 'chat_id': 99940983,
                 'text': text
             })
+        if 'partner' in path:
+            componyName = request.POST.get('componyName')
+            email = request.POST.get('email')
+            number = request.POST.get('number')
+            url = request.POST.get('url')
+            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
+            text = f'Заявка в партнеры:' \
+                   f'Компанмя:: {componyName}\n' \
+                   f'Почта: {email}\n' \
+                   f'Номер: {number}\n' \
+                   f'Ссылка: {url}\n'
+            requests.post(method, data={
+                # 'chat_id': 1600170280,
+                'chat_id': 938759596,
+                'text': text
+            })
+            # send_mail(
+            #     'Subject here',
+            #     'Here is the message.',
+            #     'temp@astramed-clinic.com',
+            #     ['bear.lvvb@mail.ru'],
+            #     fail_silently=False,
+            # )
     return render(request, 'main/thanks.html')
 
 
@@ -360,3 +382,7 @@ def search(request):
         return render(request, 'main/result.html', {'blog_list': blog_list, 'services_list': services_list, 'underservices_list': underservices_list})
     else:
         return render(request, 'main/result.html', {})
+
+
+def partner(request):
+    return render(request, 'main/partnerRegistration.html')

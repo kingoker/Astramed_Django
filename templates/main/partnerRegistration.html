@@ -1,0 +1,29 @@
+ {% extends 'custom/base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+
+{% block content %}
+<header class="header header-half">
+    <div class="header__container container">
+        {% include 'custom/navbar.html' %}
+    </div>
+</header>
+
+<section class="blog">
+    <div class="registration__container container">
+        <h2 class="registration__title animate__animated animate__fadeInDown animate__slow wow">Запись</h2>
+        <div class="registration__form animate__animated animate__fadeInUp animate__slow wow">
+            <form action="{% url 'thanks' %}" autocomplete="off" class="form" method="POST">
+                {% csrf_token %}
+                <input type="text" name="componyName" autocomplete="disabled" class="form__input reg__input" placeholder="название компании">
+                <input type="email" name="email" autocomplete="disabled" class="form__input reg__input" placeholder="Почта">
+                <input type="tel" required name="number" autocomplete="disabled" class="form__input reg__input" placeholder="Телефон">
+                <input type="text" required name="url" autocomplete="disabled" class="form__input reg__input" placeholder="Ссылка на сайт">
+
+                <button type="submit" class="form__button link colorWhite">Отправить заявку</button>
+                </datalist>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
