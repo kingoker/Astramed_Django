@@ -40,15 +40,15 @@
 <section class="blog">
     <div class="allreviews__container container memberReview__container">
         <div class="member__review">
-            <h4 class="review__subtitle">Все отзывы</h4>
+            <h4 class="review__subtitle">Отзывы</h4>
             {% for review in review_list %}
             <div class="review animate__animated animate__fadeInRight animate__slow wow">
-                <h5 class="review__text bolder-700 colorWhite">{{review.name}}</h5>
-                <p class="review__text">{{review.description}}</p>
+                <h5 class="review__text bolder-700 colorWhite">{{ review.name }}</h5>
+                <p class="review__text">{{ review.description }}</p>
             </div>
             {% endfor %}
         </div>
-        <form method="POST" action="{% url 'member' employee.name %}" class="review__form form animate__animated animate__fadeInUp animate__slow wow">
+        <form method="POST" action="{% url 'thanks' %}" class="review__form form animate__animated animate__fadeInUp animate__slow wow">
             {% csrf_token %}
             <h4 class="review__subtitle review__subtitle_member">Оставить отзыв</h4>
             <input type="text" name="name" class="form__input reg__input " placeholder="Ваше имя">

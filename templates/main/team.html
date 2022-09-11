@@ -23,7 +23,7 @@
             {% for employee in employes %}
             <div class="blog__item team__item animate__animated animate__fadeInUp animate__slow wow">
                 <a href="{% url 'member' employee.name %}" class="service__img team__list-img">
-                    <img src="{{ employee.photo.url }}" alt="service" class="img grey-filter">
+                    <img src="{{ employee.photo.url }}" alt="service" class="service__img img grey-filter">
                 </a> <br>
                 <span>{{employee.title}}</span>
                 <a href="{% url 'member' employee.name %}" class="team__link link">{{employee.name}}</a>
@@ -40,7 +40,7 @@
             <h2 class="faceToFace__title title">Лицом к лицу всегда лучше</h2>
             <p class="faceToFace__subtitle">Мы знаем, что мир медицины может пугать. Наши врачи всегда рады провести с
                 вами время. Запишитесь на консультацию, и мы вместе обсудим ваши мысли, беспокойства и вопросы.</p>
-            <a href="registration.html" class="faceToFace__link link">Записаться на консультацию</a>
+            <a href="{% url 'order' 0 %}" class="faceToFace__link link">Записаться на консультацию</a>
         </div>
     </div>
 </section>
@@ -48,7 +48,7 @@
 <section class="blog blog-white marbot-100">
     <div class="blog__container container">
         <div class="blog__text AboutBlog__text animate__animated animate__fadeInLeft animate__slow wow">
-            <a href="blog.html" class="blog__title link">Наш блог</a>
+            <a href="{% url 'blog' %}" class="blog__title link">Наш блог</a>
             <p class="blog__subtitle">В нашем блоге мы публикуем последние новости, полезные статьи и просто
                 рассказываем о жизни клиники =)</p>
         </div>

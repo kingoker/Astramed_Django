@@ -266,10 +266,8 @@ class Contacs(models.Model):
 
 class ServicesPage(models.Model):
     headerTitle = models.CharField(max_length=255, default="", verbose_name='Услуги Заголовок')
-
     faceToFaceTitle = models.CharField(max_length=255, default="", verbose_name='F2F Заголовок')
     faceToFaceSubtitle = models.CharField(max_length=255, default="", verbose_name='F2F подзаголовок')
-
     contactsTitle = models.CharField(max_length=255, default="", verbose_name='Контакты Заголовок')
 
     class Meta:
@@ -284,13 +282,14 @@ class PhilosBlog(models.Model):
     philosophyPhotoTitle = models.CharField(max_length=255, default="", verbose_name='Заголовок Фотографии')
     philosophydescription = models.CharField(max_length=255, default="", verbose_name='Описание фотографии')
     philosophyPhoto = models.ImageField(upload_to='main/', default="", verbose_name='Философия Фото', max_length=255)
+    published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:
         verbose_name = 'Фотография философии'
         verbose_name_plural = 'Фотографии философии'
 
     def __str__(self):
-        return "Наша философия"
+        return self.philosophyPhotoTitle
 
 
 class AboutPage(models.Model):
@@ -301,15 +300,15 @@ class AboutPage(models.Model):
                                        verbose_name='Заголовок фотографии')
 
     teamTitle = models.CharField(max_length=255, default="", verbose_name='Команда Заголовок')
-    teamSubtitle = models.CharField(max_length=255, default="", verbose_name='Команда подзаголовок')
+    teamSubtitle = models.CharField(max_length=255, default="", verbose_name='Команда подзаголовок', null=True, blank=True,)
     teamPhoto = models.ImageField(upload_to='main/', default="", verbose_name='Команда Фото', max_length=255)
 
     reviewTitle = models.CharField(max_length=255, default="", verbose_name='Отзыв Заголовок')
-    reviewSubtitle = models.CharField(max_length=255, default="", verbose_name='Отзыв подзаголовок')
+    reviewSubtitle = models.CharField(max_length=255, default="", verbose_name='Отзыв подзаголовок', null=True, blank=True,)
     reviewPhoto = models.ImageField(upload_to='main/', default="", verbose_name='Отзыв Фото', max_length=255)
 
     serviceTitle = models.CharField(max_length=255, default="", verbose_name='Услуга Заголовок')
-    serviceSubtitle = models.CharField(max_length=255, default="", verbose_name='Услуга подзаголовок')
+    serviceSubtitle = models.CharField(max_length=255, default="", verbose_name='Услуга подзаголовок', null=True, blank=True,)
 
     contactsTitle = models.CharField(max_length=255, default="", verbose_name='Контакты Заголовок')
 

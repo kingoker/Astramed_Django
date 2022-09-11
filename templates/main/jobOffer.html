@@ -17,12 +17,14 @@
             <form action="{% url 'thanks' %}" autocomplete="off" class="form" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="text" name="therapy" autocomplete="disabled" class="form__input reg__input" style="display: none;" readonly value="{{job.title}}">
-                <input type="text" name="LFname" autocomplete="disabled" class="form__input reg__input" placeholder="ФИО">
+                <input type="text" required name="LFname" autocomplete="disabled" class="form__input reg__input"
+                       placeholder="ФИО">
                 <input type="tel" required name="number" autocomplete="disabled" class="form__input reg__input" placeholder="Телефон">
                 <input type="text" name="address" autocomplete="disabled" class="form__input reg__input" placeholder="Адрес проживания">
                 <div class="reg__input reg__input-file">
                     <p>Прикрепите резюме</p>
-                    <input type="file" name="resume" autocomplete="disabled" class="form__input form__input-file" placeholder="Резюме">
+                    <input type="file" required name="resume" autocomplete="disabled" class="form__input form__input-file"
+                           placeholder="Резюме">
                 </div>
                 <button type="submit" class="form__button link colorWhite">Подать заявку</button>
             </form>

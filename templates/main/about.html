@@ -18,7 +18,6 @@
 
 
 
-
 <section class="aboutPhilosophy">
     <div class="aboutPhilosophy__container container">
         <h2 class="aboutPhilosophy__header marbot-50">{{about.philosophyMainTitle}}</h2>
@@ -115,8 +114,8 @@
 <section class="blog blog-white">
     <div class="blog__container container">
         <div class="blog__text AboutBlog__text animate__animated animate__fadeInLeft animate__slow wow">
-            <a href="services.html" class="blog__title link">{{ about.serviceTitle }}</a>
-            <p class="blog__subtitle">{{ about.serviceSubtitle }}</p>
+            <a href="{% url 'services' %}" class="blog__title link">{{ about.serviceTitle }}</a>
+            <p class="blog__subtitle">{{ serviceSubtitle }}</p>
         </div>
         <div class="blog__list animate__animated animate__fadeInUp animate__slow wow">
             {% for service in services %}

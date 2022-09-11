@@ -16,10 +16,9 @@
             <form action="{% url 'thanks' %}" autocomplete="off" class="form" method="POST">
                 {% csrf_token %}
                 <input type="text" name="componyName" autocomplete="disabled" class="form__input reg__input" placeholder="название компании">
-                <input type="email" name="email" autocomplete="disabled" class="form__input reg__input" placeholder="Почта">
-                <input type="tel" required name="number" autocomplete="disabled" class="form__input reg__input" placeholder="Телефон">
-                <input type="text" required name="url" autocomplete="disabled" class="form__input reg__input" placeholder="Ссылка на сайт">
-
+                <input type="email" name="email" autocomplete="disabled" class="form__input reg__input" placeholder="почта">
+                <input type="tel" required name="number" autocomplete="disabled" class="form__input reg__input" placeholder="телефон">
+                <input type="text" name="url" autocomplete="disabled" class="form__input reg__input" placeholder="ссылка на сайт">
                 <button type="submit" class="form__button link colorWhite">Отправить заявку</button>
                 </datalist>
             </form>

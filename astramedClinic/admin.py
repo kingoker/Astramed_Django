@@ -69,6 +69,7 @@ class ApplicationsAdmin(admin.ModelAdmin):
     list_filter = ('status', 'therapy')
     search_fields = ('name', )
     list_editable = ('status', )
+
     class Meta:
         model = Applications
         fields = '__all__'
@@ -80,6 +81,7 @@ class ReviewsAdmin(admin.ModelAdmin):
     list_filter = ('published', )
     search_fields = ('name', 'description',)
     list_editable = ('published', )
+
     class Meta:
         model = Applications
         fields = '__all__'

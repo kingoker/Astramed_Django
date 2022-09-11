@@ -1035,7 +1035,7 @@ textarea{
 }
 
 /* Команда */
-.team__text{
+.team__text, .team__text span{
     font-weight: 700;
     font-size: 32px;
     line-height: 44px;
@@ -1043,6 +1043,11 @@ textarea{
 .team__text span{
     color: #FE8F1D;
     margin-top: 20px;
+}
+.team__title span{
+    color: #FE8F1D;
+    font-size: 48px;
+    line-height: 65px;
 }
 .team__item span{
     font-size: 18px;
@@ -1163,18 +1168,18 @@ textarea{
 /* Партнеры */
 .partners__list{
     display: flex;
-    justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
 }
 .partners__item a{
+    padding: 0px 20px;
     font-size: 16px;
     text-transform: uppercase;
     text-decoration: none;
     font-weight: 600;
     color: #000;
-    min-height: 50px;
     min-width: 150px;
+    min-height: 50px;
     border-radius: 10px;
     display: flex;
     justify-content: center;

@@ -8,10 +8,32 @@ from django.core.mail import send_mail
 from django.shortcuts import render
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from django.http import HttpResponseRedirect
 
 from astramedClinic.config import gmail_send_message
 from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainPage, Info, Applications, Jobs, \
     Partners, PriceList, Links, Contacs, AboutPage, CooperationPage, PhilosBlog, ServicesPage
+
+
+admins = [1600170280, 938759596, ]
+
+
+def sendMessage(text, *args):
+    method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
+    for chat_id in args[0]:
+        print(chat_id)
+        requests.post(method, data={
+            'chat_id': chat_id,
+            'text': text
+        })
+
+
+def sendDocument(text, file, *args):
+    method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendDocument'
+    files = {"document": file}
+    title = text
+    for chat_id in args[0]:
+        requests.post(method, data={"chat_id": chat_id, "caption": title}, files=files)
 
 
 def main(request):
@@ -204,6 +226,7 @@ def therapy(request, pk):
 
 def thanks(request):
     path = str(request.META.get('HTTP_REFERER'))
+
     if request.method == 'POST':
         if 'order' in path:
             name = request.POST.get('LFname')
@@ -235,13 +258,7 @@ def thanks(request):
                        f'Адрес: {address}\n' \
                        f'Номер: {number}\n',
             Applications.objects.create(name=name, birth=birth, address=address, therapy=therapy, number=number, doctor=doctor)
-            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
-
-            requests.post(method, data={
-                # 'chat_id': 1600170280,
-                'chat_id': 99940983,
-                'text': text
-            })
+            sendMessage(text, admins)
 
         elif 'review' in path or 'member' in path:
             name = request.POST.get('name')
@@ -251,61 +268,43 @@ def thanks(request):
             if 'member' in path:
                 doctor = request.POST.get('doctor')
             Reviews.objects.create(name=name, description=description, doctor=doctor)
-            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
             text = f'ФИО: {name}\n' \
                    f'Отзыв: {description}\n'
-            requests.post(method, data={
-                # 'chat_id': 1600170280,
-                'chat_id': 99940983,
-                'text': text
-            })
+            sendMessage(text, admins)
+            if 'member' in path:
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
         elif 'jobOffer' in path:
             name = request.POST.get('LFname')
             number = request.POST.get('number')
             address = request.POST.get('address')
             therapy = request.POST.get('therapy')
-            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
             text = f'Вакансия: {therapy}' \
                    f'ФИО: {name}\n' \
                    f'Номер: {number}\n' \
                    f'Адрес: {address}'
-            requests.post(method, data={
-                # 'chat_id': 1600170280,
-                'chat_id': 99940983,
-                'text': text
-            })
-            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendDocument'
-            files = {"document": request.FILES['resume']}
-            title = name
-            requests.post(method, data={"chat_id": 1600170280, "caption": title}, files=files)
+            sendDocument(text, request.FILES['resume'], admins)
+
         if 'about' in path or 'blog' in path or 'contacts' in path or 'index' in path or 'services' in path:
             name = request.POST.get('name')
             phone = request.POST.get('phone')
-            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
+
             text = f'Просьба позвонить:' \
                    f'ФИО: {name}\n' \
                    f'Номер: {phone}\n'
-            requests.post(method, data={
-                # 'chat_id': 1600170280,
-                'chat_id': 99940983,
-                'text': text
-            })
+            sendMessage(text, admins)
         if 'partner' in path:
             componyName = request.POST.get('componyName')
             email = request.POST.get('email')
             number = request.POST.get('number')
             url = request.POST.get('url')
-            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
+
             text = f'Заявка в партнеры:' \
                    f'Компанмя:: {componyName}\n' \
                    f'Почта: {email}\n' \
                    f'Номер: {number}\n' \
                    f'Ссылка: {url}\n'
-            requests.post(method, data={
-                # 'chat_id': 1600170280,
-                'chat_id': 938759596,
-                'text': text
-            })
+            sendMessage(text, admins)
             # send_mail(
             #     'Subject here',
             #     'Here is the message.',
