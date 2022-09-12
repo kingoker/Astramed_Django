@@ -32,7 +32,7 @@
 
 <section class="blog marbot-150">
     <div class="procedure__container container">
-       {% if s.before != None and s.after != None %}
+       {% if s.before and s.after %}
         <div class="procedure__result">
             <h2 class="feedback__title colorWhite marbot-50">{{ s.titleBeforeAfter }}</h2>
             <div class="procedure__result-img">
