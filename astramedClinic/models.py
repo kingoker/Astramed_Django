@@ -1,5 +1,6 @@
 from random import choices
 from django.db import models
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 class Links(models.Model):
@@ -23,7 +24,8 @@ class Services(models.Model):
     photo = models.ImageField(upload_to='service/', verbose_name='Фото', max_length=255)
     type = models.CharField(max_length=255, verbose_name='Название терапии')
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
-    title = models.TextField(verbose_name='Описание')
+    # title = models.TextField(verbose_name='Описание')
+    title = CKEditor5Field('Описание', config_name='extends')
     buttonname = models.CharField(max_length=255, default='Записаться на приём', verbose_name='Название кнопки')
     titleBeforeAfter = models.CharField(max_length=255, default='До и после', verbose_name='Заголовок фотографий')
     before = models.ImageField(upload_to='service/before/', null=True, blank=True, verbose_name='Фото До ',
@@ -45,7 +47,8 @@ class UnderServices(models.Model):
     maintype = models.ForeignKey(Services, on_delete=models.CASCADE, null=True, verbose_name='Главная терапия')
     undertype = models.CharField(max_length=255, default='название терапии', verbose_name='Название терапии')
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
-    title = models.TextField(verbose_name='Описание')
+    # title = models.TextField(verbose_name='Описание')
+    title = CKEditor5Field('Описание', config_name='extends')
     buttonname = models.CharField(max_length=255, default='Записаться на приём', verbose_name='Название кнопки')
     titleBeforeAfter = models.CharField(max_length=255, default='До и после', verbose_name='Заголовок фотографий')
     before = models.ImageField(upload_to='underServices/before/', null=True, blank=True, verbose_name='Фото До',
@@ -109,7 +112,8 @@ class Blog(models.Model):
     category = models.ForeignKey(CategoryBlog, null=True, on_delete=models.CASCADE, verbose_name='Категория')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
     photo = models.ImageField(upload_to='blogs/', verbose_name='Фото', max_length=255)
-    description = models.TextField(verbose_name='Описание')
+    description = CKEditor5Field('Описание', config_name='extends')
+    # description = models.TextField(verbose_name='Описание')
     date = models.DateField(auto_now_add=True, verbose_name='Время')
     links = models.TextField(verbose_name='Скрытые ссылки')
 
@@ -169,7 +173,8 @@ class CooperationPage(models.Model):
 
 class Info(models.Model):
     title = models.CharField(max_length=255, verbose_name='Заголовок')
-    description = models.TextField(verbose_name='Описание')
+    description = CKEditor5Field('Описание', config_name='extends')
+    # description = models.TextField(verbose_name='Описание')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:
@@ -218,7 +223,8 @@ class PriceList(models.Model):
 class Jobs(models.Model):
     title = models.CharField(max_length=255, verbose_name='Должность')
     photo = models.ImageField(upload_to='jobs/', verbose_name='Фото', max_length=255)
-    description = models.TextField(verbose_name='Описание')
+    # description = models.TextField(verbose_name='Описание')
+    description = CKEditor5Field('Описание', config_name='extends')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:

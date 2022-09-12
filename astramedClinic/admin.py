@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django import forms
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
+# from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 from astramedClinic.models import Links, Services, Employee, Reviews, Blog, MainPage, UnderServices, \
     CategoryBlog, Info, Applications, PriceList, Jobs, Partners, Contacs, AboutPage, CooperationPage, ServicesPage, \
@@ -8,37 +8,37 @@ from astramedClinic.models import Links, Services, Employee, Reviews, Blog, Main
 
 
 # CKeditor
-class BlogAdminForm(forms.ModelForm):
-    description = forms.CharField(label='Текст', widget=CKEditorUploadingWidget())
-    links = forms.CharField(label='Источники', widget=CKEditorUploadingWidget())
-
-    class Meta:
-        model = Blog
-        fields = '__all__'
-
-
-class ServicesAdminForm(forms.ModelForm):
-    title = forms.CharField(label='Описание', widget=CKEditorUploadingWidget())
-
-    class Meta:
-        model = Services
-        fields = '__all__'
+# class BlogAdminForm(forms.ModelForm):
+#     description = forms.CharField(label='Текст', widget=CKEditorUploadingWidget())
+#     links = forms.CharField(label='Источники', widget=CKEditorUploadingWidget())
+#
+#     class Meta:
+#         model = Blog
+#         fields = '__all__'
 
 
-class UnderServicesAdminForm(forms.ModelForm):
-    title = forms.CharField(label='Описание', widget=CKEditorUploadingWidget())
+# class ServicesAdminForm(forms.ModelForm):
+#     title = forms.CharField(label='Описание', widget=CKEditorUploadingWidget())
+#
+#     class Meta:
+#         model = Services
+#         fields = '__all__'
 
-    class Meta:
-        model = UnderServices
-        fields = '__all__'
 
+# class UnderServicesAdminForm(forms.ModelForm):
+#     title = forms.CharField(label='Описание', widget=CKEditorUploadingWidget())
+#
+#     class Meta:
+#         model = UnderServices
+#         fields = '__all__'
 
-class AddInfoAdminForm(forms.ModelForm):
-    description = forms.CharField(label='Описание', widget=CKEditorUploadingWidget())
-
-    class Meta:
-        model = Info
-        fields = '__all__'
+#
+# class AddInfoAdminForm(forms.ModelForm):
+#     description = forms.CharField(label='Описание', widget=CKEditorUploadingWidget())
+#
+#     class Meta:
+#         model = Info
+#         fields = '__all__'
 
 
 # Удобная админ панель
@@ -47,20 +47,20 @@ class PostAdmin(admin.ModelAdmin):
     list_display_links = ('title', )
     search_fields = ('title', 'description', )
     list_editable = ('published', 'category')
-    form = BlogAdminForm
+    # form = BlogAdminForm
     save_on_top = True
 
 
-class ServicesAdmin(admin.ModelAdmin):
-    form = ServicesAdminForm
-
-
-class UnderServicesAdmin(admin.ModelAdmin):
-    form = UnderServicesAdminForm
-
-
-class InfoAdmin(admin.ModelAdmin):
-    form = AddInfoAdminForm
+# class ServicesAdmin(admin.ModelAdmin):
+#     form = ServicesAdminForm
+#
+#
+# class UnderServicesAdmin(admin.ModelAdmin):
+#     form = UnderServicesAdminForm
+#
+#
+# class InfoAdmin(admin.ModelAdmin):
+#     form = AddInfoAdminForm
 
 
 class ApplicationsAdmin(admin.ModelAdmin):
@@ -92,14 +92,17 @@ admin.site.register(CooperationPage)
 admin.site.register(AboutPage)
 admin.site.register(PhilosBlog)
 admin.site.register(ServicesPage)
-admin.site.register(Services, ServicesAdmin)
+# admin.site.register(Services, ServicesAdmin)
+admin.site.register(Services)
 admin.site.register(Employee)
 admin.site.register(Reviews, ReviewsAdmin)
 admin.site.register(Blog, PostAdmin)
 admin.site.register(MainPage)
-admin.site.register(UnderServices, UnderServicesAdmin)
+# admin.site.register(UnderServices, UnderServicesAdmin)
+admin.site.register(UnderServices)
 admin.site.register(CategoryBlog)
-admin.site.register(Info, InfoAdmin)
+# admin.site.register(Info, InfoAdmin)
+admin.site.register(Info)
 admin.site.register(Applications, ApplicationsAdmin)
 admin.site.register(PriceList)
 admin.site.register(Jobs)

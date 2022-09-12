@@ -6,10 +6,36 @@
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
+span, p{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+}
+ul {
+    padding-inline-start: 20px;
+}
 input{
     border: none;
 }
-:focus,:active{outline: none;}
+:focus,:active{
+    outline: none;
+}
+table tr, table tr td, table td, table{
+    padding: 10px;
+    border: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+td{
+    border-color:#ffffff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+}
+img{
+    margin: 15px;
+}
+
+
+
 
 /* Цвет календаря */
 ::-webkit-calendar-picker-indicator {
@@ -35,6 +61,10 @@ body{
     height: 100%;
     object-fit: cover;
     object-position: center;
+    margin: 0px;
+}
+.imgBeforeAfter{
+    height: auto;
 }
 .title{
     font-weight: 700;
@@ -376,6 +406,8 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 }
 .team__title span{
     color: #FE8F1D;
+    font-size: 48px;
+    line-height: 65px;
 }
 .team__subtitle{
     font-weight: 400;
@@ -471,15 +503,15 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 .feedback__item{
    width: 450px;
 }
-.feedback__name{
+.feedback__name {
     font-weight: 700;
-    font-size: 28px; 
-    line-height: 39px;
-}
-.feedback__feedback{
-    font-weight: 400;
     font-size: 24px;
-    line-height: 33px;
+    line-height: 28px;
+}
+.feedback__feedback {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
 }
 .swiper-wrapper{
     cursor: pointer;
@@ -612,6 +644,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 .form__input::placeholder{
     color: #d7d7d7;
 }
+
 .contacts__map{
     margin-bottom: 150px;
 }
@@ -784,6 +817,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     transition: color 0.3s ease;
     border-bottom: 1px solid;
     text-decoration: none;
+    color: #3F3F3F;
 }
 .contacts__text a:hover{
     color: #7E7E7E;
@@ -895,6 +929,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 }
 .procedure__result-img{
     display: flex;
+    width: 50%;
 }
 
 /* Отзывы */
@@ -955,16 +990,25 @@ textarea{
     margin: 0px auto;
     padding-bottom: 150px;
 }
-.registration__title{
+.registration__title {
     font-weight: 700;
-    font-size: 64px;
-    line-height: 87px;
+    font-size: 48px;
+    line-height: 50px;
     color: #FFFFFF;
 }
 .reg__input{
+    position: relative;
     background-color: #000;
     border-bottom: 3px solid #fff;
     color: #FE8F1D;
+}
+.reg__input-file{
+    margin-top: 30px;
+}
+.reg__input p{
+    position: absolute;
+    top: 10px;
+    left: 0;
 }
 .reg__input::placeholder{
     color: #7E7E7E;
@@ -994,7 +1038,7 @@ textarea{
 }
 
 /* Команда */
-.team__text{
+.team__text, .team__text span{
     font-weight: 700;
     font-size: 32px;
     line-height: 44px;
@@ -1002,6 +1046,11 @@ textarea{
 .team__text span{
     color: #FE8F1D;
     margin-top: 20px;
+}
+.team__title span{
+    color: #FE8F1D;
+    font-size: 48px;
+    line-height: 65px;
 }
 .team__item span{
     font-size: 18px;
@@ -1122,22 +1171,37 @@ textarea{
 /* Партнеры */
 .partners__list{
     display: flex;
-    justify-content: center;
     gap: 30px;
+    flex-wrap: wrap;
 }
-.partners__item{
-    height: 100px;
+.partners__item a{
+    padding: 0px 20px;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    color: #000;
+    min-width: 150px;
+    min-height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
 }
-.partners__item img{
-    -webkit-filter: grayscale(100%);
-    filter: grayscale(100%);
-    transition: all 0.7s ease 0s;
+.partners__item a:hover{
+    opacity: 0.6;
 }
-.partners__item img:hover{
-    filter: grayscale(0%);
-    -webkit-filter: grayscale(0%);
-    opacity: 1;
+.partner__orange a{
+    background-color: #FE8F1D;
 }
+.partner__yellow a{
+    background-color: #FFD300;
+}
+.partner__grey a{
+    background-color: #A6A6A6;
+}
+
 
 /* Страница прайс листа*/
 .priceList__link{
