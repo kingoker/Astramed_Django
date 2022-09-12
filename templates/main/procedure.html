@@ -34,10 +34,10 @@
     <div class="procedure__container container">
        {% if s.before != None and s.after != None %}
         <div class="procedure__result">
-            <h2 class="feedback__title colorWhite marbot-50">До и после</h2>
+            <h2 class="feedback__title colorWhite marbot-50">{{ s.titleBeforeAfter }}</h2>
             <div class="procedure__result-img">
-                <img src="{{ s.before.url }}" alt="before" class="img animate__animated animate__fadeInLeft animate__slow wow">
-                <img src="{{ s.after.url }}" alt="after" class="img animate__animated animate__fadeInRight animate__slow wow">
+                <img src="{{ s.before.url }}" alt="before" class="imgBeforeAfter img animate__animated animate__fadeInLeft animate__slow wow">
+                <img src="{{ s.after.url }}" alt="after" class="imgBeforeAfter img animate__animated animate__fadeInRight animate__slow wow">
             </div>
         </div>
         {% endif %}

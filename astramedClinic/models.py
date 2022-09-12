@@ -25,6 +25,7 @@ class Services(models.Model):
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
     title = models.TextField(verbose_name='Описание')
     buttonname = models.CharField(max_length=255, default='Записаться на приём', verbose_name='Название кнопки')
+    titleBeforeAfter = models.CharField(max_length=255, default='До и после', verbose_name='Заголовок фотографий')
     before = models.ImageField(upload_to='service/before/', null=True, blank=True, verbose_name='Фото До ',
                                max_length=255)
     after = models.ImageField(upload_to='service/after/', null=True, blank=True, verbose_name='Фото После',
@@ -46,6 +47,7 @@ class UnderServices(models.Model):
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
     title = models.TextField(verbose_name='Описание')
     buttonname = models.CharField(max_length=255, default='Записаться на приём', verbose_name='Название кнопки')
+    titleBeforeAfter = models.CharField(max_length=255, default='До и после', verbose_name='Заголовок фотографий')
     before = models.ImageField(upload_to='underServices/before/', null=True, blank=True, verbose_name='Фото До',
                                max_length=255)
     after = models.ImageField(upload_to='underServices/after/', null=True, blank=True, verbose_name='Фото После',

@@ -63,6 +63,9 @@ body{
     object-position: center;
     margin: 0px;
 }
+.imgBeforeAfter{
+    height: auto;
+}
 .title{
     font-weight: 700;
     font-size: 36px;
