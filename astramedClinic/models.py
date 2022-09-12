@@ -116,7 +116,7 @@ class Blog(models.Model):
     # description = models.TextField(verbose_name='Описание')
     date = models.DateField(auto_now_add=True, verbose_name='Время')
     # links = models.TextField(verbose_name='Скрытые ссылки')
-    description = CKEditor5Field('Скрытые ссылки', config_name='extends')
+    links = CKEditor5Field('Скрытые ссылки', config_name='extends')
 
     class Meta:
         verbose_name = 'Блог'
