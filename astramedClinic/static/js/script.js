@@ -1,7 +1,6 @@
 //Запрет на копирование
 document.ondragstart = noselect;
 document.onselectstart = noselect;
-// document.oncontextmenu = noselect;
 function noselect() {return false;}
 
 
@@ -55,8 +54,13 @@ var swiper = new Swiper(".swiper", {
         690:{
             slidesPerView: 3,
         }
-    }
+      }
 });
+
+// Карусель фотографий услуг
+
+
+
 
 
 // Расскрывающийся список

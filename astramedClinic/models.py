@@ -21,7 +21,7 @@ class Links(models.Model):
 
 
 class Services(models.Model):
-    sort = models.IntegerField( null=True, blank=True, verbose_name='Позиция')
+    sort = models.IntegerField(null=True, blank=True, verbose_name='Позиция')
     photo = models.ImageField(upload_to='service/', verbose_name='Фото', max_length=255)
     type = models.CharField(max_length=255, verbose_name='Название терапии')
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
@@ -30,14 +30,12 @@ class Services(models.Model):
     titleBeforeAfter = models.CharField(max_length=255, default='До и после', verbose_name='Заголовок фотографий')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
 
-
     class Meta:
         verbose_name = 'Терапия'
         verbose_name_plural = 'Терапии'
 
     def __str__(self):
         return self.type
-
 
 
 class ServicePhoto(models.Model):
@@ -123,9 +121,7 @@ class Blog(models.Model):
     published = models.BooleanField(default=True, verbose_name='Опубликован')
     photo = models.ImageField(upload_to='blogs/', verbose_name='Фото', max_length=255)
     description = CKEditor5Field('Описание', config_name='extends')
-    # description = models.TextField(verbose_name='Описание')
     date = models.DateField(auto_now_add=True, verbose_name='Время')
-    # links = models.TextField(verbose_name='Скрытые ссылки')
     links = CKEditor5Field('Скрытые ссылки', config_name='extends')
 
     class Meta:

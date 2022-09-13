@@ -931,10 +931,12 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 }
 .procedure__result{
     padding: 100px 0 50px 0;
+    overflow: hidden;
 }
 .procedure__result-img{
     display: flex;
-    width: 50%;
+    width: 100%;
+    height: 400px;
 }
 
 /* Отзывы */

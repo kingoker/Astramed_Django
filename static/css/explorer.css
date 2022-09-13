@@ -1,5 +1,4 @@
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-
     /* header */
     .header__nav{
         display: -ms-flexbox;
@@ -130,7 +129,7 @@
     .faceToFace__container{
         display: -ms-flexbox;
     }
-
+    
     /* post */
     .post__container{
         display: -ms-flexbox;
