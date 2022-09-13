@@ -17,7 +17,7 @@ class PostAdmin(admin.ModelAdmin):
 
 
 class ApplicationsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'therapy', 'date', 'finish_date', 'status', )
+    list_display = ('name', 'therapy', 'date', 'status', )
     list_display_links = ('name', )
     list_filter = ('status', 'therapy')
     search_fields = ('name', )

@@ -12,8 +12,7 @@ from django.http import HttpResponseRedirect
 
 from astramedClinic.config import gmail_send_message
 from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainPage, Info, Applications, Jobs, \
-    Partners, PriceList, Links, Contacs, AboutPage, CooperationPage, PhilosBlog, ServicesPage
-
+    Partners, PriceList, Links, Contacs, AboutPage, CooperationPage, PhilosBlog, ServicesPage, ServicePhoto
 
 admins = [1600170280, 938759596, ]
 
@@ -189,7 +188,7 @@ def review(request):
 
 
 def services(request):
-    services = Services.objects.all()
+    services = Services.objects.order_by('sort')
     servicePage = ServicesPage.objects.all()
     data = {
         'services': services,
@@ -213,13 +212,15 @@ def team(request):
 def therapy(request, pk):
     services = Services.objects.filter(id=pk)
     items = list(Services.objects.all())
-    print(services.values())
+    photos = ServicePhoto.objects.filter(therapy_id=pk)
     recomended_services = random.sample(items, 3)
+    print(photos)
     underServices = UnderServices.objects.filter(maintype_id=pk)
     data = {
         'services': services,
         'recomended_services': recomended_services,
-        'underServices': underServices
+        'underServices': underServices,
+        'photos': photos,
     }
     return render(request, 'main/therapy.html', data)
 

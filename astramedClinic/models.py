@@ -20,31 +20,16 @@ class Links(models.Model):
         return self.title
 
 
-class ServicePhoto(models.Model):
-    Photo = models.ImageField(upload_to='main/', default="", verbose_name='Фото услуги', max_length=255)
-    published = models.BooleanField(default=True, verbose_name='Опубликован')
-
-    class Meta:
-        verbose_name = 'Фотография услуги'
-        verbose_name_plural = 'Фотографии услуги'
-
-    def __str__(self):
-        return 'Фотка'
-
-
 class Services(models.Model):
+    sort = models.IntegerField( null=True, blank=True, verbose_name='Позиция')
     photo = models.ImageField(upload_to='service/', verbose_name='Фото', max_length=255)
     type = models.CharField(max_length=255, verbose_name='Название терапии')
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
     title = CKEditor5Field('Описание', config_name='extends')
     buttonname = models.CharField(max_length=255, default='Записаться на приём', verbose_name='Название кнопки')
     titleBeforeAfter = models.CharField(max_length=255, default='До и после', verbose_name='Заголовок фотографий')
-    # before = models.ImageField(upload_to='service/before/', null=True, blank=True, verbose_name='Фото До ',
-    #                            max_length=255)
-    # after = models.ImageField(upload_to='service/after/', null=True, blank=True, verbose_name='Фото После',
-    #                           max_length=255)
-    otherPhoto = models.ForeignKey(ServicePhoto, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Фотографии')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
+
 
     class Meta:
         verbose_name = 'Терапия'
@@ -52,6 +37,20 @@ class Services(models.Model):
 
     def __str__(self):
         return self.type
+
+
+
+class ServicePhoto(models.Model):
+    Photo = models.ImageField(upload_to='main/', default="", verbose_name='Фото услуги', max_length=255)
+    published = models.BooleanField(default=True, verbose_name='Опубликован')
+    therapy = models.ForeignKey(Services, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Услуга')
+
+    class Meta:
+        verbose_name = 'Фотография услуги'
+        verbose_name_plural = 'Фотографии услуги'
+
+    def __str__(self):
+        return 'Фотка'
 
 
 class UnderServices(models.Model):
@@ -205,13 +204,14 @@ class Applications(models.Model):
     ]
     status = models.CharField(max_length=50, choices=statuses, verbose_name='Статус', default=statuses[0])
     name = models.CharField(max_length=255, verbose_name='ФИО')
-    birth = models.CharField(max_length=255, verbose_name='Год рождения')
-    address = models.CharField(max_length=255, verbose_name='Адрес')
+    birth = models.CharField(max_length=255, blank=True, null=True, verbose_name='Год рождения')
+    address = models.CharField(max_length=255, blank=True, null=True, verbose_name='Адрес')
     therapy = models.CharField(max_length=255, blank=True, null=True, default='Массаж', verbose_name='Терапия')
     number = models.CharField(max_length=255, verbose_name='Телефон')
     doctor = models.CharField(max_length=255, blank=True, null=True, verbose_name='Доктор')
+    userdate = models.DateTimeField(blank=True, null=True, verbose_name='Дата бронирования')
+    time = models.TimeField(verbose_name='Время бронирования', null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True, verbose_name='Дата заявки')
-    finish_date = models.DateTimeField(verbose_name='Дата закрытия заявки', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Заявка'
@@ -320,15 +320,18 @@ class AboutPage(models.Model):
                                        verbose_name='Заголовок фотографии')
 
     teamTitle = models.CharField(max_length=255, default="", verbose_name='Команда Заголовок')
-    teamSubtitle = models.CharField(max_length=255, default="", verbose_name='Команда подзаголовок', null=True, blank=True,)
+    teamSubtitle = models.CharField(max_length=255, default="", verbose_name='Команда подзаголовок', null=True,
+                                    blank=True, )
     teamPhoto = models.ImageField(upload_to='main/', default="", verbose_name='Команда Фото', max_length=255)
 
     reviewTitle = models.CharField(max_length=255, default="", verbose_name='Отзыв Заголовок')
-    reviewSubtitle = models.CharField(max_length=255, default="", verbose_name='Отзыв подзаголовок', null=True, blank=True,)
+    reviewSubtitle = models.CharField(max_length=255, default="", verbose_name='Отзыв подзаголовок', null=True,
+                                      blank=True, )
     reviewPhoto = models.ImageField(upload_to='main/', default="", verbose_name='Отзыв Фото', max_length=255)
 
     serviceTitle = models.CharField(max_length=255, default="", verbose_name='Услуга Заголовок')
-    serviceSubtitle = models.CharField(max_length=255, default="", verbose_name='Услуга подзаголовок', null=True, blank=True,)
+    serviceSubtitle = models.CharField(max_length=255, default="", verbose_name='Услуга подзаголовок', null=True,
+                                       blank=True, )
 
     contactsTitle = models.CharField(max_length=255, default="", verbose_name='Контакты Заголовок')
 
