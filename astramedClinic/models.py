@@ -20,18 +20,30 @@ class Links(models.Model):
         return self.title
 
 
+class ServicePhoto(models.Model):
+    Photo = models.ImageField(upload_to='main/', default="", verbose_name='Фото услуги', max_length=255)
+    published = models.BooleanField(default=True, verbose_name='Опубликован')
+
+    class Meta:
+        verbose_name = 'Фотография услуги'
+        verbose_name_plural = 'Фотографии услуги'
+
+    def __str__(self):
+        return 'Фотка'
+
+
 class Services(models.Model):
     photo = models.ImageField(upload_to='service/', verbose_name='Фото', max_length=255)
     type = models.CharField(max_length=255, verbose_name='Название терапии')
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
-    # title = models.TextField(verbose_name='Описание')
     title = CKEditor5Field('Описание', config_name='extends')
     buttonname = models.CharField(max_length=255, default='Записаться на приём', verbose_name='Название кнопки')
     titleBeforeAfter = models.CharField(max_length=255, default='До и после', verbose_name='Заголовок фотографий')
-    before = models.ImageField(upload_to='service/before/', null=True, blank=True, verbose_name='Фото До ',
-                               max_length=255)
-    after = models.ImageField(upload_to='service/after/', null=True, blank=True, verbose_name='Фото После',
-                              max_length=255)
+    # before = models.ImageField(upload_to='service/before/', null=True, blank=True, verbose_name='Фото До ',
+    #                            max_length=255)
+    # after = models.ImageField(upload_to='service/after/', null=True, blank=True, verbose_name='Фото После',
+    #                           max_length=255)
+    otherPhoto = models.ForeignKey(ServicePhoto, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Фотографии')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:
@@ -47,7 +59,6 @@ class UnderServices(models.Model):
     maintype = models.ForeignKey(Services, on_delete=models.CASCADE, null=True, verbose_name='Главная терапия')
     undertype = models.CharField(max_length=255, default='название терапии', verbose_name='Название терапии')
     doctor = models.CharField(max_length=255, default='врач-терапевт', verbose_name='Прием ведет')
-    # title = models.TextField(verbose_name='Описание')
     title = CKEditor5Field('Описание', config_name='extends')
     buttonname = models.CharField(max_length=255, default='Записаться на приём', verbose_name='Название кнопки')
     titleBeforeAfter = models.CharField(max_length=255, default='До и после', verbose_name='Заголовок фотографий')

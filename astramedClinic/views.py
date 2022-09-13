@@ -43,7 +43,7 @@ def main(request):
     mainObjects = MainPage.objects.all()
     reviews = Reviews.objects.filter(published=True)
     data = {
-        'services': services,
+        # 'services': services,
         'blog': blog,
         'mainObjects': mainObjects,
         'reviews': reviews
