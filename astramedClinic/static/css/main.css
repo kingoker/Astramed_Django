@@ -6,7 +6,7 @@
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
-span, p{
+span, p, li, tr, td, table{
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
 }
@@ -23,7 +23,6 @@ table tr, table tr td, table td, table{
     padding: 10px;
     border: none;
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
 }
 td{
     border-color:#ffffff;
