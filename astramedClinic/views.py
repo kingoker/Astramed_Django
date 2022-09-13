@@ -43,7 +43,7 @@ def main(request):
     mainObjects = MainPage.objects.all()
     reviews = Reviews.objects.filter(published=True)
     data = {
-        # 'services': services,
+        'services': services,
         'blog': blog,
         'mainObjects': mainObjects,
         'reviews': reviews
@@ -309,7 +309,7 @@ def thanks(request):
             #     'Subject here',
             #     'Here is the message.',
             #     'temp@astramed-clinic.com',
-            #     ['bear.lvvb@mail.ru'],
+            #     ['info@astramed-clinic.com'],
             #     fail_silently=False,
             # )
     return render(request, 'main/thanks.html')
