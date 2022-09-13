@@ -32,6 +32,8 @@ EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
+DISABLE_DARK_MODE = True
+
 
 # Application definition
 
