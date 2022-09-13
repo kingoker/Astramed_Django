@@ -151,9 +151,14 @@
     .procedure__link{
         width: 800px;
     }
-    .procedure__result, .procedure__result-img{
+    .procedure__result{
         display: grid;
         grid-template-columns: 1fr;
+    }
+    .procedure__result-img {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
     }
     /* Адаптивное меню */
     .menu__burger{
@@ -233,6 +238,7 @@
     }
     .service__img {
         min-width: auto;
+        width: 100%;
     }
     .blog__list {
         gap: 50px;
@@ -465,7 +471,7 @@
         padding-top: 70px;
     }
     .about__img{
-        min-width: 350px;
+        width: 100%;
         height: 350px;  
         overflow: hidden;
     }

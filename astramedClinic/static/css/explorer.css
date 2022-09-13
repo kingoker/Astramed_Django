@@ -1,0 +1,234 @@
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
+    /* header */
+    .header__nav{
+        display: -ms-flexbox;
+        padding: 50px 0;
+    }
+    .header__title{
+        display: -ms-grid;
+    }
+    .header__info{
+        display: -ms-flexbox;
+    }
+    .header__body{
+        display: -ms-inline-flexbox;
+    }
+    .header__title-center{
+        width: 50%;
+    }
+    .header__link{
+        margin: 0 25px;
+    }
+    .menu__icons{
+        display: -ms-flexbox;
+        justify-content: center;
+        align-items: center;
+    }
+    .header__info img, .philosiphy__container img{
+        width: 50%;
+        -ms-flex: auto;
+        flex: auto;
+    }
+    .header__title{
+        display: -ms-flexbox;
+    }
+    .header__title .title__text{
+        top: 142px;
+    }
+    .search{
+        position: absolute;
+        top: 0;
+    }
+
+    /* philosophy */
+    .philosiphy__container{
+        display: -ms-flexbox;
+    }
+    .philosiphy__text{
+        width: 50%;
+    }
+    .aboutPhilosophy__list{
+        width: 100%;
+        display: -ms-flexbox;
+        justify-content: space-between;
+    }
+    .aboutPhilosophy__item{
+        margin-top: 30px;
+        width: 29%;
+    }
+    .aboutPhilosophy__list  img{
+        width: 100%;
+        height: 100%;
+        -ms-flex: auto;
+        flex: auto;
+    }
+
+    /* service */
+    .service__top{
+        display: -ms-flexbox;
+        justify-content: space-between;
+    }
+    .service__title{
+        width: 40%;
+        margin-right:100px;
+    }
+    .service__subtitle{
+        width: 50%;
+    }
+    .service__list, .blog__list{
+        display: -ms-flexbox;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 50px;
+    }
+    .service__item{
+        margin-bottom: 50px;
+    }
+    .service__link{
+        margin: 10px 0 63px 0;
+    }
+
+    /* team */
+    .team__container{
+        display: -ms-flexbox;
+        justify-content: space-between;
+    }
+    .team__img, .team__text{
+        width: 45%;
+    }
+    .blog__text .team__text{
+        width: 100%;
+    }
+    .blog__text .team__text span{
+        font-size: 32px;
+    }
+    .team__link{
+        width: 80%;
+        margin-bottom: 100px;
+    }
+    .team__list img{
+        padding-bottom: 10px;
+    }
+    .team__list .blog__item{
+        width: 29%;
+    }
+
+    /* member */
+    .member__container{
+        display: -ms-flexbox;
+        justify-content: space-between;
+    }
+    .member__info{
+        width: 45%;
+    }
+    .member__content{
+        width: 50%;
+    }
+
+    /* face to face */
+    .faceToFace__container{
+        display: -ms-flexbox;
+    }
+    
+    /* post */
+    .post__container{
+        display: -ms-flexbox;
+    }
+    .post__img{
+        width: 50%;
+        margin-right: 50px;
+    }
+    .post__content{
+        width: 40%;
+    }
+
+    /* feedback */
+    .feedback__top{
+        display: -ms-flexbox;
+        justify-content: space-between;
+    }
+    .feedback__text{
+        width: 40%;
+    }
+    .swiper-slide{
+        width: 400px;
+        margin-right:15px;
+        display: -ms-flexbox;
+    }
+    .prev__icon{
+        margin-right: 10px;
+    }
+
+    /* social */
+    .blog__social{
+        display: -ms-flexbox;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        align-items: center;
+    }
+    .social__list{
+        margin: 10px 0;
+    }
+    .social__item{
+        margin: 5px 10px;
+    }
+
+    /* contacts */
+    .contacts__list{
+        display: -ms-flexbox;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .contacts__list .blog__item{
+        width: 40%;
+        margin-bottom: 50px;
+    }
+    .contacts__list .social__list{
+        display: -ms-flexbox;
+        justify-content: flex-start;
+        margin: 0;
+    }
+    .fullRow{
+        width: 100% !important;
+    }
+    .contacts__container{
+        display: -ms-flexbox;
+        justify-content: space-between;
+    }
+    .contacts__form{
+        width: 40%;
+    }
+    .map__info{
+        display: -ms-flexbox;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .map__info svg{
+        margin-right: 10px;
+    }
+    .location__icon{
+        width: 40px;
+        margin-left: -5px;
+    }
+    .phone__icon{
+        width: 36px;
+        height: 36px;
+    }
+
+    /* footer */
+    .footer__container{
+        display: -ms-flexbox;
+        justify-content: space-between;
+    }
+    .menu__list-footer{
+        height: 120px;
+        display: -ms-flexbox;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .blog__social-footer{
+        display: block;
+    }
+}

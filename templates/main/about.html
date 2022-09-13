@@ -3,20 +3,24 @@
 {% block title %}— About{% endblock %}
 
 {% block content %}
-{% for mainPage in mainPage %}
+
 <header class="header header-half">
     <div class="header__container container">
     {% include 'custom/navbar.html' %}
+        {% for about in aboutPage %}
+
          <div class="header__title aboutHeader__title">
             <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
-            <h1 class="title__text animate__animated animate__fadeInRight animate__slow wow">{{ mainPage.AboutPageTitle }} О клинике</h1>
+            <h1 class="title__text animate__animated animate__fadeInRight animate__slow wow">{{ about.headerTitle }}</h1>
         </div>
     </div>
 </header>
 
+
+
 <section class="aboutPhilosophy">
     <div class="aboutPhilosophy__container container">
-        <h2 class="aboutPhilosophy__header marbot-50">Наша философия</h2>
+        <h2 class="aboutPhilosophy__header marbot-50">{{about.philosophyMainTitle}}</h2>
         <div class="aboutPhilosophy__list">
             <div class="aboutPhilosophy__item animate__animated animate__fadeInUp animate__slow wow">
                 <div class="aboutPhilosophy__img">
@@ -56,11 +60,11 @@
 <section class="aboutTeam team">
     <div class="team__container container">
         <div class="team__img animate__animated animate__fadeInLeft animate__slow wow">
-            <img src="{% static 'img/team.png' %}" alt="Astramed team" class="img">
+            <img src="{{ about.teamPhoto.url }}" alt="Astramed team" class="img">
         </div>
         <div class="team__text animate__animated animate__fadeInRight animate__slow wow">
-            <h2 class="team__title"> <span>Вы</span> в самых лучших руках</h2>
-            <p class="team__subtitle">Мы стремимся предоставить наилучшее, наиболее подходящее лечение для каждого человека, следя за тем, чтобы все вопросы и опасения были решены до начала лечения и чтобы все наши пациенты оставались полностью удовлетворенными.</p>
+            <h2 class="team__title"><span>Вы</span> в самых лучших руках</h2>
+            <p class="team__subtitle">{{about.teamSubtitle}}</p>
             <a href="{% url 'team' %}" class="team__link link">Команда</a>
         </div>
     </div>
@@ -70,52 +74,25 @@
     <div class="feedback__container container aboutFeedback__container">
         <div class="feedback__top">
             <div class="feedback__text animate__animated animate__fadeInLeft animate__slow wow">
-                <h2 class="feedback__title colorWhite">Что люди говорят о нас?</h2>
-                <p class="feedback__subtitle">Ваши отзывы помогут другим людям принять решение</p>
+                <h2 class="feedback__title colorWhite">{{about.reviewTitle}}</h2>
+                <p class="feedback__subtitle">{{about.reviewSubtitle}}</p>
                 <a href="{% url 'review' %}" class="feedback__link link colorWhite">Оставить отзыв</a>
             </div>
             <div class="feedback__img animate__animated animate__fadeInRight animate__slow wow">
-                <img src="{% static 'img/feedback.png' %}" alt="Astramed feedback" class="img">
+                <img src="{{ about.reviewPhoto.url }}" alt="Astramed feedback" class="img">
             </div>
         </div>
         <div class="vlog3__carusel">
             <div class="swiper carusel__conteiner feedback__list">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="vlog3__slide animate__animated animate__fadeInUp animate__slow wow">
-                            <h3 class="colorWhite feedback__name">Александра Митрошина</h3>
-                            <p class="feedback__feedback lightgrey">Мы верим, что забота о каждом из вас поможет
-                                сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
+                    {% for review in reviews %}
+                        <div class="swiper-slide">
+                            <div class="vlog3__slide animate__animated animate__fadeInUp animate__slow wow">
+                                <h3 class="colorWhite feedback__name">{{ review.name }}</h3>
+                                <p class="feedback__feedback lightgrey">{{ review.description }}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="vlog3__slide animate__animated animate__fadeInUp animate__slow wow">
-                            <h3 class="colorWhite feedback__name">Владимир Яловенка</h3>
-                            <p class="feedback__feedback lightgrey">Мы верим, что забота о каждом из вас поможет
-                                сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="vlog3__slide animate__animated animate__fadeInUp animate__slow wow">
-                            <h3 class="colorWhite feedback__name">Нуриддинова Нодира</h3>
-                            <p class="feedback__feedback lightgrey">Мы верим, что забота о каждом из вас поможет
-                                сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="vlog3__slide">
-                            <h3 class="colorWhite feedback__name animate__animated animate__fadeInUp animate__slow wow">Александра Митрошина</h3>
-                            <p class="feedback__feedback lightgrey">Мы верим, что забота о каждом из вас поможет
-                                сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="vlog3__slide">
-                            <h3 class="feedback__name colorWhite animate__animated animate__fadeInUp animate__slow wow">Студия дизайна</h3>
-                            <p class="feedback__feedback lightgrey">Мы верим, что забота о каждом из вас поможет
-                                сохранить и поддержать ваше здоровье и красоту снаружи и внутри</p>
-                        </div>
-                    </div>
+                    {%endfor%}
                 </div>
             </div>
             <div class="feedback__arrows">
@@ -137,8 +114,8 @@
 <section class="blog blog-white">
     <div class="blog__container container">
         <div class="blog__text AboutBlog__text animate__animated animate__fadeInLeft animate__slow wow">
-            <a href="services.html" class="blog__title link">Наши услуги {{ mainPage.AboutPageServicesTitle }}</a>
-            <p class="blog__subtitle">{{ mainPage.AboutPageServicesSubtitle }} Услуги в нашем блоге мы публикуем последние новости, полезные статьи и просто рассказываем о жизни клиники =)</p>
+            <a href="{% url 'services' %}" class="blog__title link">{{ about.serviceTitle }}</a>
+            <p class="blog__subtitle">{{ serviceSubtitle }}</p>
         </div>
         <div class="blog__list animate__animated animate__fadeInUp animate__slow wow">
             {% for service in services %}
@@ -160,11 +137,11 @@
 <section class="contacts">
     <div class="contacts__container container">
         <div class="contacts__form form animate__animated animate__fadeInLeft animate__slow wow">
-            <h3 class="form__title">Оставьте свои контакты <br> и мы свяжемся с вами</h3>
+            <h3 class="form__title">{{service.contactsTitle}}</h3>
             <form action="{% url 'thanks' %}" autocomplete="off" class="form" method="POST">
                 {% csrf_token %}
             <input type="text" class="form__input" name="name" placeholder="Ваше имя">
-            <input type="text" class="form__input" name="phone" placeholder="Ваш номер телефона">
+            <input type="tel" class="form__input" name="phone" placeholder="Ваш номер телефона">
             <button type="submit" class="form__button link">Отправить</button>
             </form>
         </div>

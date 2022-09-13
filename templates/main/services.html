@@ -7,10 +7,10 @@
         <div class="header__container container">
 
             {% include 'custom/navbar.html' %}
-
+            {% for sp in servicePage %}
             <div class="header__title aboutHeader__title">
                 <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
-                <h1 class="title__text animate__animated animate__fadeInRight animate__slow wow">Наши услуги</h1>
+                <h1 class="title__text animate__animated animate__fadeInRight animate__slow wow">{{ sp.headerTitle }}</h1>
             </div>
         </div>
     </header>
@@ -34,8 +34,8 @@
     <section class="faceToFace">
         <div class="faceToFace__container container">
             <div class="faceToFace__text animate__animated animate__fadeInLeft animate__slow wow">
-                <h2 class="faceToFace__title title">Лицом к лицу всегда лучше</h2>
-                <p class="faceToFace__subtitle">Мы знаем, что мир медицины может пугать. Наши врачи всегда рады провести с вами время. Запишитесь на консультацию, и мы вместе обсудим ваши мысли, беспокойства и вопросы.</p>
+                <h2 class="faceToFace__title title">{{ sp.faceToFaceTitle }}</h2>
+                <p class="faceToFace__subtitle">{{ sp.faceToFaceSubtitle }}</p>
                 <a href="{% url 'order' 0 %}" class="faceToFace__link link">Записаться на консультацию</a>
             </div>
         </div>
@@ -44,7 +44,7 @@
     <section class="contacts">
         <div class="contacts__container container">
             <div class="contacts__form form animate__animated animate__fadeInLeft animate__slow wow">
-                <h3 class="form__title">Оставьте свои контакты <br> и мы свяжемся с вами</h3>
+                <h3 class="form__title">{{ sp.contactsTitle }}</h3>
                 <form action="{% url 'thanks' %}" autocomplete="off" class="form" method="POST">
                 {% csrf_token %}
                 <input type="text" name="name" class="form__input" placeholder="Ваше имя">
@@ -88,4 +88,5 @@
             </div>
         </div>
     </section>
+{% endfor %}
 {% endblock %}

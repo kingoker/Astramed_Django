@@ -8,9 +8,32 @@ from django.core.mail import send_mail
 from django.shortcuts import render
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from django.http import HttpResponseRedirect
 
 from astramedClinic.config import gmail_send_message
-from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainPage, Info, Applications, Jobs, Partners, PriceList, Links, Contacs, AboutPage, CooperationPage
+from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainPage, Info, Applications, Jobs, \
+    Partners, PriceList, Links, Contacs, AboutPage, CooperationPage, PhilosBlog, ServicesPage
+
+
+admins = [1600170280, 938759596, ]
+
+
+def sendMessage(text, *args):
+    method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
+    for chat_id in args[0]:
+        print(chat_id)
+        requests.post(method, data={
+            'chat_id': chat_id,
+            'text': text
+        })
+
+
+def sendDocument(text, file, *args):
+    method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendDocument'
+    files = {"document": file}
+    title = text
+    for chat_id in args[0]:
+        requests.post(method, data={"chat_id": chat_id, "caption": title}, files=files)
 
 
 def main(request):
@@ -19,7 +42,6 @@ def main(request):
     blog = random.sample(items, 3)
     mainObjects = MainPage.objects.all()
     reviews = Reviews.objects.filter(published=True)
-    print(reviews)
     data = {
         'services': services,
         'blog': blog,
@@ -41,14 +63,16 @@ def main(request):
 
 def about(request):
     items = list(Services.objects.all())
+    reviews = Reviews.objects.filter(published=True)
     services = random.sample(items, 3)
     aboutPage = AboutPage.objects.all()
-    mainPage = MainPage.objects.all()
+    philosopies = PhilosBlog.objects.all()
 
     data = {
         'services': services,
         'aboutPage': aboutPage,
-        'mainPage': mainPage,
+        'philosopies': philosopies,
+        'reviews': reviews
     }
     return render(request, 'main/about.html', data)
 
@@ -80,7 +104,7 @@ def contacts(request):
 
 def member(request, employee_name):
     employes = Employee.objects.filter(name=employee_name)
-    review_list = Reviews.objects.filter(description__iregex=rf'({employee_name})')
+    review_list = Reviews.objects.filter(doctor=employee_name)
     data = {
         'employes': employes,
         'review_list': review_list
@@ -142,6 +166,12 @@ def order(request, pk):
             data = {
                 'services': [services.values('undertype')[0]['undertype']]
             }
+        elif "member" in path:
+            member = Employee.objects.filter(pk=pk)
+            print(member)
+            data = {
+                'member': [member.values('name')[0]['name']]
+            }
     except:
         pass
     return render(request, 'main/order.html', data)
@@ -160,9 +190,10 @@ def review(request):
 
 def services(request):
     services = Services.objects.all()
-
+    servicePage = ServicesPage.objects.all()
     data = {
         'services': services,
+        'servicePage': servicePage
     }
 
     return render(request, 'main/services.html', data)
@@ -195,61 +226,92 @@ def therapy(request, pk):
 
 def thanks(request):
     path = str(request.META.get('HTTP_REFERER'))
+
     if request.method == 'POST':
         if 'order' in path:
             name = request.POST.get('LFname')
             birth = request.POST.get('birth')
             address = request.POST.get('address')
-            therapy = request.POST.get('therapy')
+            therapy=""
+            doctor=""
             number = request.POST.get('number')
-            Applications.objects.create(name=name, birth=birth, address=address, therapy=therapy, number=number)
-            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
-            text = f'ФИО: {name}\n' \
-                   f'Дата рождения: {birth}\n' \
-                   f'Адрес: {address}\n' \
-                   f'Терапия: {therapy}\n' \
-                   f'Номер: {number}',
-            requests.post(method, data={
-                'chat_id': 1600170280,
-                'text': text
-            })
+            if request.POST.get('therapy'):
+                therapy = request.POST.get('therapy')
+                text = f'Запись на прием: {therapy}\n' \
+                       f'ФИО: {name}\n' \
+                       f'Дата рождения: {birth}\n' \
+                       f'Адрес: {address}\n' \
+                       f'Терапия: {therapy}\n' \
+                       f'Номер: {number}\n',
+            elif request.POST.get('doctor'):
+                doctor = request.POST.get('doctor')
+                text = f'Запись к врачу: {doctor}\n' \
+                       f'ФИО: {name}\n' \
+                       f'Дата рождения: {birth}\n' \
+                       f'Адрес: {address}\n' \
+                       f'Терапия: {therapy}\n' \
+                       f'Номер: {number}\n',
+            else:
+                text = f'Запись на консультацию\n' \
+                       f'ФИО: {name}\n' \
+                       f'Дата рождения: {birth}\n' \
+                       f'Адрес: {address}\n' \
+                       f'Номер: {number}\n',
+            Applications.objects.create(name=name, birth=birth, address=address, therapy=therapy, number=number, doctor=doctor)
+            sendMessage(text, admins)
 
-        if 'review' in path or 'member' in path:
+        elif 'review' in path or 'member' in path:
             name = request.POST.get('name')
             description = request.POST.get('description')
-            Reviews.objects.create(name=name, description=description)
-            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
+            doctor = ""
+            print(request.POST.get('doctor'))
+            if 'member' in path:
+                doctor = request.POST.get('doctor')
+            Reviews.objects.create(name=name, description=description, doctor=doctor)
             text = f'ФИО: {name}\n' \
                    f'Отзыв: {description}\n'
-            requests.post(method, data={
-                'chat_id': 1600170280,
-                'text': text
-            })
-        if 'jobOffer' in path:
+            sendMessage(text, admins)
+            if 'member' in path:
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+        elif 'jobOffer' in path:
             name = request.POST.get('LFname')
             number = request.POST.get('number')
             address = request.POST.get('address')
             therapy = request.POST.get('therapy')
-            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
             text = f'Вакансия: {therapy}' \
                    f'ФИО: {name}\n' \
                    f'Номер: {number}\n' \
                    f'Адрес: {address}'
-            requests.post(method, data={
-                'chat_id': 1600170280,
-                'text': text
-            })
+            sendDocument(text, request.FILES['resume'], admins)
+
         if 'about' in path or 'blog' in path or 'contacts' in path or 'index' in path or 'services' in path:
             name = request.POST.get('name')
             phone = request.POST.get('phone')
-            method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
+
             text = f'Просьба позвонить:' \
                    f'ФИО: {name}\n' \
                    f'Номер: {phone}\n'
-            requests.post(method, data={
-                'chat_id': 1600170280,
-                'text': text
-            })
+            sendMessage(text, admins)
+        if 'partner' in path:
+            componyName = request.POST.get('componyName')
+            email = request.POST.get('email')
+            number = request.POST.get('number')
+            url = request.POST.get('url')
+
+            text = f'Заявка в партнеры:' \
+                   f'Компанмя:: {componyName}\n' \
+                   f'Почта: {email}\n' \
+                   f'Номер: {number}\n' \
+                   f'Ссылка: {url}\n'
+            sendMessage(text, admins)
+            # send_mail(
+            #     'Subject here',
+            #     'Here is the message.',
+            #     'temp@astramed-clinic.com',
+            #     ['bear.lvvb@mail.ru'],
+            #     fail_silently=False,
+            # )
     return render(request, 'main/thanks.html')
 
 
@@ -319,3 +381,7 @@ def search(request):
         return render(request, 'main/result.html', {'blog_list': blog_list, 'services_list': services_list, 'underservices_list': underservices_list})
     else:
         return render(request, 'main/result.html', {})
+
+
+def partner(request):
+    return render(request, 'main/partnerRegistration.html')

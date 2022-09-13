@@ -6,13 +6,40 @@
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
+span, p{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+}
 ul {
     padding-inline-start: 20px;
 }
 input{
     border: none;
 }
-:focus,:active{outline: none;}
+:focus,:active{
+    outline: none;
+}
+table tr, table tr td, table td, table{
+    padding: 10px;
+    border: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+td{
+    border-color:#ffffff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+}
+img{
+    margin: 15px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+
 
 /* Цвет календаря */
 ::-webkit-calendar-picker-indicator {
@@ -38,6 +65,10 @@ body{
     height: 100%;
     object-fit: cover;
     object-position: center;
+    margin: 0px;
+}
+.imgBeforeAfter{
+    height: auto;
 }
 .title{
     font-weight: 700;
@@ -379,6 +410,8 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 }
 .team__title span{
     color: #FE8F1D;
+    font-size: 48px;
+    line-height: 65px;
 }
 .team__subtitle{
     font-weight: 400;
@@ -788,6 +821,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     transition: color 0.3s ease;
     border-bottom: 1px solid;
     text-decoration: none;
+    color: #3F3F3F;
 }
 .contacts__text a:hover{
     color: #7E7E7E;
@@ -899,6 +933,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 }
 .procedure__result-img{
     display: flex;
+    width: 50%;
 }
 
 /* Отзывы */
@@ -1007,7 +1042,7 @@ textarea{
 }
 
 /* Команда */
-.team__text{
+.team__text, .team__text span{
     font-weight: 700;
     font-size: 32px;
     line-height: 44px;
@@ -1015,6 +1050,11 @@ textarea{
 .team__text span{
     color: #FE8F1D;
     margin-top: 20px;
+}
+.team__title span{
+    color: #FE8F1D;
+    font-size: 48px;
+    line-height: 65px;
 }
 .team__item span{
     font-size: 18px;
@@ -1135,18 +1175,18 @@ textarea{
 /* Партнеры */
 .partners__list{
     display: flex;
-    justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
 }
 .partners__item a{
+    padding: 0px 20px;
     font-size: 16px;
     text-transform: uppercase;
     text-decoration: none;
     font-weight: 600;
     color: #000;
-    min-height: 50px;
     min-width: 150px;
+    min-height: 50px;
     border-radius: 10px;
     display: flex;
     justify-content: center;

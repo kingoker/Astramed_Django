@@ -31,30 +31,33 @@
                 </h3>
                 <span>{{employee.title}}</span>
                 <p class="member__text">{{employee.description}}</p>
-                <a href="{% url 'authorization' %}" class="member__link link">Записаться на консультацию</a>
+                <a href="{% url 'order' employee.pk %}" class="member__link link">Записаться на консультацию</a>
             </div>
-            {%endfor%}
+
         </div>
     </section>
 
 <section class="blog">
     <div class="allreviews__container container memberReview__container">
+        <div class="member__review">
+            <h4 class="review__subtitle">Отзывы</h4>
+            {% for review in review_list %}
+            <div class="review animate__animated animate__fadeInRight animate__slow wow">
+                <h5 class="review__text bolder-700 colorWhite">{{ review.name }}</h5>
+                <p class="review__text">{{ review.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
         <form method="POST" action="{% url 'thanks' %}" class="review__form form animate__animated animate__fadeInUp animate__slow wow">
             {% csrf_token %}
             <h4 class="review__subtitle review__subtitle_member">Оставить отзыв</h4>
             <input type="text" name="name" class="form__input reg__input " placeholder="Ваше имя">
             <textarea class="form__input reg__input" name="description" id="" cols="30" rows="5" placeholder="Текст"></textarea>
+            <input type="text" name="doctor" autocomplete="disabled" class="form__input reg__input" style="display:none" value="{{employee.name}}">
             <button type="submit" class="form__button link colorWhite">Оставить отзыв</button>
         </form>
-        <div class="member__review">
-            <h4 class="review__subtitle">Все отзывы</h4>
-            {% for review in review_list %}
-            <div class="review animate__animated animate__fadeInRight animate__slow wow">
-                <h5 class="review__text bolder-700 colorWhite">{{review.name}}</h5>
-                <p class="review__text">{{review.description}}</p>
-            </div>
-            {% endfor %}
-        </div>
+        {%endfor%}
+
     </div>
 </section>
 {% endblock %}
