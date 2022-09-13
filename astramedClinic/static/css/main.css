@@ -936,8 +936,18 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 .procedure__result-img{
     display: flex;
     width: 100%;
-    height: 400px;
+    height: 500px;
 }
+.slider{
+    overflow: hidden;
+}
+.slider-line{
+    display: flex;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    transition: all 0.7s ease;
+}v
 
 /* Отзывы */
 .review__form{

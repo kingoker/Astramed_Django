@@ -4,7 +4,7 @@ import base64
 from email.message import EmailMessage
 
 import requests
-from django.core.mail import send_mail
+from django.core.mail import send_mail,EmailMessage
 from django.shortcuts import render
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -14,7 +14,7 @@ from astramedClinic.config import gmail_send_message
 from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainPage, Info, Applications, Jobs, \
     Partners, PriceList, Links, Contacs, AboutPage, CooperationPage, PhilosBlog, ServicesPage, ServicePhoto
 
-admins = [1600170280, 938759596, ]
+admins = [938759596, 1600170280]
 
 
 def sendMessage(text, *args):
@@ -34,6 +34,15 @@ def sendDocument(text, file, *args):
     for chat_id in args[0]:
         requests.post(method, data={"chat_id": chat_id, "caption": title}, files=files)
 
+
+def sendMail(text, subject):
+    send_mail(
+        f'{subject}',
+        f'{text}',
+        'temp@astramed-clinic.com',
+        ['info@astramed-clinic.com'],
+        fail_silently=False,
+    )
 
 def main(request):
     services = Services.objects.all()[:6]
@@ -233,32 +242,50 @@ def thanks(request):
             name = request.POST.get('LFname')
             birth = request.POST.get('birth')
             address = request.POST.get('address')
+            date = request.POST.get('date')
+            time = request.POST.get('time')
             therapy=""
             doctor=""
             number = request.POST.get('number')
             if request.POST.get('therapy'):
                 therapy = request.POST.get('therapy')
+                type = f'Запись на прием: {therapy}'
                 text = f'Запись на прием: {therapy}\n' \
                        f'ФИО: {name}\n' \
+                       f'Дата бронирования: {date}\n' \
+                       f'Время бронирования: {time}\n' \
                        f'Дата рождения: {birth}\n' \
                        f'Адрес: {address}\n' \
                        f'Терапия: {therapy}\n' \
                        f'Номер: {number}\n',
+                sendMail(text, type)
             elif request.POST.get('doctor'):
                 doctor = request.POST.get('doctor')
+                type = f'Запись к врачу: {doctor}'
                 text = f'Запись к врачу: {doctor}\n' \
                        f'ФИО: {name}\n' \
+                       f'Дата бронирования: {date}\n' \
+                       f'Время бронирования: {time}\n' \
                        f'Дата рождения: {birth}\n' \
                        f'Адрес: {address}\n' \
                        f'Терапия: {therapy}\n' \
                        f'Номер: {number}\n',
+                sendMail(text, type)
             else:
+                type = f'Запись на консультацию'
                 text = f'Запись на консультацию\n' \
                        f'ФИО: {name}\n' \
+                       f'Дата бронирования: {date}\n' \
+                       f'Время бронирования: {time}\n' \
                        f'Дата рождения: {birth}\n' \
                        f'Адрес: {address}\n' \
                        f'Номер: {number}\n',
-            Applications.objects.create(name=name, birth=birth, address=address, therapy=therapy, number=number, doctor=doctor)
+                sendMail(text, type)
+            if date and time:
+                Applications.objects.create(name=name, birth=birth, address=address, therapy=therapy, number=number, doctor=doctor, userdate=date, time=time)
+            else:
+                Applications.objects.create(name=name, birth=birth, address=address, therapy=therapy, number=number,
+                                            doctor=doctor)
             sendMessage(text, admins)
 
         elif 'review' in path or 'member' in path:
@@ -272,6 +299,7 @@ def thanks(request):
             text = f'ФИО: {name}\n' \
                    f'Отзыв: {description}\n'
             sendMessage(text, admins)
+            sendMail(text, 'Отзыв')
             if 'member' in path:
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
@@ -280,11 +308,25 @@ def thanks(request):
             number = request.POST.get('number')
             address = request.POST.get('address')
             therapy = request.POST.get('therapy')
-            text = f'Вакансия: {therapy}' \
+            text = f'Вакансия: {therapy}\n' \
                    f'ФИО: {name}\n' \
                    f'Номер: {number}\n' \
                    f'Адрес: {address}'
-            sendDocument(text, request.FILES['resume'], admins)
+            email = EmailMessage(
+                'Вакансия',
+                text,
+                'temp@astramed-clinic.com',
+                ['info@astramed-clinic.com'],
+            )
+            uploaded_file = request.FILES['resume']
+
+            if request.FILES:
+
+                email.attach(uploaded_file.name, uploaded_file.read(), uploaded_file.content_type)
+            email.send()
+            request.FILES['resume'].seek(0)
+            sendDocument(text,request.FILES['resume'] , admins)
+
 
         if 'about' in path or 'blog' in path or 'contacts' in path or 'index' in path or 'services' in path:
             name = request.POST.get('name')
@@ -294,6 +336,7 @@ def thanks(request):
                    f'ФИО: {name}\n' \
                    f'Номер: {phone}\n'
             sendMessage(text, admins)
+            sendMail(text, 'Просьба позвонить')
         if 'partner' in path:
             componyName = request.POST.get('componyName')
             email = request.POST.get('email')
@@ -306,13 +349,7 @@ def thanks(request):
                    f'Номер: {number}\n' \
                    f'Ссылка: {url}\n'
             sendMessage(text, admins)
-            # send_mail(
-            #     'Subject here',
-            #     'Here is the message.',
-            #     'temp@astramed-clinic.com',
-            #     ['info@astramed-clinic.com'],
-            #     fail_silently=False,
-            # )
+            sendMail(text, 'Заявка в партнеры')
     return render(request, 'main/thanks.html')
 
 
