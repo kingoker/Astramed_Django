@@ -11,6 +11,13 @@ const search = document.querySelector('.search');
 icon.onclick = function(){
     search.classList.toggle('seacrch__active');
 }
+document.addEventListener( 'click', (e) => {
+	if ( !icon ) {
+		search.classList.remove('seacrch__active');
+	}
+})
+
+
 
 // Бергер меню
 const iconMenu = document.querySelector('.menu__burger');
