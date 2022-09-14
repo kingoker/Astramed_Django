@@ -47,7 +47,7 @@ def sendMail(text, subject):
 
 def main(request):
     services = Services.objects.filter(published=True)[:6]
-    items = list(Blog.objects.all())
+    items = list(Blog.objects.filter(published=True))
     blog = random.sample(items, 3)
     mainObjects = MainPage.objects.all()
     reviews = Reviews.objects.filter(published=True)
@@ -91,8 +91,8 @@ def authorization(request):
 
 
 def blog(request):
-    blogs = Blog.objects.all()
-    fresh = Blog.objects.order_by("-id")[:3]
+    blogs = Blog.objects.filter(published=True)
+    fresh = Blog.objects.filter(published=True).order_by("-id")[:3]
     data = {
         'blogs': blogs,
         'fresh': fresh,
@@ -122,7 +122,7 @@ def member(request, employee_name):
 
 
 def post(request, pk):
-    blogs = Blog.objects.filter(pk=pk)
+    blogs = Blog.objects.filter(pk=pk, published=True)
     items = list(Blog.objects.filter(published=True))
     recomended_blogs = random.sample(items, 3)
 
@@ -134,7 +134,7 @@ def post(request, pk):
 
 
 def procedure(request, pk):
-    services = UnderServices.objects.filter(id=pk)
+    services = UnderServices.objects.filter(id=pk, published=True)
     items = list(Services.objects.filter(published=True))
     recomended_services = random.sample(items, 3)
     data = {
@@ -220,7 +220,7 @@ def team(request):
 
 
 def therapy(request, pk):
-    services = Services.objects.filter(id=pk)
+    services = Services.objects.filter(id=pk, published=True)
     items = list(Services.filter(published=True))
     photos = ServicePhoto.objects.filter(therapy_id=pk)
     recomended_services = random.sample(items, 3)
