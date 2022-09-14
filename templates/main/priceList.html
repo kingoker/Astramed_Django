@@ -24,7 +24,8 @@
         {% for p in price %}
 <!--        <embed src="{{ p.priceFile }}#toolbar=0" width="100%" height="1000" />-->
 <!--        <object><embed src="{{  p.priceFile.url }}#toolbar=0" width="100%" height="100%" /></object>-->
-            <embed class="container" src="{{ p.priceFile.url }}#toolbar=0" style="width: 100%; height: 900px;">
+<!--            <embed class="container" src="{{ p.priceFile.url }}#toolbar=0" style="width: 100%; height: 900px;">-->
+        <embed src="{{ p.priceFile.url }}#toolbar=0" width="100%" height="500" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
         {% endfor %}
     </div>
 </section>
