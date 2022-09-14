@@ -31,7 +31,8 @@
                 <input type="text" name="address" autocomplete="disabled" class="form__input reg__input" placeholder="Адрес проживания">
                 {% if not member %}
                     {% for service in services %}
-                    <input type="text" name="therapy" autocomplete="disabled" class="form__input reg__input" readonly value="{{service}}" rows="2">
+                    <textarea name="therapy" class="form__input reg__input" cols="40" rows="2" readonly value="{{service}}></textarea>
+<!--                    <input type="text" name="therapy" autocomplete="disabled" class="form__input reg__input" readonly value="{{service}}" rows="2">-->
                     {%endfor%}
                 {% endif %}
                 <input type="tel" required name="number" autocomplete="disabled" class="form__input reg__input" placeholder="Телефон">
