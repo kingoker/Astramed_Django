@@ -16,14 +16,16 @@
             <form action="{% url 'thanks' %}" autocomplete="off" class="form" method="POST">
                 {% csrf_token %}
                 <input type="text" name="LFname" autocomplete="disabled" class="form__input reg__input" placeholder="ФИО">
-                <div class="reg__input reg__input-file">
-                    <p>Год рождения</p>
+                <div class="reg__input-file">
+                    <p class="reg__input-p">Год рождения</p>
                     <input type="date" min="1950-01-01" max="2024-12-31" name="birth" autocomplete="disabled" class="form__input reg__input" placeholder="Год рождения">
                 </div>
-                <div class="reg__input reg__input-file">
-                    <p>Забронировать дату</p>
+                <div class="reg__input-file">
+                    <p class="reg__input-p" >Забронировать дату</p>
                     <input type="date" min="2022-01-01" name="date" autocomplete="disabled" class="form__input reg__input" placeholder="Забронировать дату">
-                    <p>Забронировать время</p>
+                </div>
+                <div class="reg__input-file">
+                     <p class="reg__input-p">Забронировать время</p>
                     <input type="time" min="09:00" max="21:00" name="time" autocomplete="disabled" class="form__input reg__input" placeholder="Забронировать время">
                 </div>
                 <input type="text" name="address" autocomplete="disabled" class="form__input reg__input" placeholder="Адрес проживания">

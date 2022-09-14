@@ -62,6 +62,9 @@ body{
     width: 1200px;
     margin: 0 auto;
 }
+.pdf__container{
+    height: 1000px;
+}
 .img{
     width: 100%;
     height: 100%;
@@ -206,13 +209,13 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-.search__active, .search:hover{
+.search__active{
     position: absolute;
     width: 220px;
     background-color: #FFFFFF;
     border-radius: 30px;
 }
-.search__active .search__icon, .search:hover .search__icon{
+.search__active .search__icon{
     fill: #3F3F3F;
     color: #3F3F3F;
 }
@@ -1016,18 +1019,18 @@ textarea{
     color: #FFFFFF;
 }
 .reg__input{
-    position: relative;
     background-color: #000;
     border-bottom: 3px solid #fff;
     color: #FE8F1D;
 }
 .reg__input-file{
+    position: relative;
     margin-top: 30px;
 }
-.reg__input p {
+.reg__input-p {
     position: absolute;
-    top: 10px;
-    left: 0;
+    top: 15px;
+    left: 0px;
     color: white;
 }
 .reg__input::placeholder{

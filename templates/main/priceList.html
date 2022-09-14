@@ -3,6 +3,8 @@
 {% block title %}{% endblock %}
 
 {% block content %}
+
+
 <header class="header header-half">
     <div class="header__container container">
 
@@ -18,10 +20,10 @@
 
 
 <section class="blog blog-white marbot-100 martop-100">
-    <div class="blog__container container">
+    <div class="blog__container container pdf__container">
         {% for p in price %}
 <!--        <embed src="{{ p.priceFile }}#toolbar=0" width="100%" height="1000" />-->
-        <embed  src="{{  p.priceFile.url }}#toolbar=0" type="application/pdf" width="100%" height="1000" />
+        <iframe   src="{{  p.priceFile.url }}#toolbar=0" type="application/pdf" width="100%" height="100%" />
         {% endfor %}
     </div>
 </section>
