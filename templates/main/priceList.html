@@ -23,7 +23,7 @@
     <div class="blog__container container pdf__container">
         {% for p in price %}
 <!--        <embed src="{{ p.priceFile }}#toolbar=0" width="100%" height="1000" />-->
-        <embed src="{{  p.priceFile.url }}#toolbar=0" type="application/pdf" width="100%" height="100%" />
+        <object><embed src="{{  p.priceFile.url }}#toolbar=0" width="100%" height="100%" /></object>
         {% endfor %}
     </div>
 </section>
