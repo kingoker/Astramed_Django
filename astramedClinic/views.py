@@ -44,8 +44,9 @@ def sendMail(text, subject):
         fail_silently=False,
     )
 
+
 def main(request):
-    services = Services.objects.all()[:6]
+    services = Services.objects.filter(published=True)[:6]
     items = list(Blog.objects.all())
     blog = random.sample(items, 3)
     mainObjects = MainPage.objects.all()
@@ -70,7 +71,7 @@ def main(request):
 
 
 def about(request):
-    items = list(Services.objects.all())
+    items = list(Services.objects.filter(published=True))
     reviews = Reviews.objects.filter(published=True)
     services = random.sample(items, 3)
     aboutPage = AboutPage.objects.all()
@@ -122,7 +123,7 @@ def member(request, employee_name):
 
 def post(request, pk):
     blogs = Blog.objects.filter(pk=pk)
-    items = list(Blog.objects.all())
+    items = list(Blog.objects.filter(published=True))
     recomended_blogs = random.sample(items, 3)
 
     data = {
@@ -134,7 +135,7 @@ def post(request, pk):
 
 def procedure(request, pk):
     services = UnderServices.objects.filter(id=pk)
-    items = list(Services.objects.all())
+    items = list(Services.objects.filter(published=True))
     recomended_services = random.sample(items, 3)
     data = {
         'services': services,
@@ -150,7 +151,7 @@ def profile(request):
         password = request.POST.get('password')
         phone = request.POST.get('phone')
 
-    recomended_services = Services.objects.order_by("-pk")[:3]
+    recomended_services = Services.objects.filter(published=True).order_by("-pk")[:3]
 
     data = {
         'recomended_services': recomended_services,
@@ -165,12 +166,12 @@ def order(request, pk):
     }
     try:
         if "therapy" in path:
-            services = Services.objects.filter(pk=pk)
+            services = Services.objects.filter(pk=pk, published=True)
             data = {
                 'services': [services.values('type')[0]['type']]
             }
         elif "procedure" in path:
-            services = UnderServices.objects.filter(pk=pk)
+            services = UnderServices.objects.filter(pk=pk, published=True)
             data = {
                 'services': [services.values('undertype')[0]['undertype']]
             }
@@ -187,7 +188,7 @@ def order(request, pk):
 
 def review(request):
     reviews = Reviews.objects.filter(published=True)
-    items = list(Services.objects.all())
+    items = list(Services.objects.filter(published=True))
     services = random.sample(items, 3)
     data = {
         'services': services,
@@ -197,7 +198,7 @@ def review(request):
 
 
 def services(request):
-    services = Services.objects.order_by('sort')
+    services = Services.objects.filter(published=True).order_by('sort')
     servicePage = ServicesPage.objects.all()
     data = {
         'services': services,
@@ -209,7 +210,7 @@ def services(request):
 
 def team(request):
     employes = Employee.objects.all()
-    items = list(Blog.objects.all())
+    items = list(Blog.filter(published=True))
     recomended_blogs = random.sample(items, 3)
     data = {
         'employes': employes,
@@ -220,11 +221,11 @@ def team(request):
 
 def therapy(request, pk):
     services = Services.objects.filter(id=pk)
-    items = list(Services.objects.all())
+    items = list(Services.filter(published=True))
     photos = ServicePhoto.objects.filter(therapy_id=pk)
     recomended_services = random.sample(items, 3)
     print(photos)
-    underServices = UnderServices.objects.filter(maintype_id=pk)
+    underServices = UnderServices.objects.filter(maintype_id=pk, published=True)
     data = {
         'services': services,
         'recomended_services': recomended_services,
@@ -371,7 +372,7 @@ def info(request, str):
 
 def cooperation(request):
     jobs = Jobs.objects.all()
-    partners = Partners.objects.all()
+    partners = Partners.objects.filter(published=True)
     cooperationPage = CooperationPage.objects.all()
 
     data = {
@@ -412,10 +413,10 @@ def search(request):
     if request.method == "POST":
         print(request.POST)
         searched = request.POST['searched']
-        blog_list = Blog.objects.filter(title__iregex=rf'({searched})')
+        blog_list = Blog.objects.filter(title__iregex=rf'({searched})', published=True)
         print(blog_list)
-        services_list = Services.objects.filter(type__iregex=rf'({searched})')
-        underservices_list = UnderServices.objects.filter(undertype__iregex=rf'({searched})')
+        services_list = Services.objects.filter(type__iregex=rf'({searched})', published=True)
+        underservices_list = UnderServices.objects.filter(undertype__iregex=rf'({searched})', published=True)
         return render(request, 'main/result.html', {'blog_list': blog_list, 'services_list': services_list, 'underservices_list': underservices_list})
     else:
         return render(request, 'main/result.html', {})
