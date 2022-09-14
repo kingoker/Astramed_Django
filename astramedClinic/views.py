@@ -14,7 +14,7 @@ from astramedClinic.config import gmail_send_message
 from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainPage, Info, Applications, Jobs, \
     Partners, PriceList, Links, Contacs, AboutPage, CooperationPage, PhilosBlog, ServicesPage, ServicePhoto
 
-admins = [938759596, 1600170280]
+admins = [938759596, 1600170280, 2101666900, 99940983]
 
 
 def sendMessage(text, *args):
