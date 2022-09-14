@@ -1,31 +1,36 @@
-{% extends 'custom/base.html' %}
-{% load static %}
-{% block title %}{% endblock %}
-
-{% block content %}
-
-
-<header class="header header-half">
-    <div class="header__container container">
-
-        <!-- Тут подключаю navbar из папки Cutsom-->
-        {% include 'custom/navbar.html' %}
-
-        <div class="header__title aboutHeader__title">
-            <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
-            <h2 class="title__text animate__animated animate__fadeInRight animate__slow wow">Прайс лист</h2>
-        </div>
-    </div>
-</header>
-
-
-<section class="blog blog-white marbot-100 martop-100">
-    <div class="blog__container container pdf__container">
-        {% for p in price %}
+{% for p in price %}
 <!--        <embed src="{{ p.priceFile }}#toolbar=0" width="100%" height="1000" />-->
 <!--        <object><embed src="{{  p.priceFile.url }}#toolbar=0" width="100%" height="100%" /></object>-->
-        <iframe src="{{ p.priceFile.url }}#toolbar=1&navpanes=1&scrollbar=1" style="width: 100%; height: 900px;">Ваш браузер не поддерживает фреймы</iframe>
-        {% endfor %}
-    </div>
-</section>
-{% endblock %}
+    <iframe src="{{ p.priceFile.url }}#toolbar=1&navpanes=1&scrollbar=1" style="width: 100%; height: 900px;">Ваш браузер не поддерживает фреймы</iframe>
+{% endfor %}
+<!--{% extends 'custom/base.html' %}-->
+<!--{% load static %}-->
+<!--{% block title %}{% endblock %}-->
+
+<!--{% block content %}-->
+
+
+<!--<header class="header header-half">-->
+<!--    <div class="header__container container">-->
+
+<!--        &lt;!&ndash; Тут подключаю navbar из папки Cutsom&ndash;&gt;-->
+<!--        {% include 'custom/navbar.html' %}-->
+
+<!--        <div class="header__title aboutHeader__title">-->
+<!--            <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">-->
+<!--            <h2 class="title__text animate__animated animate__fadeInRight animate__slow wow">Прайс лист</h2>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+
+
+<!--<section class="blog blog-white marbot-100 martop-100">-->
+<!--    <div class="blog__container container pdf__container">-->
+<!--        {% for p in price %}-->
+<!--&lt;!&ndash;        <embed src="{{ p.priceFile }}#toolbar=0" width="100%" height="1000" />&ndash;&gt;-->
+<!--&lt;!&ndash;        <object><embed src="{{  p.priceFile.url }}#toolbar=0" width="100%" height="100%" /></object>&ndash;&gt;-->
+<!--        <iframe src="{{ p.priceFile.url }}#toolbar=1&navpanes=1&scrollbar=1" style="width: 100%; height: 900px;">Ваш браузер не поддерживает фреймы</iframe>-->
+<!--        {% endfor %}-->
+<!--    </div>-->
+<!--</section>-->
+<!--{% endblock %}-->
