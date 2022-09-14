@@ -210,7 +210,7 @@ def services(request):
 
 def team(request):
     employes = Employee.objects.all()
-    items = list(Blog.filter(published=True))
+    items = list(Blog.objects.filter(published=True))
     recomended_blogs = random.sample(items, 3)
     data = {
         'employes': employes,
