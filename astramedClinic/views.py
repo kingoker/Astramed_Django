@@ -221,7 +221,7 @@ def team(request):
 
 def therapy(request, pk):
     services = Services.objects.filter(id=pk, published=True)
-    items = list(Services.filter(published=True))
+    items = list(Services.objects.filter(published=True))
     photos = ServicePhoto.objects.filter(therapy_id=pk)
     recomended_services = random.sample(items, 3)
     print(photos)
