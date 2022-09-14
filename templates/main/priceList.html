@@ -32,7 +32,7 @@
 {% for p in price %}
 <!--        <embed src="{{ p.priceFile }}#toolbar=0" width="100%" height="1000" />-->
 <!--        <object><embed src="{{  p.priceFile.url }}#toolbar=0" width="100%" height="100%" /></object>-->
-    <iframe src="{{ p.priceFile.url }}#toolbar=1&navpanes=1&scrollbar=1" style="width: 100%; height: 900px;">Ваш браузер не поддерживает фреймы</iframe>
+    <embed src="{{ p.priceFile.url }}#toolbar=1&navpanes=1&scrollbar=1" style="width: 100%; height: 900px;">Ваш браузер не поддерживает фреймы</embed>
 {% endfor %}
 
 {% endblock %}
