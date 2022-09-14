@@ -8,11 +8,12 @@ function noselect() {return false;}
 const icon = document.querySelector('.search__icon');
 const search = document.querySelector('.search');
 icon.onclick = function(){
-    search.classList.toggle('seacrch__active');
+    search.classList.toggle('search__active');
 }
 document.addEventListener( 'click', (e) => {
-	if ( !icon ) {
-		search.classList.remove('seacrch__active');
+    const click = e.composedPath().includes(search);
+	if ( !click ) {
+		search.classList.remove('search__active');
 	}
 })
 

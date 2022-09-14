@@ -401,7 +401,7 @@
         line-height: 30px;
         margin-bottom: 20px;
     }
-    .team__title, .aboutPhilosophy__header{
+    .team__title, .aboutPhilosophy__header, .team__title span{
         font-size: 28px;
         line-height: 30px;
     }
