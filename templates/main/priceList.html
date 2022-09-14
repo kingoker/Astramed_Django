@@ -24,7 +24,7 @@
         {% for p in price %}
 <!--        <embed src="{{ p.priceFile }}#toolbar=0" width="100%" height="1000" />-->
 <!--        <object><embed src="{{  p.priceFile.url }}#toolbar=0" width="100%" height="100%" /></object>-->
-        <iframe src="{{ p.priceFile.url }}&embedded=true" style="width: 100%; height: 600px;" frameborder="0">Ваш браузер не поддерживает фреймы</iframe>
+        <iframe src="{{ p.priceFile.url }}#toolbar=0" style="width: 100%; height: 600px;" frameborder="0">Ваш браузер не поддерживает фреймы</iframe>
         {% endfor %}
     </div>
 </section>
