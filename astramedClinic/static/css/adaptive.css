@@ -528,6 +528,11 @@
     .reg__input{
         font-size: 25px;
     }
+    .form__input-textarea{
+        font-size: 14px;
+        line-height: 16px;
+        height: 32px;
+    }
     .member__img{
         max-height: 365px;
         max-width: 365px;

@@ -953,7 +953,13 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     height: 500px;
     overflow: hidden;
     transition: all 0.7s ease;
-}v
+}
+.slider-line img{
+    object-fit: contain;
+}
+.slider .container{
+    margin: 0px;
+}
 
 /* Отзывы */
 .review__form{

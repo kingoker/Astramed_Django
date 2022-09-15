@@ -53,20 +53,16 @@ var swiper = new Swiper(".swiper", {
             slidesPerView: 2,
         },
         690:{
-            slidesPerView: 3,
+            slidesPerView: 2,
         }
       }
 });
 
-// Карусель фотографий услуг
-
-
-
-
-
 // Расскрывающийся список
-const accordingLink = document.querySelector('.according__link');
-const accordion = document.querySelector('.accordion');
-accordingLink.onclick = function(){
-    accordion.classList.toggle('accordion-active');
+if(document.querySelector('.accordion')){
+    const accordingLink = document.querySelector('.according__link');
+        const accordion = document.querySelector('.accordion');
+        accordingLink.onclick = function(){
+            accordion.classList.toggle('accordion-active');
+    }
 }

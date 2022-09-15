@@ -36,9 +36,9 @@
         {% if photos %}
         <div class="procedure__result">
             <h2 class="feedback__title colorWhite marbot-50">{{ s.titleBeforeAfter }}</h2>
-            <div class="slider container">
+            <div class="slider container" style="margin: 0px;">
                 <div class="slider-line">
-                    {% for photo in photos %}-->
+                    {% for photo in photos %}
                     <img src="{{ photo.Photo.url }}" alt="before" class="imgBeforeAfter img animate__animated animate__fadeInLeft animate__slow wow">
                     {%endfor%}
                 </div>

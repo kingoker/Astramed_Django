@@ -48,7 +48,7 @@ class ServicePhoto(models.Model):
         verbose_name_plural = 'Фотографии услуги'
 
     def __str__(self):
-        return 'Фотка'
+        return self.therapy
 
 
 class UnderServices(models.Model):

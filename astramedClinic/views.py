@@ -224,7 +224,6 @@ def therapy(request, pk):
     items = list(Services.objects.filter(published=True))
     photos = ServicePhoto.objects.filter(therapy_id=pk)
     recomended_services = random.sample(items, 3)
-    print(photos)
     underServices = UnderServices.objects.filter(maintype_id=pk, published=True)
     data = {
         'services': services,
@@ -251,19 +250,20 @@ def thanks(request):
             if request.POST.get('therapy'):
                 therapy = request.POST.get('therapy')
                 type = f'Запись на прием: {therapy}'
-                text = f'Запись на прием: {therapy}\n' \
+                text = f'Запись на прием:\n' \
+                       f'Терапия: {therapy}\n' \
                        f'ФИО: {name}\n' \
                        f'Дата бронирования: {date}\n' \
                        f'Время бронирования: {time}\n' \
                        f'Дата рождения: {birth}\n' \
                        f'Адрес: {address}\n' \
-                       f'Терапия: {therapy}\n' \
                        f'Номер: {number}\n',
                 sendMail(text, type)
             elif request.POST.get('doctor'):
                 doctor = request.POST.get('doctor')
                 type = f'Запись к врачу: {doctor}'
-                text = f'Запись к врачу: {doctor}\n' \
+                text = f'Запись к врачу:\n' \
+                       f'Доктор: {doctor}\n' \
                        f'ФИО: {name}\n' \
                        f'Дата бронирования: {date}\n' \
                        f'Время бронирования: {time}\n' \
