@@ -56,7 +56,7 @@
             <div class="social__list social__list-footer">
                 {% for link in links %}
                 <div class="social__item">
-                    <a href="{{link.links}}" >
+                    <a target="_blank" href="{{link.links}}" >
                         <svg class="instagram__icon svg whiteStroke">
                             <use xlink:href="#{{link.title}}"></use>
                         </svg>
@@ -87,7 +87,7 @@
                     <use xlink:href="#telegram"></use>
                 </svg>
                 <div class="map__info_footer menu__item colorWhite">
-                    Telegram/sms: <a href="https://t.me/+998{{contact.telegram}}" class="colorWhite">{{contact.telegram}}</a>
+                    Telegram/sms: <a target="_blank" href="https://t.me/+998{{contact.telegram}}" class="colorWhite">{{contact.telegram}}</a>
                 </div>
             </div>
             <div class="map__info map__info-footer">
