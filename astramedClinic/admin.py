@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django import forms
-# from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from django.utils.safestring import mark_safe
 
 from astramedClinic.models import Links, Services, Employee, Reviews, Blog, MainPage, UnderServices, \
     CategoryBlog, Info, Applications, PriceList, Jobs, Partners, Contacs, AboutPage, CooperationPage, ServicesPage, \
@@ -40,8 +40,20 @@ class ReviewsAdmin(admin.ModelAdmin):
         fields = '__all__'
 
 
+class ServicePhotoAdmin(admin.ModelAdmin):
+    list_display = ('therapy', 'get_photo', 'published',)
+    list_editable = ('published',)
+
+    def get_photo(self, obj):
+        return mark_safe(f'<img src="{obj.Photo.url}" width="200px" height="50px">')
+
+    class Meta:
+        model = ServicePhoto
+        fields = '__all__'
+
+
 admin.site.register(Links)
-admin.site.register(ServicePhoto)
+admin.site.register(ServicePhoto, ServicePhotoAdmin)
 admin.site.register(CooperationPage)
 admin.site.register(AboutPage)
 admin.site.register(PhilosBlog)
