@@ -48,7 +48,7 @@ class ServicePhoto(models.Model):
         verbose_name_plural = 'Фотографии услуги'
 
     def __str__(self):
-        return self.therapy
+        return 'фотография услуги'
 
 
 class UnderServices(models.Model):
@@ -181,7 +181,6 @@ class CooperationPage(models.Model):
 class Info(models.Model):
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     description = CKEditor5Field('Описание', config_name='extends')
-    # description = models.TextField(verbose_name='Описание')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
 
     class Meta:
@@ -232,7 +231,6 @@ class PriceList(models.Model):
 class Jobs(models.Model):
     title = models.CharField(max_length=255, verbose_name='Должность')
     photo = models.ImageField(upload_to='jobs/', verbose_name='Фото', max_length=255)
-    # description = models.TextField(verbose_name='Описание')
     description = CKEditor5Field('Описание', config_name='extends')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
 

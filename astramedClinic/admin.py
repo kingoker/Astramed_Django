@@ -44,6 +44,7 @@ class ServicePhotoAdmin(admin.ModelAdmin):
     list_display = ('therapy', 'get_photo', 'published',)
     list_editable = ('published',)
 
+
     def get_photo(self, obj):
         return mark_safe(f'<img src="{obj.Photo.url}" width="200px" height="100px">')
 
