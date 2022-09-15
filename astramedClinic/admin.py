@@ -45,7 +45,7 @@ class ServicePhotoAdmin(admin.ModelAdmin):
     list_editable = ('published',)
 
     def get_photo(self, obj):
-        return mark_safe(f'<img src="{obj.Photo.url}" width="200px" height="50px">')
+        return mark_safe(f'<img src="{obj.Photo.url}" width="200px" height="100px">')
 
     class Meta:
         model = ServicePhoto
