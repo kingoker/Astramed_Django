@@ -39,6 +39,7 @@
 
 <section class="blog">
     <div class="allreviews__container container memberReview__container">
+        {% if review_list %}
         <div class="member__review">
             <h4 class="review__subtitle">Отзывы</h4>
             {% for review in review_list %}
@@ -48,6 +49,7 @@
             </div>
             {% endfor %}
         </div>
+        {% endif %}
         <form method="POST" action="{% url 'thanks' %}" class="review__form form animate__animated animate__fadeInUp animate__slow wow">
             {% csrf_token %}
             <h4 class="review__subtitle review__subtitle_member">Оставить отзыв</h4>
