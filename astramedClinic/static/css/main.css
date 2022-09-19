@@ -563,6 +563,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 }
 .blog__category{
     margin-top: 10px;
+    text-decoration: none;
 }
 .blog__title{
     display: block;
@@ -592,7 +593,22 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     font-size: 28.98px;
     line-height: 39px;
 }
-
+.blog__category-top{
+    font-size: 22px;
+    text-decoration: none;
+}
+.blog__category-top:hover, .blog__category-top-active{
+    color: #FE8F1D;
+}
+.blog__pagination{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 50px auto 150px auto ;
+}
+.blog__pagination a{
+    font-size: 20px;
+}
 
 /* Соц сети */
 .social{
