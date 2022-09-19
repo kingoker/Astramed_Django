@@ -10,6 +10,10 @@ span, p, li, tr, td, table{
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
 }
+figure {
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
 figure img{
     float: left;
 }
