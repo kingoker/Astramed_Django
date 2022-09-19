@@ -326,18 +326,18 @@ def thanks(request):
                 email.attach(uploaded_file.name, uploaded_file.read(), uploaded_file.content_type)
             email.send()
             request.FILES['resume'].seek(0)
-            sendDocument(text,request.FILES['resume'] , admins)
+            sendDocument(text, request.FILES['resume'], admins)
 
-
-        if 'about' in path or 'blog' in path or 'contacts' in path or 'index' in path or 'services' in path:
+        if 'about' in path or 'blog' in path or 'contacts' in path or '' in path or 'services' in path:
             name = request.POST.get('name')
             phone = request.POST.get('phone')
 
-            text = f'Просьба позвонить:' \
+            text = f'Просьба позвонить:\n' \
                    f'ФИО: {name}\n' \
                    f'Номер: {phone}\n'
             sendMessage(text, admins)
             sendMail(text, 'Просьба позвонить')
+
         if 'partner' in path:
             componyName = request.POST.get('componyName')
             email = request.POST.get('email')
