@@ -5,6 +5,7 @@ from email.message import EmailMessage
 
 import requests
 from django.core.mail import send_mail,EmailMessage
+from django.core.paginator import Paginator
 from django.shortcuts import render
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -12,7 +13,8 @@ from django.http import HttpResponseRedirect
 
 from astramedClinic.config import gmail_send_message
 from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainPage, Info, Applications, Jobs, \
-    Partners, PriceList, Links, Contacs, AboutPage, CooperationPage, PhilosBlog, ServicesPage, ServicePhoto
+    Partners, PriceList, Links, Contacs, AboutPage, CooperationPage, PhilosBlog, ServicesPage, ServicePhoto, \
+    CategoryBlog
 
 admins = [938759596, 1600170280, 2101666900, 99940983]
 
@@ -92,10 +94,23 @@ def authorization(request):
 
 def blog(request):
     blogs = Blog.objects.filter(published=True)
+    paginator = Paginator(blogs,6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     fresh = Blog.objects.filter(published=True).order_by("-id")[:3]
+    categories = CategoryBlog.objects.all()
+
+    if request.GET.get('category') and request.GET.get('category') != 'all':
+        categories = CategoryBlog.objects.filter(title=request.GET.get('category'))
+        blogs = Blog.objects.filter(category=categories.values('id')[0]['id'], published=True).all()
+        paginator = Paginator(blogs, 15)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
     data = {
-        'blogs': blogs,
+        'blogs': page_obj,
         'fresh': fresh,
+        'pages': paginator.get_elided_page_range,
+        'categories':categories
     }
     return render(request, 'main/blog.html', data)
 
@@ -328,17 +343,7 @@ def thanks(request):
             request.FILES['resume'].seek(0)
             sendDocument(text, request.FILES['resume'], admins)
 
-        if 'about' in path or 'blog' in path or 'contacts' in path or '' in path or 'services' in path:
-            name = request.POST.get('name')
-            phone = request.POST.get('phone')
-
-            text = f'Просьба позвонить:\n' \
-                   f'ФИО: {name}\n' \
-                   f'Номер: {phone}\n'
-            sendMessage(text, admins)
-            sendMail(text, 'Просьба позвонить')
-
-        if 'partner' in path:
+        elif 'partner' in path:
             componyName = request.POST.get('componyName')
             email = request.POST.get('email')
             number = request.POST.get('number')
@@ -351,6 +356,18 @@ def thanks(request):
                    f'Ссылка: {url}\n'
             sendMessage(text, admins)
             sendMail(text, 'Заявка в партнеры')
+
+        elif 'about' in path or 'blog' in path or 'contacts' in path or 'services' in path or '' in path:
+            name = request.POST.get('name')
+            phone = request.POST.get('phone')
+
+            text = f'Просьба позвонить:\n' \
+                   f'ФИО: {name}\n' \
+                   f'Номер: {phone}\n'
+            sendMessage(text, admins)
+            sendMail(text, 'Просьба позвонить')
+
+
     return render(request, 'main/thanks.html')
 
 
