@@ -96,21 +96,29 @@ def blog(request):
     blogs = Blog.objects.filter(published=True)
     paginator = Paginator(blogs,6)
     page_number = request.GET.get('page')
+    print(page_number)
     page_obj = paginator.get_page(page_number)
+    if page_number != None:
+        page_obj.adjusted_elided_pages = paginator.get_elided_page_range(page_number, on_each_side=1, on_ends=1)
+    else:
+        page_obj.adjusted_elided_pages = paginator.get_elided_page_range(1, on_each_side=1, on_ends=1)
     fresh = Blog.objects.filter(published=True).order_by("-id")[:3]
     categories = CategoryBlog.objects.all()
-
+    category=False
     if request.GET.get('category') and request.GET.get('category') != 'all':
-        categories = CategoryBlog.objects.filter(title=request.GET.get('category'))
-        blogs = Blog.objects.filter(category=categories.values('id')[0]['id'], published=True).all()
+        category = CategoryBlog.objects.filter(title=request.GET.get('category'))
+        blogs = Blog.objects.filter(category=category.values('id')[0]['id'], published=True).all()
+        category = category.values('title')[0]['title']
         paginator = Paginator(blogs, 15)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
+    print(category)
     data = {
         'blogs': page_obj,
         'fresh': fresh,
         'pages': paginator.get_elided_page_range,
-        'categories':categories
+        'categories':categories,
+        'cat':category
     }
     return render(request, 'main/blog.html', data)
 

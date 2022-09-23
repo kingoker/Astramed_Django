@@ -32,13 +32,25 @@
 
 <section class="blog-white marbot-150">
     <div class="blog__container container">
-        <p>Категории:</p>
-        <a href="?category=all" class="blog__category-top blog__category-top-active">Все</a> |
-        {% for category in categories  %}
+
+
         <div class="blog__categories">
-            <a href="?category={{category.title}}" class="blog__category-top lightgrey">{{category.title}}</a> |
+            <p>Категории:</p>
+            {% if cat == False %}
+            <a href="?category=all" class="blog__category-top blog__category-top-active">Все</a> |
+            {% else %}
+            <a href="?category=all" class="blog__category-top lightgrey">Все</a> |
+            {% endif %}
+            {% for category in categories  %}
+
+                {% if cat == category.title %}
+                    <a href="?category={{category.title}}" class="blog__category-top blog__category-top-active">{{category.title}}</a> |
+                {% else %}
+                    <a href="?category={{category.title}}" class="blog__category-top lightgrey">{{category.title}}</a> |
+                {% endif %}
+            {% endfor %}
         </div>
-    {% endfor %}
+
         <div class="blog__list">
             {% for b in blogs %}
             <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
@@ -56,16 +68,15 @@
                     {% if blogs.has_previous %}
                     <a href="?page={{ blogs.previous_page_number }}" class="blog__category-top blog__category-top-active">&#129120;</a>
                     {% endif %}
+                    {% for page_number in blogs.adjusted_elided_pages %}
 
-                    {% for i in blogs.paginator.page_range %}
-                        {% if i == 1 %}
-                            <a href="?page=1" class="blog__category-top lightgrey">1</a>
-                        {% elif blogs.paginator.num_pages == i %}
-                            <a href="?page={{blogs.paginator.num_pages}}" class="blog__category-top lightgrey">{{blogs.paginator.num_pages}}</a>
-                        {% elif blogs.number == i %}
-                            <a href="?page={{i}}" class="blog__category-top blog__category-top-active">{{i}}</a>
-                        {% elif i > blogs.number|add:'-2' and i < blogs.number|add:'2' %}
-                             <a class="blog__category-top lightgrey" href="?page={{ i }}">{{ i }}</a>
+                        {% if page_number == blogs.paginator.ELLIPSIS %}
+
+                        <p  class=" blog__category-top lightgrey">{{page_number}}</p>
+                        {% elif blogs.number == page_number %}
+                            <a href="?page={{page_number}}" class=" blog__category-top blog__category-top-active">{{page_number}}</a>
+                        {% else %}
+                            <a href="?page={{page_number}}" class=" blog__category-top lightgrey">{{page_number}}</a>
                         {% endif %}
                     {% endfor %}
 
