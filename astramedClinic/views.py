@@ -53,9 +53,8 @@ def main(request):
     blog = random.sample(items, 3)
     mainObjects = MainPage.objects.all()
     reviews = Reviews.objects.filter(published=True)
-    blog_categories = CategoryBlog.objects.all()
+
     data = {
-        'blog_categories': blog_categories,
         'services': services,
         'blog': blog,
         'mainObjects': mainObjects,
@@ -422,6 +421,20 @@ def base(request):
     data = {
         'contacts': contacts,
         'links': links,
+    }
+    return data
+
+
+def navbar(request):
+    blog_categories = CategoryBlog.objects.all()
+    services = Services.objects.filter(published=True)
+    underServices = UnderServices.objects.filter(published=True)
+
+    print(services.values())
+    data = {
+        'blog_categories': blog_categories,
+        'menuservices':services,
+        'menuunderServices':underServices,
     }
     return data
 
