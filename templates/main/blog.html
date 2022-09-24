@@ -3,7 +3,7 @@
 {% block title %}Блог{% endblock %}
 
 {% block content %}
-<header class="header">
+<header class="header header-half">
     <div class="header__container container">
 
         <!-- Тут подключаю navbar из папки Cutsom-->
@@ -13,36 +13,33 @@
             <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="halfheader__img img">
             <h1 class="title__text animate__animated animate__fadeInRight animate__slow wow">Наш блог</h1>
         </div>
-        <div class="blog__text">
-            <p class="blog__subtitle blog__subtitle-bigger colorWhite">Самое свежее</p>
-        </div>
-        <div class="blog__list padbot-100 animate__animated animate__fadeInUp animate__slow wow">
-            {% for b in fresh %}
-            <div class="blog__item">
-                <a href="{% url 'post' b.pk %}" class="service__img">
-                    <img src="{{ b.photo.url }}" alt="service" class="img grey-filter">
-                </a>
-                <p class="blog__category lightgrey">{{ b.category }}</p>
-                <a href="{% url 'post' b.pk %}" class="service__link link colorWhite">{{b.title}}</a>
-            </div>
-            {%endfor%}
-        </div>
+<!--        <div class="blog__text">-->
+<!--            <p class="blog__subtitle blog__subtitle-bigger colorWhite">Самое свежее</p>-->
+<!--        </div>-->
+<!--        <div class="blog__list padbot-100 animate__animated animate__fadeInUp animate__slow wow">-->
+<!--            {% for b in fresh %}-->
+<!--            <div class="blog__item">-->
+<!--                <a href="{% url 'post' b.pk %}" class="service__img">-->
+<!--                    <img src="{{ b.photo.url }}" alt="service" class="img grey-filter">-->
+<!--                </a>-->
+<!--                <p class="blog__category lightgrey">{{ b.category }}</p>-->
+<!--                <a href="{% url 'post' b.pk %}" class="service__link link colorWhite">{{b.title}}</a>-->
+<!--            </div>-->
+<!--            {%endfor%}-->
+<!--        </div>-->
     </div>
 </header>
 
 <section class="blog-white marbot-150">
-    <div class="blog__container container">
-
-
+    <div class="blog__container container martop-100">
         <div class="blog__categories">
             <p>Категории:</p>
             {% if cat == False %}
-            <a href="?category=all" class="blog__category-top blog__category-top-active">Все</a> |
+                <a href="?category=all" class="blog__category-top blog__category-top-active">Все</a> |
             {% else %}
-            <a href="?category=all" class="blog__category-top lightgrey">Все</a> |
+                <a href="?category=all" class="blog__category-top lightgrey">Все</a> |
             {% endif %}
             {% for category in categories  %}
-
                 {% if cat == category.title %}
                     <a href="?category={{category.title}}" class="blog__category-top blog__category-top-active">{{category.title}}</a> |
                 {% else %}
@@ -64,34 +61,25 @@
         </div>
 
         <div class="blog__pagination pagination">
-                    {% if blogs.paginator.num_pages > 1 %}
-                    {% if blogs.has_previous %}
-                    <a href="?page={{ blogs.previous_page_number }}" class="blog__category-top blog__category-top-active">&#129120;</a>
-                    {% endif %}
-                    {% for page_number in blogs.adjusted_elided_pages %}
+            {% if blogs.paginator.num_pages > 1 %}
+                {% if blogs.has_previous %}
+                    <a href="?page={{ blogs.previous_page_number }}" class="blog__category-top">&#129120;</a>
+                {% endif %}
 
-                        {% if page_number == blogs.paginator.ELLIPSIS %}
-
+                {% for page_number in blogs.adjusted_elided_pages %}
+                    {% if page_number == blogs.paginator.ELLIPSIS %}
                         <p  class=" blog__category-top lightgrey">{{page_number}}</p>
-                        {% elif blogs.number == page_number %}
-                            <a href="?page={{page_number}}" class=" blog__category-top blog__category-top-active">{{page_number}}</a>
-                        {% else %}
-                            <a href="?page={{page_number}}" class=" blog__category-top lightgrey">{{page_number}}</a>
-                        {% endif %}
-                    {% endfor %}
+                    {% elif blogs.number == page_number %}
+                        <a href="?page={{page_number}}" class=" blog__category-top blog__category-top-active">{{page_number}}</a>
+                    {% else %}
+                        <a href="?page={{page_number}}" class=" blog__category-top lightgrey">{{page_number}}</a>
+                    {% endif %}
+                {% endfor %}
 
-
-            {% if blogs.has_next %}
-            <a href="?page={{ blogs.next_page_number }}" class="blog__category-top lightgrey">&#129122;</a>
-
+                {% if blogs.has_next %}
+                    <a href="?page={{ blogs.next_page_number }}" class="blog__category-top lightgrey">&#129122;</a>
+                {% endif %}
             {% endif %}
-            {% endif %}
-<!--            <a href="#" class="blog__category-top lightgrey">&#129120;</a>-->
-<!--            <a href="#" class="blog__category-top lightgrey">1</a>-->
-<!--            <a href="#" class="blog__category-top blog__category-top-active">2</a>-->
-<!--            <a href="#" class="blog__category-top lightgrey">...</a>-->
-<!--            <a href="#" class="blog__category-top lightgrey">7</a>-->
-<!--            <a href="#" class="blog__category-top lightgrey">&#129122;</a>-->
         </div>
 
         <div class="blog__social social blog__social-noPadding">

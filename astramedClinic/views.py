@@ -53,22 +53,14 @@ def main(request):
     blog = random.sample(items, 3)
     mainObjects = MainPage.objects.all()
     reviews = Reviews.objects.filter(published=True)
+    blog_categories = CategoryBlog.objects.all()
     data = {
+        'blog_categories': blog_categories,
         'services': services,
         'blog': blog,
         'mainObjects': mainObjects,
         'reviews': reviews
     }
-
-    # Код для отправки емейла
-    # send_mail(
-    #     'Subject here',
-    #     'Here is the message.',
-    #     'temp@astramed-clinic.com',
-    #     ['bear.lvvb@mail.ru'],
-    #     fail_silently=False,
-    # )
-
     return render(request, 'main/index.html', data)
 
 

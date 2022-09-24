@@ -147,10 +147,10 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR/"media/" #Для хостинга
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #Для виртуалки
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+# Настройки CkEditor
 customColorPalette = [
     {
         'color': 'hsl(4, 90%, 58%)',

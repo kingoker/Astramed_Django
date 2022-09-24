@@ -40,23 +40,25 @@ if(iconMenu){
 }
 
 // Карусель
-var swiper = new Swiper(".swiper", {
-    loop: true,
-    slidesPerView: 1,
-    spaceBetween: 50,
-    navigation: {
-        nextEl: ".next__icon",
-        prevEl: ".prev__icon",
-      },
-      breakpoints:{
-        450:{
-            slidesPerView: 2,
-        },
-        690:{
-            slidesPerView: 2,
-        }
-      }
-});
+if(document.querySelector('.swiper')){
+    var swiper = new Swiper(".swiper", {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 50,
+        navigation: {
+            nextEl: ".next__icon",
+            prevEl: ".prev__icon",
+          },
+          breakpoints:{
+            450:{
+                slidesPerView: 2,
+            },
+            690:{
+                slidesPerView: 2,
+            }
+          }
+    });
+}
 
 // Расскрывающийся список
 if(document.querySelector('.accordion')){
@@ -65,4 +67,11 @@ if(document.querySelector('.accordion')){
         accordingLink.onclick = function(){
             accordion.classList.toggle('accordion-active');
     }
+}
+
+//Скролл на странице блога остаётся на месте
+if(document.querySelector('.blog__categories')){
+    let cords = ['scrollX','scrollY'];
+    window.addEventListener('unload', e => cords.forEach(cord => localStorage[cord] = window[cord]));
+    window.scroll(...cords.map(cord => localStorage[cord]));
 }

@@ -5,16 +5,39 @@
         <img src="{% static 'img/logo.svg' %}" alt="Astramed" class="logo__img img">
         <p class="logo__text">Astramed <br> <span>центр заботы о себе</span></p>
     </a>
-    <div class="header__body">
+    <div class="header__body menu">
         <ul class="menu__list" id="menu__list">
             <li class="menu__item">
                 <a href="{% url 'about' %}" class="header__link header__link">О клинике</a>
             </li>
             <li class="menu__item">
-                <a href="{% url 'services' %}" class="header__link">Услуги</a>
+                <a href="{% url 'services' %}" class="header__link">Услуги &#8642;</a>
+                <ul class="sub-menu__list">
+                     <li class="menu__item">
+                        <a href="{% url 'blog' %}" class="header__link sub-menu__link">Физиотерапия</a>
+                     </li>
+                     <li class="menu__item">
+                        <a href="{% url 'blog' %}" class="header__link sub-menu__link">2 Блог</a>
+                         <ul class="sub-sub-menu__list">
+                             <li class="menu__item">
+                                <a href="{% url 'blog' %}" class="header__link sub-sub-menu__link">3 Блог</a>
+                             </li>
+                             <li class="menu__item">
+                                <a href="{% url 'blog' %}" class="header__link sub-sub-menu__link">3 Блог</a>
+                             </li>
+                        </ul>
+                     </li>
+                </ul>
             </li>
             <li class="menu__item">
-                <a href="{% url 'blog' %}" class="header__link">Блог</a>
+                <a href="{% url 'blog' %}" class="header__link">Блог &#8642;</a>
+                 <ul class="sub-menu__list">
+                     {% for bc in blog_categories %}
+                     <li class="menu__item">
+                        <a href="{% url 'blog' %}" class="header__link sub-menu__link">{{ bc.title }}</a>
+                     </li>
+                     {% endfor %}
+                </ul>
             </li>
             <li class="menu__item">
                 <a href="{% url 'contacts' %}" class="header__link">Контакты</a>
