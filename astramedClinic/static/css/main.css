@@ -211,11 +211,6 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 .menu li{
     position: relative;
 }
-.menu__list>li:hover .sub-menu__list{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
 .sub-menu__list{
     display: none;
     position: absolute;
@@ -224,23 +219,52 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     background: rgba(63, 63, 63, 0.9);
     border-radius: 3px;
     padding: 15px;
-    min-width: 100px;
-}
-.sub-menu__list>li:hover .sub-sub-menu__list{
-    display: block;
+    min-width: 300px;
+    z-index: 2;
 }
 .sub-sub-menu__list{
     display: none;
     position: absolute;
     top: 0;
     left: 100%;
-    min-width: 100px;
+    min-width: 300px;
     padding: 15px;
     border-radius: 3px;
 }
 .sub-sub-menu__list>li{
     background: rgba(45, 45, 45, 0.9);
     padding: 5px 15px;
+}
+
+.arrow {
+	display: none;
+	position: absolute;
+	right: 0;
+	top: 12px;
+	width: 0;
+	height: 0;
+	border-top: 10px solid #fff;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+}
+.arrow.active{
+	transform: rotate(-180deg);
+}
+body.mouse .menu__list>li:hover .sub-menu__list {
+	display: block;
+}
+body.mouse .sub-menu__list>li:hover .sub-sub-menu__list {
+	display: block;
+}
+
+body.touch .sub-menu__list.open{
+	display: block;
+}
+body.touch .sub-sub-menu__list.open{
+	display: block;
+}
+body.touch .arrow {
+	display: block;
 }
 
 

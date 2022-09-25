@@ -11,30 +11,34 @@
                 <a href="{% url 'about' %}" class="header__link header__link">О клинике</a>
             </li>
             <li class="menu__item">
-                <a href="{% url 'services' %}" class="header__link">Услуги &#8642;</a>
+                <a href="{% url 'services' %}" class="header__link">Услуги</a>
+                <span class="menu__arrow arrow"></span>
                 <ul class="sub-menu__list">
                     {% for service in menuservices %}
                      <li class="menu__item">
-                        <a href="{% url 'services' %}" class="header__link sub-menu__link">{{service.type}}</a>
-<!--                         {% for  %}-->
-<!--                         <ul class="sub-sub-menu__list">-->
-<!--                             <li class="menu__item">-->
-<!--                                <a href="{% url 'blog' %}" class="header__link sub-sub-menu__link">3 Блог</a>-->
-<!--                             </li>-->
-<!--                             <li class="menu__item">-->
-<!--                                <a href="{% url 'blog' %}" class="header__link sub-sub-menu__link">3 Блог</a>-->
-<!--                             </li>-->
-<!--                        </ul>-->
+                        <a href="{% url 'therapy' service.pk %}" class="header__link sub-menu__link">{{ service.type }}</a>
+                        {% for us in menuunderServices %}
+                        {% if us.maintype == service %}
+                             <span class="menu__arrow arrow"></span>
+                        {% endif %}
+                        {% endfor %}
+                             <ul class="sub-sub-menu__list">
+                                 {% for us in menuunderServices %}
+                                    {% if us.maintype == service %}
+                                    <span class="menu__arrow arrow"></span>
+                                         <li class="menu__item">
+                                            <a href="{% url 'procedure' us.pk  %}" class="header__link sub-sub-menu__link">{{ us.undertype }}</a>
+                                         </li>
+                                     {% endif %}
+                                {% endfor %}
+                             </ul>
                      </li>
                     {% endfor %}
-                     <li class="menu__item">
-                        <a href="{% url 'blog' %}" class="header__link sub-menu__link">2 Блог</a>
-
-                     </li>
                 </ul>
             </li>
             <li class="menu__item">
-                <a href="{% url 'blog' %}" class="header__link">Блог &#8642;</a>
+                <a href="{% url 'blog' %}" class="header__link">Блог</a>
+                <span class="menu__arrow arrow"></span>
                  <ul class="sub-menu__list">
                      {% for bc in blog_categories %}
                      <li class="menu__item">
@@ -50,8 +54,8 @@
                 <a href="{% url 'cooperation' %}" class="header__link">Сотрудничество</a>
             </li>
         </ul>
-        <ul class="menu__icons">
-            <li class="menu__icon menu__icon-search">
+<!--        <ul class="menu__icons">-->
+<!--            <li class="menu__icon menu__icon-search">-->
                 <div class="search">
                     <svg class="search__icon svg">
                         <use xlink:href="#search"></use>
@@ -61,7 +65,7 @@
                         <input type="text" placeholder="Поиск..." id="mysearch" name="searched">
                     </form>
                 </div>
-            </li>
+<!--            </li>-->
 <!--            <li class="menu__icon menu__profile">-->
 <!--                <a href="{% url 'profile' %}" class="profile">-->
 <!--                    <svg class="profile__icon svg">-->
@@ -72,7 +76,7 @@
 <!--            <li class="menu__icon">-->
 <!--                <a href="" class="language">RU</a>-->
 <!--            </li>-->
-        </ul>
+<!--        </ul>-->
     </div>
     <div class="menu__burger">
         <span></span>

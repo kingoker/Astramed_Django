@@ -47,6 +47,30 @@ def sendMail(text, subject):
     )
 
 
+def base(request):
+    contacts = Contacs.objects.all()
+    links = Links.objects.all()
+    data = {
+        'contacts': contacts,
+        'links': links,
+    }
+    return data
+
+
+def navbar(request):
+    blog_categories = CategoryBlog.objects.all()
+    services = Services.objects.filter(published=True)
+    underServices = UnderServices.objects.filter(published=True)
+
+    print(services.values())
+    data = {
+        'blog_categories': blog_categories,
+        'menuservices':services,
+        'menuunderServices':underServices,
+    }
+    return data
+
+
 def main(request):
     services = Services.objects.filter(published=True)[:6]
     items = list(Blog.objects.filter(published=True))
@@ -413,30 +437,6 @@ def priceList(request):
         'price': price,
     }
     return render(request, 'main/priceList.html', data)
-
-
-def base(request):
-    contacts = Contacs.objects.all()
-    links = Links.objects.all()
-    data = {
-        'contacts': contacts,
-        'links': links,
-    }
-    return data
-
-
-def navbar(request):
-    blog_categories = CategoryBlog.objects.all()
-    services = Services.objects.filter(published=True)
-    underServices = UnderServices.objects.filter(published=True)
-
-    print(services.values())
-    data = {
-        'blog_categories': blog_categories,
-        'menuservices':services,
-        'menuunderServices':underServices,
-    }
-    return data
 
 
 def search(request):
