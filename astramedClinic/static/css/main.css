@@ -269,7 +269,7 @@ body.touch .arrow {
 
 
 .search {
-    position: absolute;
+    position: relative;
     right: 0px;
     width: 30px;
     height: 47px;
@@ -281,7 +281,7 @@ body.touch .arrow {
     box-sizing: border-box;
 }
 .search__active{
-    position: absolute;
+    position: relative;
     width: 220px;
     background-color: #FFFFFF;
     border-radius: 30px;
