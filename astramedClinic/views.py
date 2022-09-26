@@ -6,7 +6,9 @@ from email.message import EmailMessage
 import requests
 from django.core.mail import send_mail,EmailMessage
 from django.core.paginator import Paginator
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from hitcount.models import HitCount
+from hitcount.views import HitCountMixin
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from django.http import HttpResponseRedirect
@@ -15,6 +17,7 @@ from astramedClinic.config import gmail_send_message
 from astramedClinic.models import Services, Employee, Reviews, Blog, UnderServices, MainPage, Info, Applications, Jobs, \
     Partners, PriceList, Links, Contacs, AboutPage, CooperationPage, PhilosBlog, ServicesPage, ServicePhoto, \
     CategoryBlog
+
 
 admins = [938759596, 1600170280, 2101666900, 99940983]
 
@@ -77,6 +80,21 @@ def main(request):
     blog = random.sample(items, 3)
     mainObjects = MainPage.objects.all()
     reviews = Reviews.objects.filter(published=True)
+
+    object = get_object_or_404(MainPage)
+    context = {}
+
+    # hitcount logic
+    hit_count = HitCount.objects.get_for_object(object)
+    hits = hit_count.hits
+    hitcontext = context['hitcount'] = {'pk': hit_count.pk}
+    hit_count_response = HitCountMixin.hit_count(request, hit_count)
+    if hit_count_response.hit_counted:
+        hits = hits + 1
+        hitcontext['hit_counted'] = hit_count_response.hit_counted
+        hitcontext['hit_message'] = hit_count_response.hit_message
+        hitcontext['total_hits'] = hits
+        hitcontext['total_hits'] = hits
 
     data = {
         'services': services,

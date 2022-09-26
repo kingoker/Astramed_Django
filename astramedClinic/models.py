@@ -1,6 +1,10 @@
 from random import choices
+from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
+from hitcount.models import HitCount, HitCountMixin
+from hitcount.settings import MODEL_HITCOUNT
+from hitcount.views import HitCountDetailView
 
 
 class Links(models.Model):
@@ -132,7 +136,7 @@ class Blog(models.Model):
         return self.title
 
 
-class MainPage(models.Model):
+class MainPage(models.Model, HitCountMixin):
     philosophyTitle = models.CharField(max_length=255, verbose_name='Философия Заголовок')
     philosophy = models.CharField(max_length=255, verbose_name='Философия подзаголовок')
     philosophyPhoto = models.ImageField(upload_to='main/', verbose_name='Философия Фото', max_length=255)
@@ -157,11 +161,15 @@ class MainPage(models.Model):
 
     contactsTitle = models.CharField(max_length=255, verbose_name='Контакты Заголовок')
 
+    hit_count_generic = GenericRelation(
+        HitCount, object_id_field='object_pk',
+        related_query_name='hit_count_generic_relation')
+
     class Meta:
         verbose_name = 'Страница Главная'
         verbose_name_plural = 'Страница Главная'
 
-    def __str__(self):
+    def str(self):
         return "Страница Главная"
 
 
