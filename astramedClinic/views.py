@@ -25,7 +25,7 @@ admins = [938759596, 1600170280, 2101666900, 99940983]
 def sendMessage(text, *args):
     method = 'https://api.telegram.org/bot5684471230:AAF6eLJajz0Rj7Ksjzy3uKbWnGQRb5HC-SQ/sendMessage'
     for chat_id in args[0]:
-        print(chat_id)
+
         requests.post(method, data={
             'chat_id': chat_id,
             'text': text
@@ -65,7 +65,7 @@ def navbar(request):
     services = Services.objects.filter(published=True)
     underServices = UnderServices.objects.filter(published=True)
 
-    print(services.values())
+
     data = {
         'blog_categories': blog_categories,
         'menuservices':services,
@@ -129,7 +129,7 @@ def blog(request):
     blogs = Blog.objects.filter(published=True)
     paginator = Paginator(blogs,6)
     page_number = request.GET.get('page')
-    print(page_number)
+
     page_obj = paginator.get_page(page_number)
     if page_number != None:
         page_obj.adjusted_elided_pages = paginator.get_elided_page_range(page_number, on_each_side=1, on_ends=1)
@@ -145,7 +145,7 @@ def blog(request):
         paginator = Paginator(blogs, 15)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
-    print(category)
+
     data = {
         'blogs': page_obj,
         'fresh': fresh,
@@ -159,7 +159,7 @@ def blog(request):
 def contacts(request):
     contacts = Contacs.objects.all()
     links = Links.objects.all()
-    print(links.values())
+
     data = {
         'contacts': contacts,
         'links': links,
@@ -233,7 +233,7 @@ def order(request, pk):
             }
         elif "member" in path:
             member = Employee.objects.filter(pk=pk)
-            print(member)
+
             data = {
                 'member': [member.values('name')[0]['name']]
             }
@@ -349,7 +349,7 @@ def thanks(request):
             name = request.POST.get('name')
             description = request.POST.get('description')
             doctor = ""
-            print(request.POST.get('doctor'))
+
             if 'member' in path:
                 doctor = request.POST.get('doctor')
             Reviews.objects.create(name=name, description=description, doctor=doctor)
@@ -459,10 +459,10 @@ def priceList(request):
 
 def search(request):
     if request.method == "POST":
-        print(request.POST)
+
         searched = request.POST['searched']
         blog_list = Blog.objects.filter(title__iregex=rf'({searched})', published=True)
-        print(blog_list)
+
         services_list = Services.objects.filter(type__iregex=rf'({searched})', published=True)
         underservices_list = UnderServices.objects.filter(undertype__iregex=rf'({searched})', published=True)
         return render(request, 'main/result.html', {'blog_list': blog_list, 'services_list': services_list, 'underservices_list': underservices_list})
