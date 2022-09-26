@@ -247,9 +247,12 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 	border-right: 10px solid transparent;
 	border-left: 10px solid transparent;
 }
-.arrow.active{
+/*
+ .arrow.active{
 	transform: rotate(-180deg);
 }
+ */
+
 body.mouse .menu__list>li:hover .sub-menu__list {
 	display: block;
 }
@@ -265,6 +268,9 @@ body.touch .sub-sub-menu__list.open{
 }
 body.touch .arrow {
 	display: block;
+}
+.sub-menu__list .menu__item{
+    padding-top:10px;
 }
 
 
@@ -1018,6 +1024,7 @@ body.touch .arrow {
     font-weight: 700;
     color: #FFFFFF;
     border: 1px solid #FFFFFF;
+    padding: 0px 20px;
 }
 .procedure__link:hover{
     opacity: 1;
@@ -1297,7 +1304,6 @@ textarea{
     text-decoration: none;
     font-weight: 600;
     color: #000;
-    min-width: 150px;
     min-height: 50px;
     border-radius: 10px;
     display: flex;

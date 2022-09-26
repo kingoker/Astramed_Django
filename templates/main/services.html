@@ -17,6 +17,7 @@
 
     <section class="blog blog-white marbot-150">
         <div class="blog__container container">
+            <a href="{% url 'priceList' %}" target="_blank" class="link priceList__link animate__animated animate__fadeInUp animate__slow wow">Прайс лист</a>
             <div class="blog__list">
                 {% for service in services %}
                 <div class="blog__item animate__animated animate__fadeInUp animate__slow wow">
@@ -27,7 +28,6 @@
                 </div>
                 {%endfor%}
             </div>
-            <a href="{% url 'priceList' %}" target="_blank" class="link priceList__link animate__animated animate__fadeInUp animate__slow wow">Прайс лист</a>
         </div>
     </section>
 

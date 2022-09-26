@@ -25,7 +25,6 @@
                              <ul class="sub-sub-menu__list">
                                  {% for us in menuunderServices %}
                                     {% if us.maintype == service %}
-                                    <span class="menu__arrow arrow"></span>
                                          <li class="menu__item">
                                             <a href="{% url 'procedure' us.pk  %}" class="header__link sub-sub-menu__link">{{ us.undertype }}</a>
                                          </li>
