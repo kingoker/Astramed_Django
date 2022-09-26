@@ -216,7 +216,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     position: absolute;
     left: 0;
     top: 26px;
-    background: rgba(63, 63, 63, 0.9);
+    background: black;
     border-radius: 3px;
     padding: 15px;
     min-width: 300px;
@@ -232,7 +232,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     border-radius: 3px;
 }
 .sub-sub-menu__list>li{
-    background: rgba(45, 45, 45, 0.9);
+    background: black;
     padding: 5px 15px;
 }
 
