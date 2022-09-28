@@ -111,7 +111,7 @@ DATABASES = {
         'HOST': 'localhost',
     }
 }
-#
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {

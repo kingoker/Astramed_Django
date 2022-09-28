@@ -62,14 +62,13 @@ def base(request):
 
 def navbar(request):
     blog_categories = CategoryBlog.objects.all()
-    services = Services.objects.filter(published=True)
+    services = Services.objects.filter(published=True).order_by('sort')
     underServices = UnderServices.objects.filter(published=True)
-
 
     data = {
         'blog_categories': blog_categories,
-        'menuservices':services,
-        'menuunderServices':underServices,
+        'menuservices': services,
+        'menuunderServices': underServices,
     }
     return data
 

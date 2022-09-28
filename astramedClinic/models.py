@@ -225,7 +225,6 @@ class Applications(models.Model):
 
 
 class PriceList(models.Model):
-    priceFile = models.FileField(upload_to='priceList/', max_length=255, verbose_name='ФИО')
     url = models.CharField(max_length=255, verbose_name='Ссылка', null=True, blank=True)
 
     class Meta:
