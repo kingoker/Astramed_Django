@@ -40,10 +40,20 @@ class ReviewsAdmin(admin.ModelAdmin):
         fields = '__all__'
 
 
+class AdminServices(admin.ModelAdmin):
+    list_display = ('type', 'sort', 'published',)
+    list_display_links = ('type', )
+    list_filter = ('sort', 'published', )
+    list_editable = ('sort', 'published', )
+
+    class Meta:
+        model = Applications
+        fields = '__all__'
+
+
 class ServicePhotoAdmin(admin.ModelAdmin):
     list_display = ('therapy', 'get_photo', 'published',)
     list_editable = ('published',)
-
 
     def get_photo(self, obj):
         return mark_safe(f'<img src="{obj.Photo.url}" width="200px" height="100px">')
@@ -59,7 +69,7 @@ admin.site.register(CooperationPage)
 admin.site.register(AboutPage)
 admin.site.register(PhilosBlog)
 admin.site.register(ServicesPage)
-admin.site.register(Services)
+admin.site.register(Services, AdminServices)
 admin.site.register(Employee)
 admin.site.register(Reviews, ReviewsAdmin)
 admin.site.register(Blog, PostAdmin)
