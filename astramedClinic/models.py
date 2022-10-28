@@ -1,6 +1,7 @@
 from random import choices
 from django.contrib.contenttypes.fields import GenericRelation
 from django.db import models
+from django.urls import reverse
 from django_ckeditor_5.fields import CKEditor5Field
 from hitcount.models import HitCount, HitCountMixin
 from hitcount.settings import MODEL_HITCOUNT
@@ -121,6 +122,7 @@ class CategoryBlog(models.Model):
 class Blog(models.Model):
     author = models.CharField(max_length=255, verbose_name='Автор')
     title = models.TextField(max_length=255, verbose_name='Заголовок')
+    slug = models.SlugField(null=False, blank=True)  # new
     category = models.ForeignKey(CategoryBlog, null=True, on_delete=models.CASCADE, verbose_name='Категория')
     published = models.BooleanField(default=True, verbose_name='Опубликован')
     photo = models.ImageField(upload_to='blogs/', verbose_name='Фото', max_length=255)
@@ -134,6 +136,9 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('post', kwargs={'slug': self.slug})
 
 
 class MainPage(models.Model, HitCountMixin):

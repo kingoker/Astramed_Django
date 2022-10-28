@@ -176,8 +176,8 @@ def member(request, employee_name):
     return render(request, 'main/member.html', data)
 
 
-def post(request, pk):
-    blogs = Blog.objects.filter(pk=pk, published=True)
+def post(request, slug):
+    blogs = Blog.objects.filter(slug=slug, published=True)
     items = list(Blog.objects.filter(published=True))
     recomended_blogs = random.sample(items, 3)
 

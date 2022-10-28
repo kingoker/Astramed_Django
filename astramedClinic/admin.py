@@ -13,6 +13,8 @@ class PostAdmin(admin.ModelAdmin):
     list_display_links = ('title', )
     search_fields = ('title', 'description', )
     list_editable = ('published', 'category')
+    prepopulated_fields = {'slug': ('title',)}  # new
+
     save_on_top = True
 
 
