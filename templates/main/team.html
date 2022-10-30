@@ -55,10 +55,10 @@
         <div class="blog__list marbot-100 animate__animated animate__fadeInUp animate__slow wow">
             {% for blog in recomended_blogs %}
             <div class="blog__item">
-                <a href="{% url 'post' blog.pk %}" class="service__img">
+                <a href="{{b.get_absolute_url }}" class="service__img">
                     <img src="{{ blog.photo.url }}" alt="service" class="img grey-filter">
                 </a>
-                <a href="{% url 'post' blog.pk %}" class="service__link link">{{ blog.title }}</a>
+                <a href="{{b.get_absolute_url }}" class="service__link link">{{ blog.title }}</a>
             </div>
             {%endfor%}
         </div>
